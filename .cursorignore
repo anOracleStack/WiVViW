@@ -1,0 +1,27 @@
+.env
+.env.*
+!.env.example
+
+# common secret locations
+keys/
+secrets/
+
+# DB config (common names)
+**/*database*.{json,js,ts,yaml,yml}
+**/*db*.{json,js,ts,yaml,yml}
+
+# Supabase local/dev state
+supabase/.branches/
+supabase/.temp/
+supabase/.config.toml
+
+# build outputs
+.next/
+dist/
+build/
+
+# deps
+node_modules/
+
+# OS/editor noise
+.DS_Store
