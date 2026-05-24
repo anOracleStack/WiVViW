@@ -1,92 +1,51 @@
-# WiVViW — saved status (resume here)
+# WiVViW — status, tasks & work log
 
-Last context: private preview lockdown, build fixes, Next.js 16 proxy migration, ESLint wired.
+**Updated:** 2026-05-24 | **Agents:** Do pending tasks top→bottom; log each in **Work log**; commit this file when done.
 
-## Run the app
+## Safe to restart?
 
-```bash
-cd "/Users/oraclevision/Developer/applications/WiVViW"
-npm run dev
-```
+| Check | Status |
+|-------|--------|
+| Git `main` on GitHub | Yes — synced with `origin/main` |
+| Working tree | Clean (run `git status`) |
+| Public app | https://wivviw.com — `/api/health` ok, Supabase env on prod |
+| CI on `main` | Green (last push: inngest bump) |
+| Local `.env.local` | Gitignored — stays on disk; back up before wipe |
+| Fully optimized | No — see pending tasks |
 
-Open **http://localhost:3000** (port 3000).
+**Disk:** ~5 GB free (99% full). Free space before big installs; Vercel CLI hit `ENOSPC` on 2026-05-24.
 
-- Production-style: `npm run build` then `npm run start`
-- Lint: `npm run lint` (see below — do not use `next lint` alone)
-
-## Private preview (staging/production)
-
-When **`SITE_ACCESS_PASSWORD`** is set (non-empty), the site requires **HTTP Basic Auth** and sends **noindex** / restrictive **robots.txt**.
-
-- Optional: **`SITE_ACCESS_USER`** (default `preview`)
-- **`/api/inngest`** stays open for Inngest webhooks
-- Leave password **unset** for normal local dev (no browser login)
-
-See `.env.example` for placeholders.
-
-## Important files
-
-| Area | Location |
-|------|-----------|
-| Request gate (Basic Auth + headers) | `src/proxy.ts` |
-| Lock detection | `src/lib/site-access-locked.ts` |
-| Robots | `src/app/robots.ts` |
-| Metadata when locked | `src/app/layout.tsx` (`generateMetadata`) |
-| Turbopack root (fixes wrong lockfile parent) | `next.config.ts` |
-| ESLint flat config | `eslint.config.mjs` |
-| Supabase admin + `requireSupabaseAdmin()` | `src/lib/supabase/admin.ts` |
-
-## Build / TypeScript
-
-- **`docs/PROVIDERS.ts`** — guards for `supabaseAdmin` possibly null
-- API / Inngest / prompts use **`requireSupabaseAdmin()`** or early returns where appropriate
-
-## Lint note
-
-`next lint` can error with a bogus path (`.../WiVViW/lint`). Use:
+**Links:** [GitHub](https://github.com/anOracleStack/WiVViW) · [Prod](https://wivviw.com) · [Vercel](https://vercel.com/anoraclestacks-projects/wivviw)
 
 ```bash
-npm run lint
+cd "/Users/oraclevision/Developer/applications/WiVViW" && npm run dev
 ```
 
-which runs ESLint on `src`, `docs`, and root `*.ts` configs.
+## Task list (pending)
 
-## Next.js 16
+1. **[Human] Free disk space** — several GB; fixes `ENOSPC` / Vercel CLI.
+2. **Confirm prod deploy = `main` HEAD** — Vercel dashboard SHA vs GitHub; `curl https://wivviw.com/api/health`.
+3. **Dependabot PRs** — Do not merge inngest 4.x until CI + migration pass. Test Next 16.2.4 branch. Consider merging postcss, @types/node, anthropic-sdk after build+e2e.
+4. **Supabase email template** — `token_hash` confirm link per `.env.example`.
+5. **Vercel env audit** — Supabase, LLM keys, `INNGEST_EVENT_KEY`, optional `AUTH_ALLOWED_EMAILS`, `NEXT_PUBLIC_APP_URL`.
+6. **Inngest prod sync** — `https://wivviw.com/api/inngest` healthy in Inngest UI.
+7. **Supabase RLS audit** — tables used by client + APIs.
+8. **E2E auth smoke** — Playwright with test user; document CI secrets if needed.
+9. **Shared rate limits** — Upstash/Redis for multi-instance Vercel.
+10. **`npm audit`** — fix moderate/high without breaking pins.
+11. **wivviw.app alias** — DNS + Supabase redirect URLs if used.
+12. **Observability** — Vercel Analytics / Speed Insights.
+13. **Product** — dRANb + truth on prod with real keys; `06_BUILD/` per `06_BUILD/README.md`.
 
-- **`middleware.ts` removed** — use **`src/proxy.ts`** with `export function proxy`
-- Deprecation warning for middleware should be gone after this migration
+## Work log
 
-## Task list (at a glance)
+| Date | Item | Outcome |
+|------|------|---------|
+| 2026-04-19 | GitHub + CI + Dependabot | Repo live, workflows green |
+| 2026-04-19 | Auth/API hardening | Callback, proxy, rate limits, health, truth GET ownership |
+| 2026-05-21 | Vercel prod | inngest≥3.54; **wivviw.com** live; GitHub auto-deploy connected |
+| 2026-05-24 | Pre-restart check | main pushed; prod health OK; task list refreshed for agents |
 
-### Code / CI — done (last verified)
+## Reference
 
-- `npm run lint` — clean
-- `npm run build` — green (Next.js 16.1.6, Turbopack)
-- `.cursorignore` — present (secrets + build noise)
-
-### Fill out (env + database — required for full runtime)
-
-Copy `.env.example` → `.env.local` and set real values:
-
-| Variable | Purpose |
-|----------|---------|
-| `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Browser + server Supabase client |
-| `SUPABASE_SERVICE_ROLE_KEY` | Server-only admin (API routes, Inngest) |
-| `SUPABASE_DB_URL` | Local Supabase CLI / migrations (optional if you use hosted only) |
-| At least one of `OPENAI_API_KEY`, `GOOGLE_AI_KEY`, `ANTHROPIC_API_KEY` | MOIRAI / providers |
-| `INNGEST_EVENT_KEY` | Async pipelines (Inngest) |
-
-Then apply schema + seed:
-
-- `supabase/migrations/001_foundation.sql`
-- `supabase/seed/001_dranb_defaults.sql`  
-  (via Supabase CLI or paste into SQL editor — see Supabase docs for your workflow)
-
-Optional staging lock: `SITE_ACCESS_PASSWORD` (+ optional `SITE_ACCESS_USER`).
-
-### Product / roadmap (optional next steps)
-
-- Supabase Auth + email allowlist (stronger than Basic Auth alone)
-- Confirm RLS on Supabase tables if anon key is in the client
-- Remove stray **`package-lock.json`** in home folder if you want to avoid future monorepo/root confusion (project already sets `turbopack.root`)
-- Drop launch / truth-kernel / UI shell artifacts into `06_BUILD/` (see `06_BUILD/README.md`)
+`src/proxy.ts` · `src/app/auth/callback/route.ts` · `.github/workflows/ci.yml` · `.env.example` · `npm run lint` (not `next lint`)
