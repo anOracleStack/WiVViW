@@ -15,7 +15,7 @@
 
 **Disk:** ~5 GB free (99% full). Free space before big installs; Vercel CLI hit `ENOSPC` on 2026-05-24.
 
-**Links:** [GitHub](https://github.com/anOracleStack/WiVViW) · [Prod](https://wivviw.com) · [Vercel](https://vercel.com/anoraclestacks-projects/wivviw)
+**Links:** [App repo](https://github.com/anOracleStack/WiVViW) · [Workspace archive](https://github.com/anOracleStack/WiVViW-workspace) · [Prod](https://wivviw.com) · [Vercel](https://vercel.com/anoraclestacks-projects/wivviw)
 
 ```bash
 cd "/Users/oraclevision/Developer/applications/WiVViW" && npm run dev
@@ -45,6 +45,7 @@ cd "/Users/oraclevision/Developer/applications/WiVViW" && npm run dev
 | 2026-04-19 | Auth/API hardening | Callback, proxy, rate limits, health, truth GET ownership |
 | 2026-05-21 | Vercel prod | inngest≥3.54; **wivviw.com** live; GitHub auto-deploy connected |
 | 2026-05-24 | Pre-restart check | main pushed; prod health OK; task list refreshed for agents |
+| 2026-06-10 | Workspace archive repo | `WiVViW-workspace` on GitHub — canon/raw/build (~788MB); app `main` unchanged |
 
 ## Reference
 
