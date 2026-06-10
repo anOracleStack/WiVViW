@@ -34,12 +34,24 @@
   },
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "00_CANON",
+    "01_RAW_INPUTS",
+    "02_CONSOLIDATED_REPORTS",
+    "03_PROMPTS",
+    "04_ENGINES",
+    "05_BUSINESS",
+    "06_BUILD",
+    "07_CURSOR_PROJECT",
+    "08_ARCHIVE",
+    "09_PRESENTATION",
+    "DOC ASSESS",
+    "FOLD ASSESS"
   ]
 }

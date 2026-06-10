@@ -6,7 +6,7 @@
     "dev": "next dev -p 3000",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint src docs next.config.ts tailwind.config.ts",
+    "lint": "eslint src docs next.config.ts",
     "test:e2e": "playwright test",
     "ci": "npm run lint && npm run build"
   },
