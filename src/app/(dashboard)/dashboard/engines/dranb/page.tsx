@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { useDashboardAuth } from "@/components/DashboardAuth";
 
 const defaultBrief = {
   business_description: "",
@@ -15,6 +17,7 @@ const defaultBrief = {
 
 export default function DranbPage() {
   const router = useRouter();
+  const { canRun } = useDashboardAuth();
   const [brief, setBrief] = useState(defaultBrief);
   const [toneInput, setToneInput] = useState("");
   const [avoidInput, setAvoidInput] = useState("");
@@ -41,6 +44,10 @@ export default function DranbPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!canRun) {
+      setError("Sign up or sign in to run dRANb and get naming results.");
+      return;
+    }
     setError(null);
     setLoading(true);
     try {
@@ -197,8 +204,16 @@ export default function DranbPage() {
           disabled={loading}
           className="rounded-lg bg-white px-4 py-2.5 text-sm font-medium text-black transition hover:bg-zinc-200 disabled:opacity-50"
         >
-          {loading ? "Starting…" : "Run dRANb"}
+          {loading ? "Starting…" : canRun ? "Run dRANb" : "Sign in to run"}
         </button>
+        {!canRun && (
+          <p className="text-center text-xs text-zinc-500">
+            <Link href="/signup" className="text-indigo-400 hover:text-indigo-300">
+              Create an account
+            </Link>{" "}
+            to submit briefs and receive output.
+          </p>
+        )}
       </form>
     </div>
   );

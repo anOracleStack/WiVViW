@@ -20,25 +20,45 @@ export default async function HomePage() {
       <div className="relative z-10 max-w-md space-y-5 px-6 text-center">
         <h1 className="text-4xl font-semibold tracking-tight text-white">WiVViW</h1>
         <p className="text-sm leading-relaxed text-zinc-400">
-          Multi-model orchestration (MOIRAI) with the dRANb naming engine. Open the dashboard to
-          run a brief end-to-end.
+          Multi-model orchestration (MOIRAI) with the dRANb naming engine.
+          <br />
+          Browse the dashboard free — sign up to run briefs and get output.
         </p>
         <SupabaseStatus />
         <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-          {isSupabaseAuthConfigured() && !signedIn && (
+          {signedIn ? (
             <Link
-              href="/login"
-              className="inline-flex rounded-lg border border-zinc-600 px-5 py-2.5 text-sm font-medium text-zinc-100 transition hover:border-zinc-500 hover:bg-zinc-900"
+              href="/dashboard"
+              className="inline-flex rounded-lg bg-white px-5 py-2.5 text-sm font-medium text-black transition hover:bg-zinc-200"
             >
-              Sign in
+              Dashboard
             </Link>
+          ) : (
+            <>
+              <Link
+                href="/dashboard"
+                className="inline-flex rounded-lg bg-white px-5 py-2.5 text-sm font-medium text-black transition hover:bg-zinc-200"
+              >
+                Explore app
+              </Link>
+              {isSupabaseAuthConfigured() && (
+                <>
+                  <Link
+                    href="/login"
+                    className="inline-flex rounded-lg border border-zinc-600 px-5 py-2.5 text-sm font-medium text-zinc-100 transition hover:border-zinc-500 hover:bg-zinc-900"
+                  >
+                    Sign in
+                  </Link>
+                  <Link
+                    href="/signup"
+                    className="inline-flex rounded-lg border border-zinc-600 px-5 py-2.5 text-sm font-medium text-zinc-100 transition hover:border-zinc-500 hover:bg-zinc-900"
+                  >
+                    Sign up
+                  </Link>
+                </>
+              )}
+            </>
           )}
-          <Link
-            href="/dashboard"
-            className="inline-flex rounded-lg bg-white px-5 py-2.5 text-sm font-medium text-black transition hover:bg-zinc-200"
-          >
-            {signedIn ? "Dashboard" : "Go to Dashboard"}
-          </Link>
         </div>
       </div>
     </main>

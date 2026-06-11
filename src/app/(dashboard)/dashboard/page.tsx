@@ -6,7 +6,7 @@ export default function DashboardPage() {
       <div>
         <h1 className="text-2xl font-semibold tracking-tight">Dashboard</h1>
         <p className="mt-1 text-sm text-zinc-400">
-          Run engines and view sessions.
+          Run engines and view sessions. Browse freely — sign in to run and save work.
         </p>
       </div>
       <div className="grid gap-4 sm:grid-cols-2">

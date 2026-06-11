@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useDashboardAuth } from "@/components/DashboardAuth";
 
 interface ReceiptRow {
   id: string;
@@ -15,6 +16,7 @@ interface ReceiptRow {
 }
 
 export default function TruthOpsPage() {
+  const { canRun } = useDashboardAuth();
   const [sessionId, setSessionId] = useState("");
   const [claimId, setClaimId] = useState("");
   const [source, setSource] = useState("manual_ops");
@@ -25,6 +27,10 @@ export default function TruthOpsPage() {
   const [loading, setLoading] = useState(false);
 
   async function loadReceipts() {
+    if (!canRun) {
+      setMessage("Sign in to load receipts for your sessions.");
+      return;
+    }
     if (!sessionId.trim()) {
       setMessage("Paste a session UUID first.");
       return;
@@ -50,6 +56,10 @@ export default function TruthOpsPage() {
 
   async function submitReceipt(e: React.FormEvent) {
     e.preventDefault();
+    if (!canRun) {
+      setMessage("Sign in to submit receipts.");
+      return;
+    }
     if (!sessionId.trim()) {
       setMessage("Session ID required.");
       return;

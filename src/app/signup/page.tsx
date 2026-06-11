@@ -37,6 +37,15 @@ export default function SignupPage() {
       setNotice(
         "Check your email to confirm your account, then sign in. Tip: open the link in this same browser, or configure the Supabase “Confirm sign up” template to use token_hash (see .env.example)."
       );
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : "Sign up failed";
+      if (msg.includes("Failed to fetch")) {
+        setError(
+          "Could not reach Supabase. Check that the project is active and wivviw.com is listed under Supabase → Auth → URL configuration."
+        );
+      } else {
+        setError(msg);
+      }
     } finally {
       setLoading(false);
     }

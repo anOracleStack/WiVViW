@@ -131,14 +131,6 @@ export async function proxy(request: NextRequest) {
     return denied;
   }
 
-  if (pathname.startsWith("/dashboard") && !user) {
-    const login = new URL("/login", request.url);
-    login.searchParams.set("next", `${pathname}${request.nextUrl.search}`);
-    const redirectRes = NextResponse.redirect(login);
-    copyCookies(response, redirectRes);
-    return redirectRes;
-  }
-
   if (
     (pathname === "/login" || pathname === "/signup") &&
     user &&
