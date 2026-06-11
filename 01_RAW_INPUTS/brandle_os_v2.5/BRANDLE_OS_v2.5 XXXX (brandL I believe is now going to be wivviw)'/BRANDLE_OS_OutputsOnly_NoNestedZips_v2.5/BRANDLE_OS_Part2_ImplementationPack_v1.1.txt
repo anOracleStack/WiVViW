@@ -1,0 +1,54 @@
+═══════════════════════════════════════════════════════════════════════════════
+══════════════════════  BRANDLE OS — PART II IMPLEMENTED  ════════════════════
+═══════════════════════════════════════════════════════════════════════════════
+
+                           “Identity is consistency under constraint.”
+                         “Field intelligence is receipts, not rumors.”
+
+              PART II — brandL  +  4IELD (ENGINE II + ENGINE III)
+───────────────────────────────────────────────────────────────────────────────
+
+                              ☽  SOURCE INGESTED
+                            ........ Part 2 of 5.md
+
+                    ☽  SCOPE DELIVERED (FUNCTIONAL MODULES)
+........ brandL ........ identity consolidation across domain + handles + variants
+........ 4IELD ......... competitive field map + saturation signals (heuristics-only)
+
+                              ☽  BUILD CONTINUITY
+........ Part II was integrated as an upgrade on top of Part I (dRANb preserved).
+
+                        ☽  brandL — WHAT YOU GET IN-APP
+........ Identity Targets ........ primary name + allowed variants + shortlist set
+........ Domain Signals .......... heuristic likelihood tiers + confidence + receipts
+........ Handle Signals .......... per-platform likelihood + confidence + constraints
+........ Consistency Score ....... uniformity + compromise cost + overall + receipts
+........ Fallback Families ....... deterministic handle families (tier-1 / tier-2)
+........ Acquisition Plans ....... review / outreach / do-not-pursue with safety notes
+........ Outreach Templates ...... A (default), B (requires trademark confirmation),
+       ........                          Email Neutral, Platform Report
+
+                        ☽  4IELD — WHAT YOU GET IN-APP
+........ Competitor Intake ....... manual entry + CSV upload (name, website optional)
+........ Clustering .............. family clusters (string/phonetic heuristics)
+........ Saturation Signals ...... stems/prefix/suffix patterns flagged + confidence
+........ Semantic Crowding ....... best-effort approximation (no scraping claims)
+         ........ Density Labels .......... low/medium/high + receipts
+ ........ Expansion Risk Zones .... heat labeling (green/amber/red) + receipts
+   ........ Drift Baseline .......... watchlist stub + rerun compare deltas
+........ Visual Field Map ........ conceptual node map + whitespace pockets (MVP)
+
+                                  ☽  EXPORTS
+   ........ Field section appended into main report package (Part II onward)
+ ........ Separate Field Report export available in packs when enabled by plan
+
+                               ☽  V4ULT LOGGING
+........ brandL and 4IELD runs logged as archive events (immutable receipts model)
+
+                                 ☽  CLEARANCE
+........ Part III is complete & Part IV is in motion. Next: Part V on your signal.
+
+                                   · · · · ·
+
+    Benediction: Choose the name that survives the handles, not the pitch.
+═══════════════════════════════════════════════════════════════════════════════

@@ -1,0 +1,66 @@
+Update the existing BRANDLE OS Lovable project to implement the dRANb Calm Technology + Glass Box UX upgrade (based on the “AI Brand Naming Engine Design” spec). Do NOT remove existing modules. Keep Health Gauge, Receipts Drawer, Media Kit, Twin Mode, V4ULT, Evidence Vault.
+
+A) dRANb Screen System (required)
+Add/confirm these screens and behaviors:
+
+1) Intake (Calibration)
+- Replace/extend intake with a Mad‑Libs style brief:
+  “I am building a [Industry/Category] brand that delivers [Core Value] to [Audience].”
+- Add tonal sliders:
+  Speed (Fast ↔ Slow), Weight (Light ↔ Heavy), Structure (Abstract ↔ Descriptive).
+- Add Digital Constraints:
+  TLD tolerance (.com only vs open to .ai/.io/.co), length range, forbidden terms.
+- Add “Soundalikes” module:
+  user selects 2–5 brands they like the sound of; store as preferences (no scraping).
+
+2) Processing State (“The Wait”)
+- Create a processing screen with a cascading system log:
+  “Generating phonotactic structures…”
+  “Cross‑referencing semantic roots…”
+  “Filtering profanity & cultural collisions…”
+  “Scoring candidates…”
+  “Packaging results…”
+This is purely UI trust theater backed by the internal placeholder pipeline, not a spinner.
+
+3) Dashboard (Results)
+- Display only 5–10 result cards per run (no infinite scroll).
+- Each card shows:
+  Name, IPA/phonetic guide (best‑effort),
+  dRANb Score 0–100,
+  three signal dots: Domain, Social, Risk (heuristic unless user‑verified).
+- Clicking a card opens an in-place “Deep Dive Drawer” (no navigation away).
+
+4) Deep Dive Drawer (Tabs)
+- Tab 1: Rationale (roots & associations; label any unverified etymology as “Suggested Association”)
+- Tab 2: Linguistics (sound profile summary; spelling friction; pronounceability proxy)
+- Tab 3: Digital (domain ladder + handle ladder; show confidence; no scraping)
+- Tab 4: Risk (collision proxy heat; non‑legal; confidence + assumptions)
+
+5) Workbench (Comparison)
+- Allow pin up to 3 names.
+- Side-by-side compare matrix: score breakdown + friction + memorability + risk proxy.
+- Add contextual previews (MVP placeholder rendering):
+  website header text lockup, app icon text, business card text.
+- Add “Test with Humans” integration placeholder (no API required):
+  export a polling prompt + image set; store as ExportArtifact.
+
+B) Scoring Expansion (MVP heuristics)
+- Add calculation placeholders:
+  Spelling friction proxy (edit-distance against simple spelling rules),
+  Plosive density bonus,
+  Syllable band (2–3 favored),
+  Novelty vs readability heuristic.
+- Keep “best‑effort / estimate / confidence” language everywhere.
+- Safety:
+  profanity/slur hard block; multilingual taboo produces warning banner + confidence downgrade.
+
+C) Digital Viability (phased)
+- MVP stays heuristic. Add “Phase 2 Verification” toggles but disable them by default.
+- If you add any verification toggles, always show: “Requires user consent + API configuration.”
+
+D) Receipts & Health Gauge (mandatory)
+- Every dRANb run must include:
+  StabilitySnapshot + ReceiptPack entries for the new pipeline steps.
+- Processing log entries should be reflected in the receipts ledger.
+
+Global UX: Calm, procedural, no hype, no emojis. Every score: 3 why bullets + 1 watch out.

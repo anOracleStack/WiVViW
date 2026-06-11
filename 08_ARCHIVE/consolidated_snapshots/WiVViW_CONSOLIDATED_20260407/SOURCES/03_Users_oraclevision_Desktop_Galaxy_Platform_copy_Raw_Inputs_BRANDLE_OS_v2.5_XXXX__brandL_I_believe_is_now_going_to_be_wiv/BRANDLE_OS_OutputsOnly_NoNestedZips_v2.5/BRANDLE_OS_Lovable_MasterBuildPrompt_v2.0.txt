@@ -1,0 +1,23 @@
+Build a full-stack web application called “BRANDLE OS / THE BRANDLE METAVERSE” — a brand optimization platform that expands into a 7-app ecosystem.
+
+CANON APPS (7):
+01 dRANb (Naming/Identity) → 02 brandL (Assets) → 04 4IELD (Strategy) → 05 4TRESS (Protection) are core BRANDLE OS.
+03 3XEC (Operations), 06 5ITE (Product), 07 6ROXY (Avatar) are BRANDLE METAVERSE expansions.
+
+NON-NEGOTIABLE SAFETY & GOVERNANCE:
+- Use best-effort/estimate/confidence language everywhere.
+- No scraping in MVP. Availability and “real-time” claims are heuristic unless user provides evidence.
+- 4TRESS is NON-LEGAL: not legal advice; no cease-and-desist letters; no threats; no guarantees.
+- Any external action plans (outreach/agent-to-agent) MUST be Permission-Envelope gated and auditable.
+- Twin/Avatar is consent-based, synthetic-labeled, revocable; add a Kill Switch workflow.
+
+CROSS-CUTTING SYSTEMS (must exist):
+V4ULT (Archive + lock/branch + diffs), Evidence Vault, Model Health Gauge, Receipts Drawer, Media Kit slots, Twin Mode settings, Governance panel (Permission Envelopes, Kill Switch, Data Stratification), Ops Cadence Scheduler (The Pulse).
+
+NAV:
+Projects | dRANb | brandL | 3XEC | 4IELD | 4TRESS | 5ITE | 6ROXY | V4ULT | Evidence Vault | Governance | Settings/Billing
+
+MVP DELIVERABLE:
+A working web app scaffold with authentication, database, the core BRANDLE OS flows implemented with placeholder heuristics, and the 3XEC/5ITE/6ROXY modules implemented as functional “generate + export” pages (no external execution). Seed a demo project.
+
+(Use the previously defined database schema for BRANDLE OS and extend with PermissionEnvelope, PulseSchedule, ScenarioRun, PostMortem, SiteBlueprint.)

@@ -1,0 +1,51 @@
+Update the existing BRANDLE OS Lovable project to implement the Twin Mode + Model Health Gauge Addendum (v1.1). Do NOT remove or rename existing modules.
+
+A) Model Health Gauge (cross-engine, required)
+- Add a “Signal Flow Board” component (mixing board style) visible on engine pages (dRANb, brandL, 4IELD, 4TRESS) and on V4ULT run detail pages.
+- 8 default tracks: Coherence, Constraint Fit, Evidence Coverage, Consensus, Novelty vs Clarity, Risk Surface, Policy/Safety, Actionability.
+- Each track shows green→yellow→red with an info click that opens receipts for that track.
+- Add Top Summary Meter: Stable/Caution/Unstable and Stability Index 0–100.
+- Thresholds: Stable 80–100; Caution 65–79; Unstable 0–64.
+- On yellow/red, show a Trigger Banner that explains what degraded and gives ONE best correction.
+
+B) Stability Snapshots
+- Store a StabilitySnapshot per EngineRun: stability_index, tracks_json, triggers_json, created_at.
+- When a run is locked in V4ULT, capture stability snapshot in “Audit Mode.”
+
+C) Receipts Expansion (automatic)
+- Add a Receipts Drawer for each EngineRun containing:
+  Run Ledger (timestamp, engine, settings, run id),
+  Prompt Pack (sanitized system + user + inputs),
+  Assumptions Ledger (assumed vs user-provided vs user-verified),
+  Delta Report (what changed since last run & why),
+  Evidence Pins (references to Evidence Vault items),
+  Outcome Summary (what worked, gaps, risks, next moves).
+- Prompts should be hidden by default when sharing artifacts.
+
+D) Media Kit (micro lessons)
+- Add MediaAsset model and “Micro-clip Slots” per key screens:
+  6–12s in-flow clips plus a 30–60s recap clip slot per milestone.
+- Captions always on; audio optional. Provide placeholders and allow upload later.
+
+E) Twin Mode (consent-based)
+- Add user settings panel:
+  Guide Mode (default),
+  Mirror Mode (opt-in),
+  Avatar Mode (opt-in),
+  Humor Toggle (opt-in, recaps only, NEVER on 4TRESS screens).
+- Avatar Mode safety requirements:
+  Only authenticated user likeness; only user-provided media; always labeled synthetic; instant revocation; never used for third-party outreach without review.
+- Add TwinSettings model to persist choices.
+
+F) V4ULT upgrades
+- Universal Timeline: show all EngineRuns across engines in one chronological stream.
+- Artifact Bundles: Decision Pack + Identity Pack + Field Pack + Readiness Pack.
+- Share controls: share artifacts; prompts hidden by default; show receipts + stability index at lock time.
+
+G) Engine upgrades (MVP placeholders)
+- dRANb: add “Name Stress Tests” panel (spoken, URL, email, podcast intro, billboard) and “Dual Output Sets” toggle (Safe Set + Bold Set). Add “Decision Confidence Card” on finalist.
+- brandL: add “Identity Kit Export” placeholder (bios, handle variants, email aliases) and guardrails blocking unverified trademark claims.
+- 4IELD: add “Expansion Simulator” placeholder and “Whitespace Generator” placeholder.
+- 4TRESS: add “Filing Rehearsal” page (copy/paste + checklist) and “Monitoring Reminders” generator (calendar-friendly text).
+
+Global UX language: calm, procedural, best-effort. No hype. No emojis.

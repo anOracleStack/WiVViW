@@ -1,0 +1,61 @@
+{
+  "title": "THE BRANDLE METAVERSE \u2014 MASTER BIBLE INTEGRATION PACK",
+  "version": "v2.0",
+  "date": "2026-02-03",
+  "sections": [
+    {
+      "id": "ecosystem",
+      "title": "7-App Ecosystem Canon",
+      "summary": "Defines the seven apps and their galaxy features; aligns them with MVP-safe constraints."
+    },
+    {
+      "id": "ux",
+      "title": "Director/Actor UX",
+      "summary": "Cinematic UX principle that turns procedural work into scenes while keeping receipts and trust."
+    },
+    {
+      "id": "gov",
+      "title": "Governance & Safety",
+      "summary": "Permission envelopes, kill switch, data stratification, agent limits, auditability."
+    },
+    {
+      "id": "money",
+      "title": "Pricing & Financial Scenario",
+      "summary": "Tier pricing and a year-1 scenario model treated as assumptions requiring CAC/LTV validation."
+    },
+    {
+      "id": "ops",
+      "title": "Ops Cadence",
+      "summary": "Hard-coded reporting cadence (The Pulse) across weekdays/weekends/quarterly."
+    },
+    {
+      "id": "visuals",
+      "title": "Visual Asset Prompts",
+      "summary": "Standardizes visual prompts and replaces emoji with tokens to match system output rules."
+    },
+    {
+      "id": "phasing",
+      "title": "Implementation Alignment",
+      "summary": "Phases BRANDLE OS into BRANDLE METAVERSE expansions (3XEC, 5ITE, 6ROXY) safely."
+    }
+  ],
+  "summary": "Locks the Master Bible v1.1 into BRANDLE OS canon: 7-app ecosystem, governance/safety layer, pricing + financial scenarios, ops cadence, and visual prompt canon; reconciled with best-effort, non-legal, and no-scrape MVP constraints.",
+  "tags": [
+    "BRANDLE METAVERSE",
+    "Master Bible",
+    "dRANb",
+    "brandL",
+    "3XEC",
+    "4IELD",
+    "4TRESS",
+    "5ITE",
+    "6ROXY",
+    "Governance",
+    "Permission Envelope",
+    "Kill Switch",
+    "Data Stratification",
+    "Pricing",
+    "Ops Cadence",
+    "Visual Prompts"
+  ]
+}

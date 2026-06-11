@@ -1,0 +1,27 @@
+BRANDLE OS — INPUT ORDER v2.4
+Date: 2026-02-04
+
+WORKFLOW A — CLEAN REBUILD (RECOMMENDED)
+1) Create new Lovable project
+2) Paste this ONE file (it contains the full canon including tiered access + dRANb master architecture):
+   BRANDLE_OS_Lovable_OnePaste_RebuildPrompt_v2.4.txt
+
+WORKFLOW B — PATCH AN EXISTING PROJECT (IF YOU CAN ACCESS IT)
+1) Apply security / tiered access patch:
+   BRANDLE_OS_LovableUpdatePrompt_TieredAccess_Security_v2.3.txt
+2) Apply dRANb master architecture patch:
+   BRANDLE_OS_LovableUpdatePrompt_dRANb_MasterArchitecture_v2.4.txt
+
+REFERENCE / DOCS (NOT PASTED INTO LOVABLE — FOR YOU / INVESTORS)
+3) dRANb Integration Pack (human-readable canon):
+   BRANDLE_OS_dRANb_MasterArchitecture_IntegrationPack_v2.4.txt/.pdf/.json
+4) Tiered Access Addendum (human-readable security canon):
+   BRANDLE_OS_TieredAccess_InvestorVault_DeviceLock_Addendum_v2.3.txt/.pdf/.json
+5) Document Index (master map of everything):
+   BRANDLE_OS_Document_Index_v2.4.txt
+
+ARCHIVE PACKS
+6) Outputs only:
+   BRANDLE_OS_OutputsOnly_v2.4.zip
+7) Full thread bundle (outputs + your uploads):
+   BRANDLE_OS_Thread_Documents_All_v2.4.zip

@@ -1,0 +1,24 @@
+═══════════════════════════════════════════════════════════════════════════════
+══════════════════     BRANDLE OS — ONE‑PASTE REBUILD PROMPT      ════════════
+═══════════════════════════════════════════════════════════════════════════════
+
+                 “If access is lost, rebuild becomes the cleanest truth.”
+
+                             PART XXXIII — PURPOSE
+───────────────────────────────────────────────────────────────────────────────
+☽  This is a single Lovable prompt that rebuilds the full platform in one run.
+☽  Use it only after signing into Lovable with the account you want to OWN it.
+
+                            PART XXXIV — HOW TO USE
+───────────────────────────────────────────────────────────────────────────────
+         □ 1) Open Lovable while logged in as your desired owner email
+                            □ 2) Create New Project
+         □ 3) Paste the full contents of the prompt file into Lovable
+                             □ 4) Generate + Build
+
+                            PART XXXV — PROMPT FILE
+───────────────────────────────────────────────────────────────────────────────
+          ........ BRANDLE_OS_Lovable_OnePaste_RebuildPrompt_v2.2.txt
+
+       benediction: the platform is portable because the canon is text.
+═══════════════════════════════════════════════════════════════════════════════

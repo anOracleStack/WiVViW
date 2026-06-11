@@ -1,0 +1,88 @@
+═══════════════════════════════════════════════════════════════════════════════
+══════════════════════      BRANDLE OS — DOCUMENT INDEX v1.6      ═════════════
+═══════════════════════════════════════════════════════════════════════════════
+
+                           Date ........ 2026-02-03
+
+
+                               CORE PARTS (1–5)
+───────────────────────────────────────────────────────────────────────────────
+BRANDLE_OS_Part1_ImplementationPack_v1.1.j ....... sandbox:/mnt/data/BRANDLE_OS_Part1_ImplementationPack_v1.1.json
+BRANDLE_OS_Part1_ImplementationPack_v1.1.p ....... sandbox:/mnt/data/BRANDLE_OS_Part1_ImplementationPack_v1.1.pdf
+BRANDLE_OS_Part1_ImplementationPack_v1.1.t ....... sandbox:/mnt/data/BRANDLE_OS_Part1_ImplementationPack_v1.1.txt
+BRANDLE_OS_Part2_ImplementationPack_v1.1.j ....... sandbox:/mnt/data/BRANDLE_OS_Part2_ImplementationPack_v1.1.json
+BRANDLE_OS_Part2_ImplementationPack_v1.1.p ....... sandbox:/mnt/data/BRANDLE_OS_Part2_ImplementationPack_v1.1.pdf
+BRANDLE_OS_Part2_ImplementationPack_v1.1.t ....... sandbox:/mnt/data/BRANDLE_OS_Part2_ImplementationPack_v1.1.txt
+BRANDLE_OS_Part3_ImplementationPack_v1.1.j ....... sandbox:/mnt/data/BRANDLE_OS_Part3_ImplementationPack_v1.1.json
+BRANDLE_OS_Part3_ImplementationPack_v1.1.p ....... sandbox:/mnt/data/BRANDLE_OS_Part3_ImplementationPack_v1.1.pdf
+BRANDLE_OS_Part3_ImplementationPack_v1.1.t ....... sandbox:/mnt/data/BRANDLE_OS_Part3_ImplementationPack_v1.1.txt
+BRANDLE_OS_Part4_ImplementationPack_v1.1.j ....... sandbox:/mnt/data/BRANDLE_OS_Part4_ImplementationPack_v1.1.json
+BRANDLE_OS_Part4_ImplementationPack_v1.1.p ....... sandbox:/mnt/data/BRANDLE_OS_Part4_ImplementationPack_v1.1.pdf
+BRANDLE_OS_Part4_ImplementationPack_v1.1.t ....... sandbox:/mnt/data/BRANDLE_OS_Part4_ImplementationPack_v1.1.txt
+BRANDLE_OS_Part5_ImplementationPack_v1.1.j ....... sandbox:/mnt/data/BRANDLE_OS_Part5_ImplementationPack_v1.1.json
+BRANDLE_OS_Part5_ImplementationPack_v1.1.p ....... sandbox:/mnt/data/BRANDLE_OS_Part5_ImplementationPack_v1.1.pdf
+BRANDLE_OS_Part5_ImplementationPack_v1.1.t ....... sandbox:/mnt/data/BRANDLE_OS_Part5_ImplementationPack_v1.1.txt
+
+                             THREAD VAULT OUTPUTS
+───────────────────────────────────────────────────────────────────────────────
+BRANDLE_OS_Engramaestro_ThreadVault_Implem ....... sandbox:/mnt/data/BRANDLE_OS_Engramaestro_ThreadVault_ImplementationPack_v1.1.json
+BRANDLE_OS_Engramaestro_ThreadVault_Implem ....... sandbox:/mnt/data/BRANDLE_OS_Engramaestro_ThreadVault_ImplementationPack_v1.1.pdf
+BRANDLE_OS_Engramaestro_ThreadVault_Implem ....... sandbox:/mnt/data/BRANDLE_OS_Engramaestro_ThreadVault_ImplementationPack_v1.1.txt
+BRANDLE_OS_Engramaestro_ThreadVaultIII_Imp ....... sandbox:/mnt/data/BRANDLE_OS_Engramaestro_ThreadVaultIII_ImplementationPack_v1.3.json
+BRANDLE_OS_Engramaestro_ThreadVaultIII_Imp ....... sandbox:/mnt/data/BRANDLE_OS_Engramaestro_ThreadVaultIII_ImplementationPack_v1.3.pdf
+BRANDLE_OS_Engramaestro_ThreadVaultIII_Imp ....... sandbox:/mnt/data/BRANDLE_OS_Engramaestro_ThreadVaultIII_ImplementationPack_v1.3.txt
+BRANDLE_OS_Engramaestro_ThreadVaultIV_Impl ....... sandbox:/mnt/data/BRANDLE_OS_Engramaestro_ThreadVaultIV_ImplementationPack_v1.4.json
+BRANDLE_OS_Engramaestro_ThreadVaultIV_Impl ....... sandbox:/mnt/data/BRANDLE_OS_Engramaestro_ThreadVaultIV_ImplementationPack_v1.4.pdf
+BRANDLE_OS_Engramaestro_ThreadVaultIV_Impl ....... sandbox:/mnt/data/BRANDLE_OS_Engramaestro_ThreadVaultIV_ImplementationPack_v1.4.txt
+BRANDLE_OS_Engramaestro_ThreadVaultV_Imple ....... sandbox:/mnt/data/BRANDLE_OS_Engramaestro_ThreadVaultV_ImplementationPack_v1.5.json
+BRANDLE_OS_Engramaestro_ThreadVaultV_Imple ....... sandbox:/mnt/data/BRANDLE_OS_Engramaestro_ThreadVaultV_ImplementationPack_v1.5.pdf
+BRANDLE_OS_Engramaestro_ThreadVaultV_Imple ....... sandbox:/mnt/data/BRANDLE_OS_Engramaestro_ThreadVaultV_ImplementationPack_v1.5.txt
+BRANDLE_OS_LovableUpdatePrompt_Engramaestr ....... sandbox:/mnt/data/BRANDLE_OS_LovableUpdatePrompt_EngramaestroThreadVault_v1.1.txt
+BRANDLE_OS_LovableUpdatePrompt_ThreadVault ....... sandbox:/mnt/data/BRANDLE_OS_LovableUpdatePrompt_ThreadVaultIII_v1.3.txt
+BRANDLE_OS_LovableUpdatePrompt_ThreadVault ....... sandbox:/mnt/data/BRANDLE_OS_LovableUpdatePrompt_ThreadVaultIV_v1.4.txt
+BRANDLE_OS_LovableUpdatePrompt_ThreadVault ....... sandbox:/mnt/data/BRANDLE_OS_LovableUpdatePrompt_ThreadVaultV_v1.5.txt
+
+                                    ADDENDA
+───────────────────────────────────────────────────────────────────────────────
+BRANDLE_OS_OptimizationAddendum_Implementa ....... sandbox:/mnt/data/BRANDLE_OS_OptimizationAddendum_ImplementationPack_v1.6.json
+BRANDLE_OS_OptimizationAddendum_Implementa ....... sandbox:/mnt/data/BRANDLE_OS_OptimizationAddendum_ImplementationPack_v1.6.pdf
+BRANDLE_OS_OptimizationAddendum_Implementa ....... sandbox:/mnt/data/BRANDLE_OS_OptimizationAddendum_ImplementationPack_v1.6.txt
+
+                                LOVABLE PROMPTS
+───────────────────────────────────────────────────────────────────────────────
+BRANDLE_OS_Lovable_MasterBuildPrompt_v1.6. ....... sandbox:/mnt/data/BRANDLE_OS_Lovable_MasterBuildPrompt_v1.6.txt
+BRANDLE_OS_LovableUpdatePrompt_AddendumII_ ....... sandbox:/mnt/data/BRANDLE_OS_LovableUpdatePrompt_AddendumII_v1.2.txt
+BRANDLE_OS_LovableUpdatePrompt_Engramaestr ....... sandbox:/mnt/data/BRANDLE_OS_LovableUpdatePrompt_EngramaestroThreadVault_v1.1.txt
+BRANDLE_OS_LovableUpdatePrompt_ThreadVault ....... sandbox:/mnt/data/BRANDLE_OS_LovableUpdatePrompt_ThreadVaultIII_v1.3.txt
+BRANDLE_OS_LovableUpdatePrompt_ThreadVault ....... sandbox:/mnt/data/BRANDLE_OS_LovableUpdatePrompt_ThreadVaultIV_v1.4.txt
+BRANDLE_OS_LovableUpdatePrompt_ThreadVault ....... sandbox:/mnt/data/BRANDLE_OS_LovableUpdatePrompt_ThreadVaultV_v1.5.txt
+
+                                MASTER RELEASE
+───────────────────────────────────────────────────────────────────────────────
+BRANDLE_OS_MasterReleasePack_v1.1.json     ....... sandbox:/mnt/data/BRANDLE_OS_MasterReleasePack_v1.1.json
+BRANDLE_OS_MasterReleasePack_v1.1.pdf      ....... sandbox:/mnt/data/BRANDLE_OS_MasterReleasePack_v1.1.pdf
+BRANDLE_OS_MasterReleasePack_v1.1.txt      ....... sandbox:/mnt/data/BRANDLE_OS_MasterReleasePack_v1.1.txt
+
+                                SOURCE INGESTS
+───────────────────────────────────────────────────────────────────────────────
+1 ENGRAMAESTRO_THREAD_VAULT_Brandle_dRANb_ ....... sandbox:/mnt/data/1 ENGRAMAESTRO_THREAD_VAULT_Brandle_dRANb_v1_0_2026-02-02 1.pdf
+2 ENGRAMAESTRO_THREAD_VAULT_Brandle_dRANb_ ....... sandbox:/mnt/data/2 ENGRAMAESTRO_THREAD_VAULT_Brandle_dRANb_v1_0_2026-02-02 copy 2.pdf
+3 ENGRAMAESTRO_THREAD_VAULT_Brandle_dRANb_ ....... sandbox:/mnt/data/3 ENGRAMAESTRO_THREAD_VAULT_Brandle_dRANb_v1_0_2026-02-02 3.pdf
+4 ENGRAMAESTRO_THREAD_VAULT_Brandle_dRANb_ ....... sandbox:/mnt/data/4 ENGRAMAESTRO_THREAD_VAULT_Brandle_dRANb_v1_0_2026-02-02 3 4.pdf
+5 ENGRAMAESTRO_THREAD_VAULT_Brandle_dRANb_ ....... sandbox:/mnt/data/5 ENGRAMAESTRO_THREAD_VAULT_Brandle_dRANb_v1_0_2026-02-02 3 4 5.pdf
+Brandle_Optimization_Addendum_brandL_4IELD ....... sandbox:/mnt/data/Brandle_Optimization_Addendum_brandL_4IELD_4TRESS_v1_0_2026-02-02_OPTIMIZED_20260202T191231Z.txt
+Part 1 of 5 — BRANDLE OS_ THE MASTER ARCHI ....... sandbox:/mnt/data/Part 1 of 5 — BRANDLE OS_ THE MASTER ARCHITECTURE.md
+Part 2 of 5.md                             ....... sandbox:/mnt/data/Part 2 of 5.md
+Part 3 of 5.md                             ....... sandbox:/mnt/data/Part 3 of 5.md
+Part 4 of 5.md                             ....... sandbox:/mnt/data/Part 4 of 5.md
+Part 5 of 5.md                             ....... sandbox:/mnt/data/Part 5 of 5.md
+
+                                   ZIP PACKS
+───────────────────────────────────────────────────────────────────────────────
+BRANDLE_OS_Thread_Documents_All.zip        ....... sandbox:/mnt/data/BRANDLE_OS_Thread_Documents_All.zip
+BRANDLE_OS_Thread_Documents_All_v1.4.zip   ....... sandbox:/mnt/data/BRANDLE_OS_Thread_Documents_All_v1.4.zip
+BRANDLE_OS_Thread_Documents_All_v1.5.zip   ....... sandbox:/mnt/data/BRANDLE_OS_Thread_Documents_All_v1.5.zip
+
+═══════════════════════════════════════════════════════════════════════════════
+ benediction: everything named is findable. everything findable is repeatable.
+═══════════════════════════════════════════════════════════════════════════════

@@ -1,0 +1,73 @@
+═══════════════════════════════════════════════════════════════════════════════
+══════════════════════  BRANDLE OS — PART IV IMPLEMENTED  ════════════════════
+═══════════════════════════════════════════════════════════════════════════════
+
+                      “Discovery stays free. Decision artifacts are paid.”
+                             “Growth is retention, not promises.”
+
+PART IV — BUSINESS MODEL  +  BILLING  +  USAGE  +  INTEGRATIONS  +  GALAXY MODE
+───────────────────────────────────────────────────────────────────────────────
+
+                              ☽  SOURCE INGESTED
+                            ........ Part 4 of 5.md
+
+                   ☽  BUILD INITIATED (PART IV INTEGRATION)
+        ........ projectId ...... 0237f0a6-3ff1-4657-96d3-2fc121a211f2
+........ url ............ lovable.dev/projects/0237f0a6-3ff1-4657-96d3-2fc121a211f2
+
+             ☽  PRICING & TIERS (CONFIGURABLE — NO HARD PROMISES)
+........ Scout (Free) .......... 1 project/month, limited generations, basic scoring
+  ........                         watermarked report preview, exports locked
+........ Founder / Pro .......... full scoring + explanations + shortlist + exports
+  ........ Company / Premium ...... adds brandL + 4IELD + 4TRESS + Monitoring
+........ Agency / Enterprise .... multi-brand workspaces, teams, white-label, API stubs
+
+             ........ Pricing numbers differ in Part 4 references
+ ........ Implementation: prices are editable in PlanConfig (admin-controlled)
+
+                               ☽  BILLING (MVP)
+      ........ Settings → Billing ........ plan selection + upgrade flow
+........ Stripe placeholders ........ /billing/portal stub + key slots (no claims)
+     ........ Paywall receipts .......... shows which limit was hit & why
+
+                         ☽  USAGE METERING (ENFORCED)
+........ UsageMeter ............... projects_created / generations_used / exports_used
+          ........ Periodic reset ........... monthly period windows
+    ........ Scout limits ............. enforced with calm upgrade prompts
+
+                           ☽  EXPORTS & WATERMARKING
+     ........ Scout ........ watermark PDF previews, export buttons locked
+           ........ Paid ......... PDF + DOCX + JSON exports enabled
+
+                       ☽  RETENTION LOOPS (NO SCRAPING)
+........ Monitoring feed .......... drift + crowding + manual policy log (4WIR3 stub)
+    ........ Seasonal prompts ......... nudges to re-check expansion zones
+ ........ Knowledge drops .......... procedural micro-lessons (Media Kit feed)
+
+                 ☽  INTEGRATION POINTS (DATA FLOW — NOW WIRED)
+........ dRANb → brandL .......... shortlist populates identity targets + variants
+........ dRANb → 4IELD ........... clusters become constraints + do-not-use patterns
+   ........ brandL → 4TRESS ......... identity bundle becomes evidence pins
+........ 4IELD → dRANb ........... safe corridors adjust scoring weights (receipts)
+........ 4TRESS platform layer .... unified risk language + subscription gating + logs
+
+                      ☽  TECHNICAL SCAFFOLD (IN-APP DOCS)
+........ API docs page ........... endpoints documented (generate/score/export/billing)
+  ........ Enterprise API keys ...... placeholders only (secure storage stub)
+
+                     ☽  GALAXY MODE (OPT-IN UX SKIN ONLY)
+                 ........ Default UX remains calm & procedural
+........ Galaxy Mode toggle adds cinematic labels & framing (Director / Actor)
+       ........ No prosody detection, no mandatory cloning, no meetings
+........ Avatar/clone concepts remain explicit stubs with consent + revocation copy
+
+                        ☽  DATABASE ADDITIONS (PART IV)
+        ........ UsageMeter, PlanConfig, ApiKey (stub), MonitoringEvent
+
+                                 ☽  CLEARANCE
+                  ........ You are clear to send Part 5 of 5.
+
+                                   · · · · ·
+
+    Benediction: Price what’s proven. Gate what’s costly. Log what matters.
+═══════════════════════════════════════════════════════════════════════════════

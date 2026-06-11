@@ -1,0 +1,37 @@
+{
+  "title": "BRANDLE OS \u2014 ONE\u2011PASTE REBUILD PACK",
+  "version": "v2.2",
+  "date": "2026-02-03",
+  "sections": [
+    {
+      "id": "purpose",
+      "title": "Purpose",
+      "summary": "Single prompt to rebuild full BRANDLE OS/METAVERSE in one Lovable run under the correct owner account."
+    },
+    {
+      "id": "use",
+      "title": "How to Use",
+      "summary": "Sign in with intended owner email, create new project, paste full prompt, build."
+    },
+    {
+      "id": "file",
+      "title": "Prompt File",
+      "summary": "BRANDLE_OS_Lovable_OnePaste_RebuildPrompt_v2.2.txt"
+    }
+  ],
+  "summary": "One-paste Lovable rebuild prompt consolidating the full canon: Health Gauge, Receipts, Media Kit, Twin Mode, Governance, Pulse cadence, core engines, and metaverse expansion modules.",
+  "tags": [
+    "BRANDLE OS",
+    "Lovable",
+    "Rebuild",
+    "One Paste",
+    "Governance",
+    "dRANb",
+    "brandL",
+    "4IELD",
+    "4TRESS",
+    "3XEC",
+    "5ITE",
+    "6ROXY"
+  ]
+}

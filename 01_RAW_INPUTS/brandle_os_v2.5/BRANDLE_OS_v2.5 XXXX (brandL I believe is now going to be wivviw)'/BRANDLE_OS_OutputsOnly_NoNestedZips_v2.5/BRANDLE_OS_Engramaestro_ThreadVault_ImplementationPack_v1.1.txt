@@ -1,0 +1,57 @@
+═══════════════════════════════════════════════════════════════════════════════
+════════════════  BRANDLE OS — ENGRAMAESTRO THREAD VAULT (INTEGRATED)  ════════
+═══════════════════════════════════════════════════════════════════════════════
+
+                          “Nothing is lost. Everything is indexed.”
+                         “Receipts are not optional. They are memory.”
+
+            PART VI — ENGRAMAESTRO THREAD VAULT  +  PROMPT SEEDING
+───────────────────────────────────────────────────────────────────────────────
+
+                              ☽  SOURCE INGESTED
+   ........ 1 ENGRAMAESTRO_THREAD_VAULT_Brandle_dRANb_v1_0_2026-02-02 1.pdf
+               ........ v1.0 · 2026-02-02 · America/Los_Angeles
+
+                   ☽  WHAT THIS DOCUMENT ADDS (SYSTEM LEVEL)
+       ........ 1) Thread Vault format: Message Index + Vault (Verbatim)
+........ 2) Artifact cards with immutable metadata (Type/Speaker/Status/Source/SHA256)
+   ........ 3) “Preserve exactly” rule + explicit truncation markers (“...”)
+........ 4) Canon production prompts embedded as artifacts (dRANb / brandL / 4IELD)
+
+                    ☽  PLATFORM IMPLEMENTATION (BRANDLE OS)
+╭────────────────────────────────────────────────────────────────────────────╮
+│ V4ULT → Thread Vault (ENGRAMAESTRO)                                         │
+│ - Import: upload/paste transcript or Engramaestro doc                       │
+│ - Parse: artifacts + message index                                           │
+│ - Hash: SHA256 per artifact content (stored as receipt)                      │
+│ - View: filter by Speaker / Type / Status / Date                             │
+│ - Export: Engramaestro v1.0 (TXT/PDF) + JSON export                          │
+│ - Lock: immutable versions (new imports create new vault versions)           │
+╰────────────────────────────────────────────────────────────────────────────╯
+
+                        ☽  PROMPT VAULT SEEDING (CANON)
+  ........ Seed 3 canonical prompts as read‑only PromptVaultArtifact entries:
+             ........ - dRANb  .......... sha256 6385135a293f6f17…
+             ........ - brandL .......... sha256 6385135a293f6f17…
+             ........ - 4IELD  .......... sha256 6385135a293f6f17…
+
+                            ☽  ACCEPTANCE CRITERIA
+........ □ Import creates a message index (Msg #, Speaker, Role, Type, Subject 5 words)
+........ □ Each artifact stored with immutable fields + sha256 + raw content body
+........ □ Vault renders verbatim blocks without normalization (no “helpful edits”)
+........ □ Export reproduces Engramaestro structure + preserves ellipses as literal “...”
+    ........ □ Prompt Vault now contains the 3 canon prompts + version tags
+
+                    ☽  SECURITY & GOVERNANCE COMPATIBILITY
+........ - Tier C immutable logs remain append-only (imports create audit events)
+          ........ - Share links redact private artifacts by default
+........ - Oblivion: removes user-identifying artifacts while preserving anonymized log
+
+               ☽  LOVABLE EDIT PROMPT (PASTE INTO CANON PROJECT)
+........ Open .......... https://lovable.dev/projects/89d53020-feae-4084-b26c-f0031952266e
+........ Paste the “Lovable Update Prompt” from this pack to add Thread Vault features.
+
+                                   · · · · ·
+
+              Benediction: If it isn’t preserved, it isn’t real.
+═══════════════════════════════════════════════════════════════════════════════

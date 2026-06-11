@@ -1,0 +1,23 @@
+═══════════════════════════════════════════════════════════════════════════════
+══════════════════════      BRANDLE OS — DOCUMENT INDEX v2.2      ═════════════
+═══════════════════════════════════════════════════════════════════════════════
+
+                           Date ........ 2026-02-03
+
+
+                               ONE‑PASTE REBUILD
+───────────────────────────────────────────────────────────────────────────────
+BRANDLE_OS_Lovable_OnePaste_RebuildPrompt_ ....... sandbox:/mnt/data/BRANDLE_OS_Lovable_OnePaste_RebuildPrompt_v2.2.txt
+BRANDLE_OS_OnePaste_RebuildPack_v2.2.json  ....... sandbox:/mnt/data/BRANDLE_OS_OnePaste_RebuildPack_v2.2.json
+BRANDLE_OS_OnePaste_RebuildPack_v2.2.pdf   ....... sandbox:/mnt/data/BRANDLE_OS_OnePaste_RebuildPack_v2.2.pdf
+BRANDLE_OS_OnePaste_RebuildPack_v2.2.txt   ....... sandbox:/mnt/data/BRANDLE_OS_OnePaste_RebuildPack_v2.2.txt
+
+                                   ZIP PACKS
+───────────────────────────────────────────────────────────────────────────────
+BRANDLE_OS_Thread_Documents_All.zip        ....... sandbox:/mnt/data/BRANDLE_OS_Thread_Documents_All.zip
+BRANDLE_OS_Thread_Documents_All_v1.6.zip   ....... sandbox:/mnt/data/BRANDLE_OS_Thread_Documents_All_v1.6.zip
+BRANDLE_OS_Thread_Documents_All_v2.0.zip   ....... sandbox:/mnt/data/BRANDLE_OS_Thread_Documents_All_v2.0.zip
+
+═══════════════════════════════════════════════════════════════════════════════
+ benediction: everything named is findable. everything findable is repeatable.
+═══════════════════════════════════════════════════════════════════════════════

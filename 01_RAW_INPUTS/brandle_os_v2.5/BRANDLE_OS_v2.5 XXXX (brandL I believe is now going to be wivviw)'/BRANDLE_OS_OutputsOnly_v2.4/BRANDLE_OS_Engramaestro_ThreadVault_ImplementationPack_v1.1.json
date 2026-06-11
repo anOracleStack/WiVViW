@@ -1,0 +1,38 @@
+{
+  "title": "BRANDLE OS \u2014 ENGRAMAESTRO THREAD VAULT INTEGRATION PACK",
+  "version": "v1.1",
+  "date": "2026-02-03",
+  "sections": [
+    {
+      "id": "source",
+      "title": "Source Ingested",
+      "summary": "ENGRAMAESTRO THREAD VAULT PDF v1.0 (Message Index + Vault Verbatim; 52 artifacts)."
+    },
+    {
+      "id": "thread_vault",
+      "title": "Thread Vault Implementation",
+      "summary": "Import/parse/hash/view/export Engramaestro format inside V4ULT with immutable versioning."
+    },
+    {
+      "id": "prompt_seeding",
+      "title": "Prompt Vault Seeding",
+      "summary": "Seed canonical prompts for dRANb, brandL, 4IELD extracted from the vault with sha256 receipts."
+    },
+    {
+      "id": "acceptance",
+      "title": "Acceptance Criteria",
+      "summary": "Index built; artifacts stored immutably; verbatim rendering; exports reproduce format; governance compatible."
+    }
+  ],
+  "summary": "Integrates ENGRAMAESTRO Thread Vault format into BRANDLE OS V4ULT and seeds Prompt Vault with canonical engine prompts extracted from the vault.",
+  "tags": [
+    "BRANDLE OS",
+    "ENGRAMAESTRO",
+    "thread vault",
+    "V4ULT",
+    "prompt vault",
+    "sha256",
+    "archival",
+    "import/export"
+  ]
+}

@@ -1,0 +1,68 @@
+    ════════════════════════════════════════════════════════════════════════════════════
+    ════════════════════════  BRANDLE OS — PART I IMPLEMENTATION PACK  ════════════════
+    ════════════════════════════════════════════════════════════════════════════════════
+
+                             “Decisions are the real product.”
+                        “If it’s not visible, it’s not trustworthy.”
+
+                           PART I — FOUNDATION & dRANb (ENGINE I)
+    ────────────────────────────────────────────────────────────────────────────────────
+
+                                         ☽  STATUS
+
+........ Implemented into BRANDLE OS build spec: Foundation principles, ecosystem scaffold, & full dRANb MVP workflow.
+........ All compliance guardrails are encoded as product copy & system behavior (best‑effort, no scraping claims, non‑legal).
+........ Navigation shells are prepared for brandL, 4IELD, 4TRESS; V4ULT ships as an append‑only decision ledger.
+
+                              ☽  WHAT THIS PART DELIVERS (MVP)
+
+........ dRANb Naming Engine: Intake → Generate → Evaluate → Compare → Shortlist → Decide → Export.
+........ Receipts-first UX: every name shows scores, penalties, strengths, risks, & confidence labels.
+........ Digital viability signals (heuristics only): domain/handle likelihood + linguistic conflict flags.
+    ........ Name Decision Report export: PDF + TXT + JSON artifacts stored per project.
+  ........ V4ULT event log: immutable archive of runs, decisions, artifacts (append‑only).
+
+                                            ───
+
+                                   ☽  DATA MODEL (PART I)
+
+                        ........ User / Workspace / Membership(role)
+            ........ Project (Naming Project)  →  BrandBrief (structured intake)
+........ NameSet (mode + params)  →  CandidateName  →  NameScore (dimensions + penalties + overall)
+            ........ ShortlistEntry (Strong+Safe / Strong+Bold / Creative Risk)
+       ........ Decision (chosen name + rationale + risks + mitigations + next steps)
+                 ........ ExportArtifact (PDF/TXT/JSON metadata + file url)
+........ V4ULT_ArchiveEvent (append‑only: run created, names generated, shortlist updated, decision set, export created)
+
+                                            ───
+
+                          ☽  dRANb — WORKFLOW IMPLEMENTATION NOTES
+
+........ Intake captures BrandBrief fields + 7 personality sliders (0–100) + risk tolerance (Conservative/Balanced/Adventurous).
+........ Generate creates multiple NameSets per project; each NameSet tagged by one of 6 Modes + parameters + one Wildcard prompt.
+........ Evaluate computes 0–100 scores per dimension: Memorability, Pronunciation Clarity, Spelling Friction, Distinctiveness, Brand Alignment, Scalability, Collision Risk (non‑legal proxy).
+........ Penalties apply (examples): ambiguous spelling, competitor resemblance, generic keyword presence, awkward sub‑brand expansions.
+........ Compare renders a matrix with dimension scores, top 3 strengths, top 3 risks, & viability signals.
+     ........ Shortlist sorts candidates into: Strong+Safe, Strong+Bold, Creative Risk.
+........ Decide finalizes selection: pronunciation guide, rationale bullets, risk notes + mitigations, confidence‑labeled viability signals, & next steps.
+........ Export generates a copy/paste-ready Name Decision Report in PDF/TXT/JSON; artifacts are attached to the Decision & logged to V4ULT.
+
+                                            ───
+
+                         ☽  COMPLIANCE & TRUST GUARDRAILS (ENCODED)
+
+........ No guarantees. Only best‑effort estimates + confidence levels displayed everywhere viability is referenced.
+........ No scraping claims. MVP viability uses heuristics only; future API lookups must be opt‑in + user‑credentialed.
+........ No legal advice. Trademark guidance is framed as readiness signals + prompts to consult counsel.
+........ Procedural intelligence. Every action writes a V4ULT receipt: inputs, parameters, outputs, deltas, decisions.
+
+                                            ───
+
+                                    ☽  READY FOR PART II
+
+........ Send Document 2 of 5 when ready. This build is prepared to absorb the next module(s) & expand.
+
+                                         · · · · ·
+
+               Benediction: Make it visible. Make it calm. Make it decisive.
+    ════════════════════════════════════════════════════════════════════════════════════

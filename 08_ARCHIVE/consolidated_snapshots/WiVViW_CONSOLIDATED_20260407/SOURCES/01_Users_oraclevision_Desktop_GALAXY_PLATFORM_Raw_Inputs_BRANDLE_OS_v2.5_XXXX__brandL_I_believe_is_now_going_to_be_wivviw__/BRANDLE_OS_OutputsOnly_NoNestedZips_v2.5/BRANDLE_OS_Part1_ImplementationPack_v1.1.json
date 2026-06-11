@@ -1,0 +1,47 @@
+{
+  "title": "BRANDLE OS \u2014 PART I IMPLEMENTATION PACK",
+  "version": "1.1",
+  "date": "2026-02-03",
+  "sections": [
+    {
+      "id": "status",
+      "title": "STATUS",
+      "summary": "Part I absorbed & implemented into BRANDLE OS build spec; dRANb MVP ready; ecosystem scaffolding prepared."
+    },
+    {
+      "id": "deliverables",
+      "title": "WHAT THIS PART DELIVERS (MVP)",
+      "summary": "End-to-end naming workflow, scoring, heuristics viability signals, exports, and immutable archive logging."
+    },
+    {
+      "id": "data_model",
+      "title": "DATA MODEL (PART I)",
+      "summary": "Core tables for projects, briefs, name generation, scoring, shortlists, decisions, artifacts, and append-only archive events."
+    },
+    {
+      "id": "workflow_notes",
+      "title": "dRANb \u2014 WORKFLOW IMPLEMENTATION NOTES",
+      "summary": "How intake, generation, evaluation, comparison, shortlisting, decision, and export are implemented."
+    },
+    {
+      "id": "compliance",
+      "title": "COMPLIANCE & TRUST GUARDRAILS (ENCODED)",
+      "summary": "Best-effort, no scraping claims, non-legal guidance, procedural receipts via V4ULT."
+    },
+    {
+      "id": "ready",
+      "title": "READY FOR PART II",
+      "summary": "Confirmed readiness to receive Document 2 of 5."
+    }
+  ],
+  "summary": "Implements BRANDLE OS Part I: Foundation principles + dRANb naming engine MVP workflow + V4ULT receipts ledger, with placeholders for brandL/4IELD/4TRESS.",
+  "tags": [
+    "BRANDLE OS",
+    "dRANb",
+    "brand naming",
+    "decision infrastructure",
+    "MVP",
+    "compliance",
+    "V4ULT"
+  ]
+}

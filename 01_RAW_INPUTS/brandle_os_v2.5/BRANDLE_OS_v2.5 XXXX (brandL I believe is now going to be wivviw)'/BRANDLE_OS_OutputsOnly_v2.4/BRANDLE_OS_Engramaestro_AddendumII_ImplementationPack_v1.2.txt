@@ -1,0 +1,93 @@
+═══════════════════════════════════════════════════════════════════════════════
+════════════════  BRANDLE OS — ENGRAMAESTRO ADDENDUM II (INTEGRATED)  ═════════
+═══════════════════════════════════════════════════════════════════════════════
+
+                “Ship the system. Then teach the system to sell itself.”
+
+          PART VII — ADDENDUM II  +  PRICING  +  ONBOARDING  +  PITCH
+───────────────────────────────────────────────────────────────────────────────
+
+                              ☽  SOURCE INGESTED
+ ........ 2 ENGRAMAESTRO_THREAD_VAULT_Brandle_dRANb_v1_0_2026-02-02 copy 2.pdf
+
+                    ☽  WHAT THIS DOCUMENT UPGRADES (CANON)
+........ 1) 4TRESS: non-legal trademark readiness assistant (hard safety rules)
+........ 2) brandL: handle & identity consolidation framework + outreach template
+........ 3) 4IELD: landscape saturation & semantic crowding intelligence layer
+     ........ 4) Pricing: locked tier names + price anchors + export types
+ ........ 5) Onboarding: landing hero copy + intake microcopy + trust framing
+       ........ 6) Pitch: 12-slide, content-ready investor deck skeleton
+........ 7) UX: global “My Archive” access from every screen (V4ULT filtered view)
+........ 8) System Health: ‘Hallucination / Confusion Gauge’ as Model Health meter
+
+                   ☽  RECEIPTS (SHA256) — RAW EXCERPT HASHES
+        ........ A54 4TRESS Prompt ......... ceb4f95273a4a6c8ff11f746…
+        ........ A62 Addendum Core ......... 48f8bc636fd412ef497f6f21…
+         ........ A69 Pricing .............. d81ea6e47975ab1c7137b6d3…
+         ........ A69 Onboarding ........... 45c6e00e34bc9c4fbbf64b01…
+         ........ A69 Pitch Deck ........... 4b2369049b76ef80e7cfc2fd…
+
+                     ☽  PRICING (LOCKED) — PRODUCT CONFIG
+╭────────────────────────────────────────────────────────────────────────────╮
+│ Free — Scout                                                               │
+│ - dRANb: 1 project / month; limited name generation; basic top-line scoring │
+│ - Output: watermarked decision report; no exports                          │
+│                                                                            │
+│ Pro — Founder ($39/mo or $360/yr)                                          │
+│ - Unlimited projects; full scoring + explanations                           │
+│ - Shortlisting + comparisons; exports: PDF/DOCX/MD/JSON                      │
+│ - brandL: domain + handle likelihood signals; guided next steps              │
+│                                                                            │
+│ Premium — Company ($99/mo or $900/yr)                                      │
+│ - Everything in Pro                                                        │
+│ - brandL: identity consistency + reclaimability assessment                  │
+│ - 4IELD: landscape + saturation intelligence                               │
+│ - 4TRESS: readiness + copy‑paste filing guidance                            │
+│ - Monitoring alerts (quarterly); priority processing                        │
+│                                                                            │
+│ Enterprise / Agency — Platform                                             │
+│ - Multi-brand workspaces; team roles; white-label reports; API access       │
+│ - Custom monitoring cadence; SLA + compliance review                        │
+╰────────────────────────────────────────────────────────────────────────────╯
+
+                ☽  ONBOARDING COPY (FINAL) — COPY LIBRARY ENTRY
+      ........ Headline .......... Name it once. Decide with confidence.
+........ Subhead ........... dRANb helps you generate, evaluate, & select brand names
+         ............................ that hold up in the real world.
+........ Trust framing ..... No legal advice. No scraping. No threats. No guarantees.
+ ........ Intake microcopy .. Be specific. Vague inputs produce fragile names.
+
+                     ☽  PITCH DECK GENERATOR (3XEC MODULE)
+            ........ Generate a 12-slide deck from project inputs:
+                     ........ - Problem / Stakes / Market
+                  ........ - Why now / Differentiation / Moat
+      ........ - Product (dRANb → brandL → 4IELD → 4TRESS → Brandle wrap)
+                   ........ - Traction plan / Pricing / Ask
+
+                 ☽  4TRESS SAFETY GUARDRAILS (NON-NEGOTIABLE)
+             ........ - Always display: “Not legal advice” banner
+                ........ - Never draft cease-and-desist letters
+              ........ - Never threaten; never guarantee outcomes
+........ - Provide: step-by-step flow, templates, risk framing, safety language
+
+                       ☽  UX ENHANCEMENTS (CLIENT TRUST)
+........ - Persistent top-nav button: “My Archive” (opens V4ULT scoped to project)
+........ - “Decision Artifacts” tab in exports: names, scores, rationale, next steps
+
+                    ☽  MODEL HEALTH METER (CONFUSION GAUGE)
+         ........ - Visible indicator: OK / Working / Confused / Risk
+    ........ - Thresholds: Warn at 75%; stop & request clarification at 85%
+      ........ - Logs: any warning emits Tier C audit event (anonymized)
+
+                            ☽  LOVABLE EDIT PROMPT
+                ........ Use the included update prompt to add:
+              ........ - Pricing config page + plan entitlements
+   ........ - Copy Library (Onboarding + Outreach templates) with versioning
+         ........ - Pitch Deck generator (3XEC) export to PDF/DOCX/MD
+          ........ - Global “My Archive” shortcut (V4ULT scoped view)
+             ........ - Model Health meter UI component + logging
+
+                                   · · · · ·
+
+              Benediction: A name is not chosen. It is defended.
+═══════════════════════════════════════════════════════════════════════════════

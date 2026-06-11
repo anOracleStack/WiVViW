@@ -1,0 +1,38 @@
+Add “Addendum II” upgrades to the existing BRANDLE OS project (do not remove or rename existing modules).
+
+New Modules / Pages:
+1) Billing → Pricing (Admin)
+- Editable plan definitions (Scout/Founder/Company/Platform)
+- Entitlements mapping to features:
+  dRANb runs, exports, brandL signals, 4IELD access, 4TRESS guidance, monitoring cadence, team roles, white-label, API.
+- Display public pricing page (read-only) + CTA to upgrade.
+
+2) Library → Copy (Admin + project-scoped viewer)
+- Stores versioned copy assets:
+  - Landing hero headline/subhead/CTA
+  - Trust framing bullets
+  - Intake microcopy
+  - brandL outreach template
+- Each asset has: id, title, category, version, updated_at, content (raw), sha256.
+
+3) 3XEC → Pitch Deck
+- Form inputs: problem, audience, differentiation, moat, pricing, ask.
+- Output: a 12-slide outline + speaker notes.
+- Export formats: PDF, DOCX, MD, JSON (use existing export utilities).
+
+4) Global UX
+- Add persistent “My Archive” button in the top navigation that opens V4ULT scoped to current project/workspace.
+- In every engine page, add “Decision Artifacts” shortcut to last export report.
+
+5) System Health Meter
+- Add a UI component “Model Health” (OK / Working / Confused / Risk) with thresholds:
+  - Warn at 75% (“Confused”)
+  - Hard stop at 85% (“Risk”): require user clarification
+- Every warning creates a Tier C audit log event (anonymized).
+
+6) 4TRESS Safety Guardrails
+- Always show “Not legal advice” banner.
+- Blocklist generation of cease-and-desist letters and threatening language.
+- Provide safe templates: filing field copy, submission checklist, risk explanations.
+
+Keep styling: calm, minimal, trust-first (Stripe/Notion/Linear level polish). No emojis. No hype. No dark patterns.

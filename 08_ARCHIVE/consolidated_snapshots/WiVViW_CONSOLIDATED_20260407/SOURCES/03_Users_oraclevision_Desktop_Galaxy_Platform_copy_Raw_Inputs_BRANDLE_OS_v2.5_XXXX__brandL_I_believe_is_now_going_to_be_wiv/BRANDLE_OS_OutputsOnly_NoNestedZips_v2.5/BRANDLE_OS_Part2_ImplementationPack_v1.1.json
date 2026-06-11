@@ -1,0 +1,44 @@
+{
+  "title": "BRANDLE OS \u2014 PART II IMPLEMENTATION PACK",
+  "version": "v1.1",
+  "date": "2026-02-03",
+  "sections": [
+    {
+      "id": "source",
+      "title": "Source Ingested",
+      "summary": "Part 2 of 5.md ingested (brandL + 4IELD)."
+    },
+    {
+      "id": "brandl",
+      "title": "brandL Module",
+      "summary": "Identity consolidation: targets, domain/handle signals, consistency scoring, fallback families, acquisition plan, outreach templates."
+    },
+    {
+      "id": "4ield",
+      "title": "4IELD Module",
+      "summary": "Competitive field intelligence: competitor intake, clustering, saturation/crowding heuristics, risk zones, drift baseline, conceptual field map."
+    },
+    {
+      "id": "exports",
+      "title": "Exports",
+      "summary": "Field Report section appended to decision pack; separate field export when enabled."
+    },
+    {
+      "id": "v4ult",
+      "title": "V4ULT Logging",
+      "summary": "brandL + 4IELD runs logged as archive events with receipts."
+    }
+  ],
+  "summary": "Implements Part 2 scope for BRANDLE OS: brandL (identity consolidation across domains/handles) and 4IELD (heuristic competitive field intelligence + conceptual field map), preserving Part 1 dRANb.",
+  "tags": [
+    "BRANDLE OS",
+    "brandL",
+    "4IELD",
+    "identity consistency",
+    "domain signals",
+    "handle signals",
+    "field map",
+    "saturation",
+    "clustering"
+  ]
+}

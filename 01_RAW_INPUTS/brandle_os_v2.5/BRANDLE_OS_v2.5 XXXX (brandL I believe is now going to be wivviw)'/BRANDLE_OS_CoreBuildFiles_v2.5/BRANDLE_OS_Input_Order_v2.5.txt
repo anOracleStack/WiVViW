@@ -1,0 +1,17 @@
+BRANDLE OS — INPUT ORDER v2.5
+Date: 2026-02-04
+
+WORKFLOW A — CLEAN REBUILD (RECOMMENDED)
+1) Create a NEW Lovable project (under the account you want to own it).
+2) Paste this ONE file:
+   BRANDLE_OS_Lovable_OnePaste_RebuildPrompt_v2.5.txt
+
+WORKFLOW B — PATCH AN EXISTING PROJECT (ONLY IF YOU CAN ACCESS IT)
+1) Apply tiered access / security patch:
+   BRANDLE_OS_LovableUpdatePrompt_TieredAccess_Security_v2.5.txt
+2) Apply dRANb master architecture patch:
+   BRANDLE_OS_LovableUpdatePrompt_dRANb_MasterArchitecture_v2.5.txt
+
+ARCHIVES
+- Outputs only:
+   BRANDLE_OS_OutputsOnly_v2.5.zip

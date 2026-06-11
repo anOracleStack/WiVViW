@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WiVViW — Definitive Architecture & Phase 1 Roadmap</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --bg: #0a0a0c;
+    --fg: #c8c8d0;
+    --accent: #e8e8f0;
+    --dim: #5a5a6a;
+    --rule: #3a3a4a;
+    --highlight: #a0a0b8;
+    --warn: #c4956a;
+    --success: #6a9a7a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    padding: 60px 40px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .center { text-align: center; }
+
+  .double-rule {
+    text-align: center;
+    color: var(--dim);
+    letter-spacing: 2px;
+    margin: 20px 0;
+    font-size: 12px;
+  }
+
+  .single-rule {
+    text-align: center;
+    color: var(--rule);
+    letter-spacing: 1px;
+    margin: 16px 0;
+    font-size: 12px;
+  }
+
+  .title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 6px;
+    color: var(--accent);
+    margin: 24px 0;
+    text-transform: uppercase;
+  }
+
+  .subtitle {
+    text-align: center;
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 4px;
+    color: var(--dim);
+    margin: 8px 0 32px 0;
+    text-transform: uppercase;
+  }
+
+  .part-header {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    color: var(--highlight);
+    margin: 40px 0 8px 0;
+    text-transform: uppercase;
+  }
+
+  .breath {
+    text-align: center;
+    color: var(--dim);
+    margin: 28px 0;
+    letter-spacing: 8px;
+    font-size: 10px;
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    color: var(--accent);
+    margin: 24px 0 12px 0;
+    text-transform: uppercase;
+  }
+
+  .content {
+    text-align: center;
+    margin: 8px 0;
+    color: var(--fg);
+    font-size: 12px;
+    line-height: 2;
+  }
+
+  .content-left {
+    text-align: left;
+    margin: 8px 40px;
+    color: var(--fg);
+    font-size: 12px;
+    line-height: 2;
+  }
+
+  .label-value {
+    text-align: center;
+    font-size: 12px;
+    color: var(--fg);
+    margin: 4px 0;
+  }
+
+  .label { color: var(--dim); }
+  .value { color: var(--accent); }
+
+  .box {
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 20px 28px;
+    margin: 16px 40px;
+    text-align: center;
+  }
+
+  .box-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--highlight);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .warn { color: var(--warn); }
+  .good { color: var(--success); }
+  .accent { color: var(--accent); }
+  .dim { color: var(--dim); }
+
+  .tree {
+    text-align: left;
+    font-size: 11px;
+    line-height: 1.9;
+    margin: 12px 60px;
+    color: var(--fg);
+  }
+
+  .tree .dir { color: var(--highlight); font-weight: 500; }
+  .tree .file { color: var(--dim); }
+  .tree .note { color: var(--warn); font-style: italic; font-size: 10px; }
+
+  .step-num {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 600;
+    margin-right: 12px;
+  }
+
+  .step {
+    text-align: left;
+    margin: 16px 40px;
+    font-size: 12px;
+    line-height: 2;
+  }
+
+  .step-title {
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+
+  .step-detail {
+    color: var(--fg);
+    margin-left: 40px;
+  }
+
+  .cmd {
+    background: #12121a;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 12px 20px;
+    margin: 8px 60px;
+    text-align: left;
+    font-size: 11px;
+    color: var(--success);
+    line-height: 1.8;
+    overflow-x: auto;
+  }
+
+  .schema-table {
+    margin: 12px auto;
+    border-collapse: collapse;
+    font-size: 11px;
+    width: auto;
+  }
+
+  .schema-table th {
+    color: var(--highlight);
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-bottom: 1px solid var(--rule);
+    text-align: left;
+    font-size: 10px;
+  }
+
+  .schema-table td {
+    padding: 6px 20px;
+    border-bottom: 1px solid #1a1a24;
+    color: var(--fg);
+    vertical-align: top;
+  }
+
+  .schema-table td:first-child {
+    color: var(--accent);
+    font-weight: 400;
+  }
+
+  .benediction {
+    text-align: center;
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    color: var(--dim);
+    margin: 48px 0 20px 0;
+    font-style: italic;
+  }
+
+  .crescent {
+    color: var(--highlight);
+  }
+
+  .checkbox {
+    color: var(--dim);
+    margin-right: 6px;
+  }
+
+  .spacer { height: 32px; }
+  .spacer-lg { height: 48px; }
+</style>
+</head>
+<body>
+
+<div class="double-rule">═══════════════════════════════════════════════════════════════</div>
+
+<div class="title">WiVViW</div>
+<div class="subtitle">Definitive Architecture & Phase 1 Roadmap</div>
+<div class="subtitle">Eunoia Synthesis — Method Moirai Stage III</div>
+
+<div class="double-rule">═══════════════════════════════════════════════════════════════</div>
+
+<div class="breath">· · · · ·</div>
+
+<div class="content dim">
+  Clotho (ChatGPT) wove the experiential vision.<br>
+  Lachesis (Gemini) measured the technical architecture.<br>
+  Eunoia (Claude) now reconciles, refines, & seals the blueprint.<br>
+  What follows is the canonical, unassailable roadmap.
+</div>
+
+<div class="spacer-lg"></div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- PART I — RECONCILIATION -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<div class="single-rule">───────────────────────────────────────────────────────────────</div>
+<div class="part-header">Part I — Reconciliation</div>
+<div class="content dim">Where the Vision Meets the Machine</div>
+<div class="single-rule">───────────────────────────────────────────────────────────────</div>
+
+<div class="spacer"></div>
+
+<div class="section-title">Gemini's Schema Covers</div>
+
+<div class="content">
+  <span class="good">□</span> <span class="label">wivviw_users</span> .......... Selective access gates<br>
+  <span class="good">□</span> <span class="label">odyssey_sessions</span> ..... State continuity<br>
+  <span class="good">□</span> <span class="label">moirai_packages</span> ...... Multi-model output capture<br>
+  <span class="good">□</span> <span class="label">receipts_ledger</span> ...... 3-source verification engine
+</div>
+
+<div class="breath">· · · · ·</div>
+
+<div class="section-title"><span class="warn">☽</span> What the Schema Missed <span class="warn">☽</span></div>
+
+<div class="content dim">
+  Ten experiential & operational systems from Clotho's vision<br>
+  have no database home in Gemini's architecture.<br>
+  These are not optional. They are load-bearing.
+</div>
+
+<div class="spacer"></div>
+
+<div class="box">
+  <div class="box-title">1 — Worthiness Scoring</div>
+  <div class="content">
+    The onboarding intake generates an internal<br>
+    seriousness & alignment score per applicant.<br>
+    <span class="dim">Gemini's wivviw_users has a status field but no</span><br>
+    <span class="dim">structured scoring model or progression audit trail.</span><br><br>
+    <span class="warn">Required table:</span> <span class="accent">worthiness_scores</span><br>
+    <span class="dim">user_id, dimension, score, evaluator_notes, created_at</span>
+  </div>
+</div>
+
+<div class="box">
+  <div class="box-title">2 — Auto-Advance Permissions</div>
+  <div class="content">
+    Three execution modes per engine, per user:<br>
+    <span class="accent">full_auto</span> · <span class="accent">single_approval</span> · <span class="accent">manual_precision</span><br><br>
+    <span class="dim">No table exists for storing per-engine permission states.</span><br><br>
+    <span class="warn">Required table:</span> <span class="accent">advance_permissions</span><br>
+    <span class="dim">user_id, engine_key, mode, updated_at</span>
+  </div>
+</div>
+
+<div class="box">
+  <div class="box-title">3 — Quality Scoring Engine</div>
+  <div class="content">
+    Per-task evaluation with evolving category frameworks.<br>
+    The "above-threshold" logic means WiVViW's standards<br>
+    must self-upgrade when new dimensions of excellence appear.<br><br>
+    <span class="warn">Required tables:</span><br>
+    <span class="accent">scoring_templates</span> <span class="dim">— category sets per task type</span><br>
+    <span class="accent">scoring_results</span> <span class="dim">— per-task, per-category scores</span><br>
+    <span class="accent">scoring_evolution</span> <span class="dim">— audit trail of framework upgrades</span>
+  </div>
+</div>
+
+<div class="box">
+  <div class="box-title">4 — Outbound Approval Queue</div>
+  <div class="content">
+    Nothing leaves WiVViW ungoverned.<br>
+    Emails, posts, brand statements, assets — all gated.<br><br>
+    <span class="warn">Required table:</span> <span class="accent">outbound_queue</span><br>
+    <span class="dim">id, user_id, content_type, payload, status,</span><br>
+    <span class="dim">optimization_notes, approved_at, sent_at</span>
+  </div>
+</div>
+
+<div class="box">
+  <div class="box-title">5 — Connected Stack Registry</div>
+  <div class="content">
+    Discover, connect, observe, & eventually replace<br>
+    external tools the user depends on.<br><br>
+    <span class="warn">Required tables:</span><br>
+    <span class="accent">connected_apps</span> <span class="dim">— user_id, app_name, connection_status, config</span><br>
+    <span class="accent">stack_usage_log</span> <span class="dim">— app_id, action, frequency, replacement_candidate</span>
+  </div>
+</div>
+
+<div class="box">
+  <div class="box-title">6 — Budget Envelopes</div>
+  <div class="content">
+    Token/cost estimation before execution.<br>
+    Hard caps, refill alerts, BYOK key storage.<br><br>
+    <span class="warn">Required table:</span> <span class="accent">budget_envelopes</span><br>
+    <span class="dim">user_id, hard_cap, current_spend, alert_threshold,</span><br>
+    <span class="dim">byok_keys (encrypted), model_preferences</span>
+  </div>
+</div>
+
+<div class="box">
+  <div class="box-title">7 — Engine Health Snapshots</div>
+  <div class="content">
+    Context Pressure · Verification Coverage · Conflict Rate<br>
+    Stability · Cost Burn · Extraction Fidelity · Continuity Risk<br><br>
+    <span class="warn">Required table:</span> <span class="accent">engine_health_snapshots</span><br>
+    <span class="dim">session_id, engine_key, metrics_json, captured_at</span>
+  </div>
+</div>
+
+<div class="box">
+  <div class="box-title">8 — Moral Universe States</div>
+  <div class="content">
+    Accepted Cosmos → Limbo / Review → Inferno / Banished<br>
+    <span class="dim">Future system. Not Phase 1. But the schema must anticipate it.</span><br><br>
+    <span class="warn">Required:</span> <span class="accent">Add standing_state & standing_history</span><br>
+    <span class="dim">to wivviw_users. standing_state ENUM: accepted, limbo, banished.</span><br>
+    <span class="dim">standing_history as JSONB array of state transitions.</span>
+  </div>
+</div>
+
+<div class="box">
+  <div class="box-title">9 — MOIRAI Package Typing</div>
+  <div class="content">
+    Gemini's moirai_packages captures output.<br>
+    But Clotho defined three distinct package types:<br>
+    <span class="accent">Deliverable</span> · <span class="accent">Audit</span> · <span class="accent">Thought</span><br><br>
+    <span class="warn">Required:</span> <span class="accent">Add package_type ENUM to moirai_packages</span><br>
+    <span class="dim">Values: deliverable, audit, thought</span><br>
+    <span class="dim">Add: score NUMERIC, pass_threshold NUMERIC, passed BOOLEAN</span>
+  </div>
+</div>
+
+<div class="box">
+  <div class="box-title">10 — Proactive Optimization Queue</div>
+  <div class="content">
+    The anti-back-and-forth engine's structured inference:<br>
+    what was asked, what should happen next, what would improve it.<br><br>
+    <span class="warn">Required table:</span> <span class="accent">optimization_queue</span><br>
+    <span class="dim">session_id, proposed_actions JSONB, status,</span><br>
+    <span class="dim">user_decision (auto/approved/rejected), executed_at</span>
+  </div>
+</div>
+
+<div class="breath">· · · · ·</div>
+
+<div class="content dim">
+  With these ten additions, every experiential system<br>
+  Clotho envisioned has a persistent, queryable home.<br>
+  The schema is now load-bearing across all layers.
+</div>
+
+<div class="spacer-lg"></div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- PART II — FILE STRUCTURE -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<div class="single-rule">───────────────────────────────────────────────────────────────</div>
+<div class="part-header">Part II — File Structure</div>
+<div class="content dim">Two Repositories. Zero Ambiguity.</div>
+<div class="single-rule">───────────────────────────────────────────────────────────────</div>
+
+<div class="spacer"></div>
+
+<div class="section-title"><span class="crescent">☽</span> Repository A — wivviw-docs <span class="crescent">☽</span></div>
+<div class="content dim">Knowledge Base & Canon — Not deployed. Reference only.</div>
+
+<div class="tree">
+<span class="dir">wivviw-docs/</span><br>
+├── <span class="dir">canon/</span><br>
+│   ├── <span class="file">platform-identity.md</span> <span class="note">  ← name, philosophy, what WiVViW is & is not</span><br>
+│   ├── <span class="file">mythology.md</span> <span class="note">  ← odyssey framing, genesis, cosmos metaphor</span><br>
+│   ├── <span class="file">moral-universe.md</span> <span class="note">  ← accepted → limbo → inferno progression</span><br>
+│   ├── <span class="file">brand-voice.md</span> <span class="note">  ← tone rules, no-bullshit execution language</span><br>
+│   └── <span class="file">laws.md</span> <span class="note">  ← anti-back-and-forth, quality loop, truth-first</span><br>
+│<br>
+├── <span class="dir">engines/</span><br>
+│   ├── <span class="file">dranb.md</span> <span class="note">  ← brand naming engine spec</span><br>
+│   ├── <span class="file">drandl.md</span> <span class="note">  ← digital presence engine spec</span><br>
+│   ├── <span class="file">4ield.md</span> <span class="note">  ← field intelligence engine spec</span><br>
+│   ├── <span class="file">4tress.md</span> <span class="note">  ← protection engine spec</span><br>
+│   ├── <span class="file">6roxy.md</span> <span class="note">  ← identity access / voice clone spec</span><br>
+│   ├── <span class="file">5ite.md</span> <span class="note">  ← web deployment engine spec</span><br>
+│   └── <span class="file">3xec.md</span> <span class="note">  ← execution / operations engine spec</span><br>
+│<br>
+├── <span class="dir">moirai/</span><br>
+│   ├── <span class="file">protocol.md</span> <span class="note">  ← simple & complex workflow definitions</span><br>
+│   ├── <span class="file">package-types.md</span> <span class="note">  ← deliverable / audit / thought specs</span><br>
+│   ├── <span class="file">routing-logic.md</span> <span class="note">  ← model selection & fallback rules</span><br>
+│   └── <span class="file">scoring-law.md</span> <span class="note">  ← quality thresholds, evolving metrics</span><br>
+│<br>
+├── <span class="dir">schemas/</span><br>
+│   ├── <span class="file">database-schema.sql</span> <span class="note">  ← canonical Supabase/Postgres DDL</span><br>
+│   ├── <span class="file">api-contracts.md</span> <span class="note">  ← internal API shape definitions</span><br>
+│   └── <span class="file">enums.md</span> <span class="note">  ← all ENUM types across the system</span><br>
+│<br>
+├── <span class="dir">onboarding/</span><br>
+│   ├── <span class="file">intake-script.md</span> <span class="note">  ← first interview question flow</span><br>
+│   ├── <span class="file">worthiness-criteria.md</span> <span class="note">  ← scoring dimensions & thresholds</span><br>
+│   └── <span class="file">rejection-language.md</span> <span class="note">  ← how denial is communicated</span><br>
+│<br>
+├── <span class="dir">governance/</span><br>
+│   ├── <span class="file">outbound-rules.md</span> <span class="note">  ← output approval layer spec</span><br>
+│   ├── <span class="file">budget-policy.md</span> <span class="note">  ← token/cost estimation rules</span><br>
+│   └── <span class="file">connected-stack-policy.md</span> <span class="note">  ← app observation & replacement strategy</span><br>
+│<br>
+└── <span class="file">README.md</span>
+</div>
+
+<div class="breath">· · · · ·</div>
+
+<div class="section-title"><span class="crescent">☽</span> Repository B — wivviw-app <span class="crescent">☽</span></div>
+<div class="content dim">Next.js Codebase — Deployed. This is the machine.</div>
+
+<div class="tree">
+<span class="dir">wivviw-app/</span><br>
+├── <span class="dir">src/</span><br>
+│   ├── <span class="dir">app/</span> <span class="note">  ← Next.js App Router</span><br>
+│   │   ├── <span class="file">layout.tsx</span><br>
+│   │   ├── <span class="file">page.tsx</span> <span class="note">  ← genesis / landing</span><br>
+│   │   │<br>
+│   │   ├── <span class="dir">(auth)/</span><br>
+│   │   │   ├── <span class="file">login/page.tsx</span><br>
+│   │   │   ├── <span class="file">apply/page.tsx</span> <span class="note">  ← intake interview</span><br>
+│   │   │   └── <span class="file">waiting/page.tsx</span> <span class="note">  ← review state</span><br>
+│   │   │<br>
+│   │   ├── <span class="dir">(dashboard)/</span><br>
+│   │   │   ├── <span class="file">layout.tsx</span> <span class="note">  ← cosmos shell, nav, health bar</span><br>
+│   │   │   ├── <span class="file">page.tsx</span> <span class="note">  ← odyssey home / mission control</span><br>
+│   │   │   ├── <span class="file">settings/page.tsx</span> <span class="note">  ← permissions, budget, stack</span><br>
+│   │   │   │<br>
+│   │   │   └── <span class="dir">engines/</span><br>
+│   │   │       ├── <span class="dir">dranb/</span><br>
+│   │   │       │   ├── <span class="file">page.tsx</span><br>
+│   │   │       │   └── <span class="file">[session]/page.tsx</span><br>
+│   │   │       ├── <span class="dir">drandl/</span><br>
+│   │   │       │   ├── <span class="file">page.tsx</span><br>
+│   │   │       │   └── <span class="file">[session]/page.tsx</span><br>
+│   │   │       ├── <span class="dir">4ield/</span><br>
+│   │   │       │   └── <span class="file">page.tsx</span><br>
+│   │   │       ├── <span class="dir">4tress/</span><br>
+│   │   │       │   └── <span class="file">page.tsx</span><br>
+│   │   │       ├── <span class="dir">6roxy/</span><br>
+│   │   │       │   └── <span class="file">page.tsx</span><br>
+│   │   │       ├── <span class="dir">5ite/</span><br>
+│   │   │       │   └── <span class="file">page.tsx</span><br>
+│   │   │       └── <span class="dir">3xec/</span><br>
+│   │   │           └── <span class="file">page.tsx</span><br>
+│   │   │<br>
+│   │   └── <span class="dir">api/</span><br>
+│   │       ├── <span class="dir">inngest/</span><br>
+│   │       │   └── <span class="file">route.ts</span> <span class="note">  ← Inngest serve endpoint</span><br>
+│   │       ├── <span class="dir">moirai/</span><br>
+│   │       │   ├── <span class="file">dispatch/route.ts</span> <span class="note">  ← trigger MOIRAI run</span><br>
+│   │       │   └── <span class="file">status/route.ts</span> <span class="note">  ← poll MOIRAI progress</span><br>
+│   │       ├── <span class="dir">truth/</span><br>
+│   │       │   ├── <span class="file">verify/route.ts</span> <span class="note">  ← 3-source verification</span><br>
+│   │       │   └── <span class="file">receipts/route.ts</span> <span class="note">  ← receipts ledger CRUD</span><br>
+│   │       ├── <span class="dir">outbound/</span><br>
+│   │       │   └── <span class="file">route.ts</span> <span class="note">  ← outbound approval layer</span><br>
+│   │       └── <span class="dir">engines/</span><br>
+│   │           ├── <span class="file">dranb/route.ts</span><br>
+│   │           └── <span class="file">drandl/route.ts</span><br>
+│   │<br>
+│   ├── <span class="dir">lib/</span><br>
+│   │   ├── <span class="dir">supabase/</span><br>
+│   │   │   ├── <span class="file">client.ts</span> <span class="note">  ← browser client</span><br>
+│   │   │   ├── <span class="file">server.ts</span> <span class="note">  ← server client (cookies)</span><br>
+│   │   │   ├── <span class="file">admin.ts</span> <span class="note">  ← service role client</span><br>
+│   │   │   └── <span class="file">types.ts</span> <span class="note">  ← generated DB types</span><br>
+│   │   │<br>
+│   │   ├── <span class="dir">inngest/</span><br>
+│   │   │   ├── <span class="file">client.ts</span> <span class="note">  ← Inngest client init</span><br>
+│   │   │   ├── <span class="file">moirai-simple.ts</span> <span class="note">  ← simple 3-pass pipeline</span><br>
+│   │   │   ├── <span class="file">moirai-complex.ts</span> <span class="note">  ← parallel blind + synthesis</span><br>
+│   │   │   └── <span class="file">verification.ts</span> <span class="note">  ← 3-source truth loop</span><br>
+│   │   │<br>
+│   │   ├── <span class="dir">truth/</span><br>
+│   │   │   ├── <span class="file">kernel.ts</span> <span class="note">  ← Truth Kernel core logic</span><br>
+│   │   │   ├── <span class="file">receipts.ts</span> <span class="note">  ← evidence storage & retrieval</span><br>
+│   │   │   ├── <span class="file">quorum.ts</span> <span class="note">  ← 3-source voting & conflict resolution</span><br>
+│   │   │   └── <span class="file">states.ts</span> <span class="note">  ← Verified / Unverified / Conflicted / Queued / Error</span><br>
+│   │   │<br>
+│   │   ├── <span class="dir">scoring/</span><br>
+│   │   │   ├── <span class="file">engine.ts</span> <span class="note">  ← quality scoring core</span><br>
+│   │   │   ├── <span class="file">templates.ts</span> <span class="note">  ← per-task category definitions</span><br>
+│   │   │   └── <span class="file">evolution.ts</span> <span class="note">  ← framework self-upgrade logic</span><br>
+│   │   │<br>
+│   │   ├── <span class="dir">moirai/</span><br>
+│   │   │   ├── <span class="file">orchestrator.ts</span> <span class="note">  ← model routing decisions</span><br>
+│   │   │   ├── <span class="file">packages.ts</span> <span class="note">  ← deliverable / audit / thought builders</span><br>
+│   │   │   └── <span class="file">estimator.ts</span> <span class="note">  ← pre-execution cost/time estimation</span><br>
+│   │   │<br>
+│   │   ├── <span class="dir">engines/</span><br>
+│   │   │   ├── <span class="file">dranb.ts</span> <span class="note">  ← brand naming engine logic</span><br>
+│   │   │   ├── <span class="file">drandl.ts</span> <span class="note">  ← digital presence engine logic</span><br>
+│   │   │   └── <span class="file">shared.ts</span> <span class="note">  ← cross-engine utilities</span><br>
+│   │   │<br>
+│   │   ├── <span class="dir">governance/</span><br>
+│   │   │   ├── <span class="file">outbound.ts</span> <span class="note">  ← approval layer logic</span><br>
+│   │   │   ├── <span class="file">permissions.ts</span> <span class="note">  ← auto-advance mode logic</span><br>
+│   │   │   └── <span class="file">budget.ts</span> <span class="note">  ← envelope management</span><br>
+│   │   │<br>
+│   │   └── <span class="dir">providers/</span><br>
+│   │       ├── <span class="file">openai.ts</span> <span class="note">  ← ChatGPT API wrapper</span><br>
+│   │       ├── <span class="file">gemini.ts</span> <span class="note">  ← Gemini API wrapper</span><br>
+│   │       ├── <span class="file">anthropic.ts</span> <span class="note">  ← Claude API wrapper</span><br>
+│   │       └── <span class="file">elevenlabs.ts</span> <span class="note">  ← ElevenLabs voice wrapper</span><br>
+│   │<br>
+│   └── <span class="dir">components/</span><br>
+│       ├── <span class="dir">ui/</span> <span class="note">  ← primitives (buttons, inputs, cards)</span><br>
+│       ├── <span class="dir">cosmos/</span> <span class="note">  ← genesis, odyssey, mythology UI</span><br>
+│       ├── <span class="dir">engines/</span> <span class="note">  ← engine-specific UI components</span><br>
+│       ├── <span class="dir">health/</span> <span class="note">  ← engine health bar, vitals</span><br>
+│       └── <span class="dir">governance/</span> <span class="note">  ← approval, budget, permissions UI</span><br>
+│<br>
+├── <span class="dir">supabase/</span><br>
+│   ├── <span class="dir">migrations/</span><br>
+│   │   ├── <span class="file">001_core_tables.sql</span> <span class="note">  ← users, sessions, receipts</span><br>
+│   │   ├── <span class="file">002_moirai_tables.sql</span> <span class="note">  ← packages, scoring</span><br>
+│   │   ├── <span class="file">003_governance_tables.sql</span> <span class="note">  ← outbound, permissions, budget</span><br>
+│   │   ├── <span class="file">004_engine_tables.sql</span> <span class="note">  ← engine-specific state</span><br>
+│   │   └── <span class="file">005_connected_stack.sql</span> <span class="note">  ← app registry, usage log</span><br>
+│   ├── <span class="dir">seed/</span><br>
+│   │   └── <span class="file">scoring_templates.sql</span> <span class="note">  ← default quality categories</span><br>
+│   └── <span class="file">config.toml</span><br>
+│<br>
+├── <span class="file">inngest.config.ts</span><br>
+├── <span class="file">next.config.ts</span><br>
+├── <span class="file">tailwind.config.ts</span><br>
+├── <span class="file">tsconfig.json</span><br>
+├── <span class="file">package.json</span><br>
+├── <span class="file">.env.local</span> <span class="note">  ← SUPABASE_URL, SUPABASE_ANON_KEY, SUPABASE_SERVICE_KEY,</span><br>
+<span class="note" style="margin-left: 175px;">OPENAI_API_KEY, GOOGLE_AI_KEY, ANTHROPIC_API_KEY,</span><br>
+<span class="note" style="margin-left: 175px;">ELEVENLABS_API_KEY, INNGEST_EVENT_KEY, INNGEST_SIGNING_KEY</span><br>
+└── <span class="file">README.md</span>
+</div>
+
+<div class="spacer-lg"></div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- PART III — AMENDED SCHEMA -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<div class="single-rule">───────────────────────────────────────────────────────────────</div>
+<div class="part-header">Part III — Amended Database Schema</div>
+<div class="content dim">Gemini's Foundation + Eunoia's Ten Additions</div>
+<div class="single-rule">───────────────────────────────────────────────────────────────</div>
+
+<div class="spacer"></div>
+
+<div class="section-title">Amended Tables Summary</div>
+
+<table class="schema-table">
+  <thead>
+    <tr>
+      <th>Table</th>
+      <th>Origin</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>wivviw_users</td><td class="good">Gemini + Amended</td><td>Add standing_state, standing_history JSONB</td></tr>
+    <tr><td>odyssey_sessions</td><td class="good">Gemini</td><td>Unchanged. State continuity per session.</td></tr>
+    <tr><td>moirai_packages</td><td class="good">Gemini + Amended</td><td>Add package_type, score, pass_threshold, passed</td></tr>
+    <tr><td>receipts_ledger</td><td class="good">Gemini</td><td>Unchanged. 3-source evidence storage.</td></tr>
+    <tr><td>worthiness_scores</td><td class="warn">New</td><td>Onboarding intake scoring per dimension</td></tr>
+    <tr><td>advance_permissions</td><td class="warn">New</td><td>Per-user, per-engine execution mode</td></tr>
+    <tr><td>scoring_templates</td><td class="warn">New</td><td>Quality category frameworks per task type</td></tr>
+    <tr><td>scoring_results</td><td class="warn">New</td><td>Per-task evaluation scores</td></tr>
+    <tr><td>scoring_evolution</td><td class="warn">New</td><td>Framework upgrade audit trail</td></tr>
+    <tr><td>outbound_queue</td><td class="warn">New</td><td>Output governance before external dispatch</td></tr>
+    <tr><td>connected_apps</td><td class="warn">New</td><td>External tool registry per user</td></tr>
+    <tr><td>stack_usage_log</td><td class="warn">New</td><td>Usage observation for replacement roadmap</td></tr>
+    <tr><td>budget_envelopes</td><td class="warn">New</td><td>Cost caps, spend tracking, BYOK keys</td></tr>
+    <tr><td>engine_health_snapshots</td><td class="warn">New</td><td>Operational signal capture per session</td></tr>
+    <tr><td>optimization_queue</td><td class="warn">New</td><td>Anti-back-and-forth proposed actions</td></tr>
+  </tbody>
+</table>
+
+<div class="breath">· · · · ·</div>
+
+<div class="content dim">
+  Full DDL lives in <span class="accent">wivviw-docs/schemas/database-schema.sql</span><br>
+  & is executed via migrations in <span class="accent">wivviw-app/supabase/migrations/</span>
+</div>
+
+<div class="spacer-lg"></div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- PART IV — PHASE 1 EXECUTION PLAN -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<div class="single-rule">───────────────────────────────────────────────────────────────</div>
+<div class="part-header">Part IV — Phase 1 Execution Plan</div>
+<div class="content dim">Exactly What to Build. Exactly in What Order.</div>
+<div class="single-rule">───────────────────────────────────────────────────────────────</div>
+
+<div class="spacer"></div>
+
+<div class="content dim">
+  Phase 1 delivers the Truth Kernel, Auth Gates,<br>
+  & the first wedge: dRANb → drandL → 4TRESS flow.<br>
+  Nothing else until this is airtight.
+</div>
+
+<div class="spacer"></div>
+
+<!-- STEP 1 -->
+<div class="step">
+  <span class="step-num">1</span>
+  <span class="step-title">INITIALIZE REPOSITORIES</span>
+  <div class="step-detail">
+    Create both repos. wivviw-docs as a private GitHub repo<br>
+    (knowledge only, never deployed). wivviw-app as the Cursor workspace.
+  </div>
+</div>
+
+<div class="cmd">
+mkdir wivviw-docs && cd wivviw-docs && git init<br>
+# Create directory structure per Part II above<br>
+<br>
+npx create-next-app@latest wivviw-app \<br>
+  --typescript --tailwind --eslint --app --src-dir<br>
+cd wivviw-app
+</div>
+
+<!-- STEP 2 -->
+<div class="step">
+  <span class="step-num">2</span>
+  <span class="step-title">SUPABASE PROJECT & ENV</span>
+  <div class="step-detail">
+    Create a new Supabase project. Retrieve URL, anon key, & service role key.<br>
+    Populate .env.local. Do not commit this file.
+  </div>
+</div>
+
+<div class="cmd">
+npm install @supabase/supabase-js @supabase/ssr<br>
+npx supabase init<br>
+npx supabase link --project-ref YOUR_PROJECT_REF<br>
+<br>
+# .env.local<br>
+NEXT_PUBLIC_SUPABASE_URL=https://xxx.supabase.co<br>
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJ...<br>
+SUPABASE_SERVICE_ROLE_KEY=eyJ...
+</div>
+
+<!-- STEP 3 -->
+<div class="step">
+  <span class="step-num">3</span>
+  <span class="step-title">DATABASE MIGRATION 001 — CORE TABLES</span>
+  <div class="step-detail">
+    The foundation. Users with worthiness scoring,<br>
+    sessions with continuity state, & the receipts ledger.<br>
+    Enable Row Level Security on every table from day one.
+  </div>
+</div>
+
+<div class="cmd">
+npx supabase migration new core_tables<br>
+<br>
+-- Inside the migration file:<br>
+-- CREATE TABLE wivviw_users (<br>
+--   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),<br>
+--   email TEXT UNIQUE NOT NULL,<br>
+--   status TEXT DEFAULT 'pending',<br>
+--   standing_state TEXT DEFAULT 'accepted',<br>
+--   standing_history JSONB DEFAULT '[]',<br>
+--   onboarding_completed BOOLEAN DEFAULT false,<br>
+--   created_at TIMESTAMPTZ DEFAULT now()<br>
+-- );<br>
+--<br>
+-- CREATE TABLE worthiness_scores (...)<br>
+-- CREATE TABLE odyssey_sessions (...)<br>
+-- CREATE TABLE receipts_ledger (...)<br>
+-- ALTER TABLE ... ENABLE ROW LEVEL SECURITY;<br>
+<br>
+npx supabase db push
+</div>
+
+<!-- STEP 4 -->
+<div class="step">
+  <span class="step-num">4</span>
+  <span class="step-title">SUPABASE AUTH & MIDDLEWARE</span>
+  <div class="step-detail">
+    Configure Supabase Auth. Build the Next.js middleware<br>
+    that gates every route behind authentication &<br>
+    checks user status (pending / accepted / suspended / banished).<br>
+    Unapproved users see only the waiting page.
+  </div>
+</div>
+
+<div class="cmd">
+# Create:<br>
+# src/lib/supabase/client.ts  (browser)<br>
+# src/lib/supabase/server.ts  (server components)<br>
+# src/lib/supabase/admin.ts   (service role)<br>
+# src/middleware.ts            (route protection)<br>
+<br>
+# Middleware logic:<br>
+# 1. Check Supabase session<br>
+# 2. If no session → redirect to /login<br>
+# 3. If session but status !== 'accepted' → redirect to /waiting<br>
+# 4. If accepted → allow through to (dashboard) routes
+</div>
+
+<!-- STEP 5 -->
+<div class="step">
+  <span class="step-num">5</span>
+  <span class="step-title">INTAKE INTERVIEW — THE GATE</span>
+  <div class="step-detail">
+    Build /apply. This is the first contact.<br>
+    Multi-step guided intake. Not a form. A conversation.<br>
+    Each answer feeds worthiness_scores & maps user intent.<br>
+    Completion sets status to 'pending_review'.<br>
+    Manual admin approval flips to 'accepted'.
+  </div>
+</div>
+
+<div class="cmd">
+# Build:<br>
+# src/app/(auth)/apply/page.tsx<br>
+#   → Multi-step intake UI<br>
+#   → Questions: how heard, expectations, skepticism,<br>
+#     what solving, seriousness signals<br>
+#   → On submit: INSERT worthiness_scores rows<br>
+#   → UPDATE wivviw_users SET status = 'pending_review'<br>
+<br>
+# Admin dashboard (simple, internal-only for now):<br>
+# View pending applicants, scores, approve/deny
+</div>
+
+<!-- STEP 6 -->
+<div class="step">
+  <span class="step-num">6</span>
+  <span class="step-title">INNGEST SETUP — ASYNC ORCHESTRATION</span>
+  <div class="step-detail">
+    Install Inngest. This prevents serverless timeouts<br>
+    during heavy MOIRAI multi-model loops. Configure the<br>
+    serve endpoint & first test function.
+  </div>
+</div>
+
+<div class="cmd">
+npm install inngest<br>
+<br>
+# Create:<br>
+# src/lib/inngest/client.ts<br>
+# src/app/api/inngest/route.ts   (serve endpoint)<br>
+<br>
+# Test with a simple ping function to confirm<br>
+# Inngest Dev Server connects properly:<br>
+# npx inngest-cli@latest dev
+</div>
+
+<!-- STEP 7 -->
+<div class="step">
+  <span class="step-num">7</span>
+  <span class="step-title">TRUTH KERNEL — THE SPINE</span>
+  <div class="step-detail">
+    This is the single most important system.<br>
+    Build the receipts ledger, the 3-source quorum logic,<br>
+    & the verification state machine.<br>
+    Every claim that enters WiVViW passes through here.
+  </div>
+</div>
+
+<div class="cmd">
+# Create:<br>
+# src/lib/truth/kernel.ts<br>
+#   → verify(claim, sources[]) → TruthState<br>
+#   → TruthState: Verified | Unverified | Conflicted | Queued | Error<br>
+<br>
+# src/lib/truth/receipts.ts<br>
+#   → store(claim_id, source, evidence, confidence)<br>
+#   → retrieve(claim_id) → Receipt[]<br>
+<br>
+# src/lib/truth/quorum.ts<br>
+#   → evaluate(receipts[]) → { verdict, conflict_details }<br>
+#   → 3-source agreement = Verified<br>
+#   → 2 agree / 1 conflicts = Conflicted (flag for review)<br>
+#   → < 2 sources = Unverified<br>
+<br>
+# Wire Inngest function: src/lib/inngest/verification.ts<br>
+#   → Async 3-source check (domain, trademark, factual)<br>
+#   → Write results to receipts_ledger
+</div>
+
+<!-- STEP 8 -->
+<div class="step">
+  <span class="step-num">8</span>
+  <span class="step-title">MOIRAI PIPELINE — SIMPLE WORKFLOW FIRST</span>
+  <div class="step-detail">
+    Build the simple 3-pass pipeline as an Inngest function.<br>
+    ChatGPT → Gemini → Claude. Each pass produces a typed<br>
+    package (deliverable + audit + thought). Store all in<br>
+    moirai_packages with package_type & scoring.
+  </div>
+</div>
+
+<div class="cmd">
+# Create:<br>
+# src/lib/providers/openai.ts    (ChatGPT wrapper)<br>
+# src/lib/providers/gemini.ts    (Gemini wrapper)<br>
+# src/lib/providers/anthropic.ts (Claude wrapper)<br>
+<br>
+# src/lib/inngest/moirai-simple.ts<br>
+#   → Step 1: ChatGPT generates (deliverable + audit + thought)<br>
+#   → Step 2: Gemini receives Step 1 output, audits & improves<br>
+#   → Step 3: Claude receives all prior, refines & completes<br>
+#   → Each step: INSERT moirai_packages<br>
+#   → Final step: scoring engine evaluates result<br>
+<br>
+# src/lib/moirai/packages.ts<br>
+#   → buildDeliverable(), buildAudit(), buildThought()<br>
+<br>
+# src/lib/moirai/estimator.ts<br>
+#   → estimate(task) → { approx_cost, approx_time, model_path }
+</div>
+
+<!-- STEP 9 -->
+<div class="step">
+  <span class="step-num">9</span>
+  <span class="step-title">dRANb ENGINE — THE FIRST WEDGE</span>
+  <div class="step-detail">
+    The brand naming engine. User provides context.<br>
+    dRANb generates candidates via MOIRAI pipeline.<br>
+    Each candidate is scored, ranked, & verified<br>
+    through the Truth Kernel.<br>
+    This is where WiVViW proves its value.
+  </div>
+</div>
+
+<div class="cmd">
+# Create:<br>
+# src/lib/engines/dranb.ts<br>
+#   → generateCandidates(brief) → triggers MOIRAI simple<br>
+#   → scoreCandidates(candidates[]) → ranked list<br>
+#   → verifyCandidates(candidates[]) → Truth Kernel checks<br>
+#     (uniqueness, domain availability, trademark signals)<br>
+<br>
+# src/app/(dashboard)/engines/dranb/page.tsx<br>
+#   → Brief input UI<br>
+#   → Candidate board (ranked, scored, truth-stated)<br>
+#   → Session persistence via odyssey_sessions<br>
+<br>
+# src/app/api/engines/dranb/route.ts<br>
+#   → POST: start dRANb session<br>
+#   → GET: retrieve session state
+</div>
+
+<!-- STEP 10 -->
+<div class="step">
+  <span class="step-num">10</span>
+  <span class="step-title">drandL ENGINE — COMPLETE THE WEDGE</span>
+  <div class="step-detail">
+    Digital presence verification. Takes the winning<br>
+    candidate from dRANb & checks domain availability,<br>
+    handle availability across platforms, & identity consistency.<br>
+    All results pass through Truth Kernel with receipts.
+  </div>
+</div>
+
+<div class="cmd">
+# Create:<br>
+# src/lib/engines/drandl.ts<br>
+#   → checkDomains(name, extensions[]) → Truth Kernel verified<br>
+#   → checkHandles(name, platforms[]) → Truth Kernel verified<br>
+#   → assessConsistency(name) → cross-platform identity score<br>
+<br>
+# src/app/(dashboard)/engines/drandl/page.tsx<br>
+#   → Digital footprint dashboard<br>
+#   → Domain/handle availability grid with truth states<br>
+#   → Link to 4TRESS for protection next step<br>
+<br>
+# Flow: dRANb winner → drandL verification → 4TRESS protection<br>
+# This is the complete Phase 1 brand path.
+</div>
+
+<div class="spacer-lg"></div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- PART V — CRITICAL BLIND SPOTS CAUGHT -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<div class="single-rule">───────────────────────────────────────────────────────────────</div>
+<div class="part-header">Part V — Critical Blind Spots Caught</div>
+<div class="content dim">What Neither Clotho Nor Lachesis Addressed</div>
+<div class="single-rule">───────────────────────────────────────────────────────────────</div>
+
+<div class="spacer"></div>
+
+<div class="box">
+  <div class="box-title">1 — Rate Limiting & Abuse Protection</div>
+  <div class="content">
+    A selective platform that allows heavy multi-model runs<br>
+    is a target for token-drain abuse. Even accepted users<br>
+    can accidentally or intentionally burn through resources.<br><br>
+    <span class="warn">Required:</span> Per-user rate limiting at the API route level.<br>
+    <span class="dim">Upstash Redis or Supabase-native rate limiting.</span><br>
+    <span class="dim">Enforce before Inngest dispatch, not after.</span>
+  </div>
+</div>
+
+<div class="box">
+  <div class="box-title">2 — Secrets Management for BYOK</div>
+  <div class="content">
+    Storing user API keys (BYOK) in budget_envelopes<br>
+    as encrypted JSONB is not sufficient long-term.<br><br>
+    <span class="warn">Required:</span> Supabase Vault or an external secrets manager.<br>
+    <span class="dim">Phase 1 can use encrypted columns with pgcrypto.</span><br>
+    <span class="dim">Phase 2 should migrate to Vault.</span>
+  </div>
+</div>
+
+<div class="box">
+  <div class="box-title">3 — Idempotency in MOIRAI Runs</div>
+  <div class="content">
+    Inngest handles retries. But if a MOIRAI step partially<br>
+    completes, rerunning it must not create duplicate packages.<br><br>
+    <span class="warn">Required:</span> Idempotency keys on moirai_packages.<br>
+    <span class="dim">Composite unique: (session_id, step_number, package_type)</span>
+  </div>
+</div>
+
+<div class="box">
+  <div class="box-title">4 — Provider Fallback Logic</div>
+  <div class="content">
+    If OpenAI is down, the simple pipeline halts at Step 1.<br>
+    If Gemini rate-limits, Step 2 stalls indefinitely.<br><br>
+    <span class="warn">Required:</span> Provider health check + fallback routing.<br>
+    <span class="dim">If primary provider fails: retry 2x → fallback to</span><br>
+    <span class="dim">alternate provider → log degradation in engine_health_snapshots.</span>
+  </div>
+</div>
+
+<div class="box">
+  <div class="box-title">5 — Session Continuity Across Browser Loss</div>
+  <div class="content">
+    Odyssey sessions can span hours. If the user closes<br>
+    the browser mid-run, the Inngest job continues server-side.<br>
+    But the UI has no way to reconnect to a running job.<br><br>
+    <span class="warn">Required:</span> Polling endpoint + Supabase Realtime subscription<br>
+    <span class="dim">on odyssey_sessions for live status updates.</span><br>
+    <span class="dim">User reopens → immediately sees current state.</span>
+  </div>
+</div>
+
+<div class="breath">· · · · ·</div>
+
+<div class="spacer-lg"></div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- PART VI — EXECUTION SEQUENCE SUMMARY -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<div class="single-rule">───────────────────────────────────────────────────────────────</div>
+<div class="part-header">Part VI — Execution Sequence Summary</div>
+<div class="content dim">The Order. No Shortcuts.</div>
+<div class="single-rule">───────────────────────────────────────────────────────────────</div>
+
+<div class="spacer"></div>
+
+<div class="content">
+  <span class="label">Step 01</span> ...... <span class="value">Initialize both repositories</span><br>
+  <span class="label">Step 02</span> ...... <span class="value">Supabase project & environment config</span><br>
+  <span class="label">Step 03</span> ...... <span class="value">Migration 001 — core tables with RLS</span><br>
+  <span class="label">Step 04</span> ...... <span class="value">Supabase Auth & route middleware</span><br>
+  <span class="label">Step 05</span> ...... <span class="value">Intake interview (the gate)</span><br>
+  <span class="label">Step 06</span> ...... <span class="value">Inngest async orchestration setup</span><br>
+  <span class="label">Step 07</span> ...... <span class="value">Truth Kernel (spine of the system)</span><br>
+  <span class="label">Step 08</span> ...... <span class="value">MOIRAI simple pipeline via Inngest</span><br>
+  <span class="label">Step 09</span> ...... <span class="value">dRANb engine (first wedge)</span><br>
+  <span class="label">Step 10</span> ...... <span class="value">drandL engine (complete the wedge)</span>
+</div>
+
+<div class="breath">· · · · ·</div>
+
+<div class="content dim">
+  When Step 10 is complete, WiVViW has:<br><br>
+  <span class="good">□</span> A selective, gated entry system<br>
+  <span class="good">□</span> A persistent truth engine with receipts<br>
+  <span class="good">□</span> A working multi-model orchestration pipeline<br>
+  <span class="good">□</span> The complete dRANb → drandL brand path<br>
+  <span class="good">□</span> Session continuity across runs<br>
+  <span class="good">□</span> Quality scoring on every output<br>
+  <span class="good">□</span> Pre-execution cost estimation<br><br>
+  That is proof of value. That is the private beta.
+</div>
+
+<div class="spacer-lg"></div>
+
+<div class="double-rule">═══════════════════════════════════════════════════════════════</div>
+
+<div class="benediction">
+  The thread has been refined.<br>
+  The architecture is reconciled.<br>
+  Eunoia yields to Oracle for canonization.
+</div>
+
+<div class="double-rule">═══════════════════════════════════════════════════════════════</div>
+
+</body>
+</html>
