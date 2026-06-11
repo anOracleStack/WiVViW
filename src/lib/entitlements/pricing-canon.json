@@ -1,0 +1,9 @@
+{
+  "pricing_version": "5.0",
+  "effective_date": "2026-04-01",
+  "tiers": {
+    "twin": { "monthly": 0, "annual": 0, "label": "THE TWIN", "tagline": "Scout" },
+    "squad": { "monthly": 49, "annual": 360, "label": "THE SQUAD", "tagline": "Founder" },
+    "empire": { "monthly": 199, "annual": 900, "label": "THE EMPIRE", "tagline": "Company" }
+  }
+}

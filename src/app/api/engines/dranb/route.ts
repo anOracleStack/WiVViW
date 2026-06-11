@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isEmailAllowed } from "@/lib/auth/allowlist";
 import { createSessionAndDispatch } from "@/lib/engines/dranb";
+import { assertEngineAccess, checkRunLimit } from "@/lib/engines/engine-runner";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { isSupabaseAuthConfigured } from "@/lib/supabase/configured";
@@ -115,7 +116,15 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    const { session_id } = await createSessionAndDispatch(userId, body);
+    const { tier } = await assertEngineAccess(userId, "dranb");
+    const projectId = (body as { project_id?: string }).project_id;
+    if (!checkRunLimit(tier, "dranb", 0)) {
+      return NextResponse.json(
+        { error: "Monthly dRANb run limit reached for your tier" },
+        { status: 403 }
+      );
+    }
+    const { session_id } = await createSessionAndDispatch(userId, body, projectId);
     log("info", "dranb.session_created", {
       session_id,
       user_id: userId,

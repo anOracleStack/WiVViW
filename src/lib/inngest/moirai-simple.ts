@@ -3,6 +3,10 @@ import { getPrompt } from "@/lib/prompts/registry";
 import { parseJsonFromLlm } from "@/lib/parse-json-llm";
 import { callProvider, TASK_TIERS, type TaskComplexity } from "@/lib/providers";
 import { requireSupabaseAdmin } from "@/lib/supabase/admin";
+import { evaluateDranbGate, scoreDranbCandidates } from "@/lib/engines/gates";
+import { emitEngineEvent } from "@/lib/events/event-bus";
+import { logEngineReceipt } from "@/lib/os/receipts";
+import { executeHandoff } from "@/lib/engines/handoffs";
 
 const DRANB_COMPLEXITY: TaskComplexity = "medium";
 const ENGINE_KEY = "dranb";
@@ -242,6 +246,98 @@ export const dranbPipeline = inngest.createFunction(
       });
       await emitEvent(sessionId, "dranb.candidates.finalized", { session_id: sessionId });
       return { content, meta: res };
+    });
+
+    await step.run("score-and-gate", async () => {
+      const { data: session } = await requireSupabaseAdmin()
+        .from("odyssey_sessions")
+        .select("user_id, project_id, state")
+        .eq("id", sessionId)
+        .single();
+
+      const { data: pkg } = await requireSupabaseAdmin()
+        .from("moirai_packages")
+        .select("content")
+        .eq("session_id", sessionId)
+        .eq("step_number", 3)
+        .eq("package_type", "deliverable")
+        .maybeSingle();
+
+      const content = (pkg?.content ?? {}) as Record<string, unknown>;
+      const finalists = (content.finalists ?? content.candidates ?? []) as {
+        name: string;
+        scores?: Record<string, number>;
+      }[];
+      const shortlist = finalists.map((f) => f.name);
+      const scored = scoreDranbCandidates(finalists);
+      const gate = evaluateDranbGate(shortlist);
+
+      await requireSupabaseAdmin()
+        .from("scoring_results")
+        .insert({
+          session_id: sessionId,
+          scores: { candidates: scored },
+          overall_score: scored[0]?.overall ?? 0,
+          passed: gate.passed,
+        });
+
+      await requireSupabaseAdmin()
+        .from("odyssey_sessions")
+        .update({
+          state: {
+            ...(session?.state as object),
+            shortlist,
+            gate,
+            scored,
+          },
+        })
+        .eq("id", sessionId);
+
+      await emitEngineEvent(sessionId, {
+        type: "GATE_EVALUATED",
+        engine: "dranb",
+        gateId: gate.gateId,
+        passed: gate.passed,
+        projectId: session?.project_id ?? null,
+        timestamp: new Date().toISOString(),
+      });
+
+      await emitEngineEvent(sessionId, {
+        type: "SCORE_COMPUTED",
+        engine: "dranb",
+        entityId: sessionId,
+        score: scored[0]?.overall ?? 0,
+        confidence: gate.passed ? 0.85 : 0.5,
+        dimensions: scored[0]?.dimensions ?? {},
+        timestamp: new Date().toISOString(),
+      });
+
+      await logEngineReceipt({
+        sessionId,
+        engine: "dranb",
+        step: "gate",
+        claimId: "dranb:gate",
+        source: "moirai-simple",
+        evidence: { gate, shortlist },
+        confidence: gate.passed ? 0.85 : 0.5,
+      });
+
+      if (gate.passed && session?.project_id && session?.user_id) {
+        await executeHandoff(session.user_id, {
+          fromEngine: "dranb",
+          toEngine: "brandl",
+          projectId: session.project_id,
+          data: { shortlist, scored },
+        }, sessionId);
+      }
+
+      await emitEngineEvent(sessionId, {
+        type: "ENGINE_RUN_COMPLETED",
+        engine: "dranb",
+        runId: sessionId,
+        artifacts: [{ id: sessionId, type: "deliverable" }],
+        timestamp: new Date().toISOString(),
+      });
     });
 
     return { status: "completed", session_id: sessionId };

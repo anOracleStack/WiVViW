@@ -1,6 +1,5 @@
 import { callProvider, TaskComplexity } from "@/lib/providers";
-import { supabaseAdmin } from "@/lib/supabase/admin";
-import { inngest } from "@/lib/inngest/client";
+import { createEngineSession } from "@/lib/engines/engine-runner";
 
 export interface DranbBrief {
   business_description: string;
@@ -33,34 +32,18 @@ export function briefToPromptString(brief: DranbBrief): string {
  */
 export async function createSessionAndDispatch(
   userId: string,
-  brief: DranbBrief
+  brief: DranbBrief,
+  projectId?: string
 ): Promise<{ session_id: string }> {
-  if (!supabaseAdmin) throw new Error("Supabase not configured");
   const briefStr = briefToPromptString(brief);
-  const { data: session, error: sessionError } = await supabaseAdmin
-    .from("odyssey_sessions")
-    .insert({
-      user_id: userId,
-      engine_key: "dranb",
-      state: { brief: briefStr, raw: brief },
-    })
-    .select("id")
-    .single();
-
-  if (sessionError || !session?.id) {
-    throw new Error(sessionError?.message ?? "Failed to create session");
-  }
-
-  await inngest.send({
-    name: "dranb/brief.submitted",
-    data: {
-      session_id: session.id,
-      user_id: userId,
-      brief: briefStr,
-    },
+  return createEngineSession({
+    userId,
+    engineId: "dranb",
+    projectId,
+    state: { brief: briefStr, raw: brief },
+    inngestEvent: "dranb/brief.submitted",
+    inngestData: { brief: briefStr },
   });
-
-  return { session_id: session.id };
 }
 
 export async function runDranbOnce(brief: DranbBrief) {

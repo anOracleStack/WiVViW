@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint src docs next.config.ts",
     "test:e2e": "playwright test",
-    "ci": "npm run lint && npm run build"
+    "test:evals": "npx --yes tsx src/lib/engines/evals/dranb-gates.test.ts",
+    "ci": "npm run lint && npm run build && npm run test:evals",
+    "db:push:remote": "bash scripts/db-push-remote.sh"
   },
   "keywords": [],
   "author": "",
