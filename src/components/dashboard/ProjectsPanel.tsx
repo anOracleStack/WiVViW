@@ -3,6 +3,9 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useDashboardAuth } from "@/components/DashboardAuth";
+import GlassPanel from "@/components/ui/GlassPanel";
+import SectionTitle from "@/components/ui/SectionTitle";
+import BalancedText from "@/components/ui/BalancedText";
 
 interface ProjectRow {
   id: string;
@@ -48,27 +51,22 @@ export default function ProjectsPanel() {
 
   return (
     <div className="mx-auto max-w-2xl text-center">
-      <p className="text-xs tracking-[0.3em] text-white/40">PROJECT HUB</p>
-      <h1 className="mt-2 text-3xl font-semibold text-white">Your brand workspace</h1>
-      <p className="mx-auto mt-3 max-w-md text-sm text-white/60">
+      <SectionTitle eyebrow="Project hub" title="Your brand workspace" />
+      <BalancedText className="mt-4 text-sm text-[hsl(var(--text-muted))]">
         Each project holds your Brand Genome,
         <br />
         engine runs, and export bundles.
-      </p>
+      </BalancedText>
 
       {canRun && (
         <form onSubmit={createProject} className="mx-auto mt-8 flex max-w-md gap-2">
           <input
-            className="flex-1 rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm"
+            className="input-field flex-1"
             placeholder="Project name"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-          <button
-            type="submit"
-            disabled={loading}
-            className="rounded-lg bg-[#E8B923] px-4 py-2 text-sm font-medium text-black"
-          >
+          <button type="submit" disabled={loading} className="btn-primary shrink-0">
             Create
           </button>
         </form>
@@ -76,31 +74,33 @@ export default function ProjectsPanel() {
 
       <ul className="mt-8 space-y-3 text-left">
         {projects.map((p) => (
-          <li
-            key={p.id}
-            className="rounded-xl border border-white/10 bg-white/5 p-4"
-          >
-            <div className="font-medium text-white">{p.name}</div>
-            <div className="mt-1 text-xs text-white/40">{p.industry ?? "General"}</div>
-            <div className="mt-3 flex flex-wrap gap-2">
-              <Link
-                href="/dashboard/engines/dranb"
-                className="text-xs text-[#E8B923] hover:underline"
-              >
-                Start dRANb
-              </Link>
-              <Link href="/dashboard/galaxy" className="text-xs text-white/50 hover:underline">
-                Constellation
-              </Link>
-            </div>
+          <li key={p.id}>
+            <GlassPanel className="p-4">
+              <div className="font-display font-bold text-[hsl(var(--text-primary))]">{p.name}</div>
+              <div className="mt-1 text-xs text-[hsl(var(--text-muted))]">{p.industry ?? "General"}</div>
+              <div className="mt-3 flex flex-wrap justify-center gap-3 sm:justify-start">
+                <Link
+                  href="/dashboard/engines/dranb"
+                  className="text-xs text-[hsl(var(--primary-amber))] hover:underline"
+                >
+                  Start dRANb
+                </Link>
+                <Link
+                  href="/dashboard/galaxy"
+                  className="text-xs text-[hsl(var(--text-muted))] hover:underline"
+                >
+                  Constellation
+                </Link>
+              </div>
+            </GlassPanel>
           </li>
         ))}
       </ul>
 
       {!canRun && (
-        <p className="mt-8 text-sm text-white/50">
-          Sign in to create projects and run engines.
-        </p>
+        <BalancedText className="mt-8 text-sm text-[hsl(var(--text-muted))]">
+          Sign in to create projects and run dRANb.
+        </BalancedText>
       )}
     </div>
   );

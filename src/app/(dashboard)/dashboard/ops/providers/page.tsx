@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SupabaseStatus } from "@/components/SupabaseStatus";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 
 type ProviderHealth = {
@@ -67,10 +68,11 @@ export default async function ProviderOpsPage() {
           </Link>
         </p>
         {error && (
-          <p className="mt-2 rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-sm text-amber-400">
+          <p className="mt-2 rounded-lg border border-[hsl(var(--primary-amber)/0.3)] bg-[hsl(var(--primary-amber)/0.1)] px-3 py-2 text-sm text-[hsl(var(--primary-amber))]">
             {error}
           </p>
         )}
+        <SupabaseStatus />
       </section>
 
       <section className="space-y-3">
