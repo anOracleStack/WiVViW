@@ -18,6 +18,7 @@ export default defineConfig({
   use: {
     baseURL: BASE_URL,
     trace: "retain-on-failure",
+    viewport: { width: 1440, height: 900 },
   },
   projects: [
     {
