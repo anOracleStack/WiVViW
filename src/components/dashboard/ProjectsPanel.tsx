@@ -83,13 +83,13 @@ export default function ProjectsPanel() {
                   href="/dashboard/engines/dranb"
                   className="text-xs text-[hsl(var(--primary-amber))] hover:underline"
                 >
-                  Start dRANb
+                  Open Name
                 </Link>
                 <Link
                   href="/dashboard/galaxy"
                   className="text-xs text-[hsl(var(--text-muted))] hover:underline"
                 >
-                  Constellation
+                  Galaxy
                 </Link>
               </div>
             </GlassPanel>

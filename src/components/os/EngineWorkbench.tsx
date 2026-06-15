@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { useDashboardAuth } from "@/components/DashboardAuth";
 import EngineStepper from "./EngineStepper";
 import type { EngineMeta } from "@/lib/engines/engine-contract";
@@ -22,7 +21,7 @@ export default function EngineWorkbench({
   apiPath: string;
 }) {
   const router = useRouter();
-  const { canRun } = useDashboardAuth();
+  const { canRun, requestSignup } = useDashboardAuth();
   const [values, setValues] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -30,7 +29,7 @@ export default function EngineWorkbench({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!canRun) {
-      setError("Sign in to run this engine.");
+      requestSignup("run", engine.friendlyLabel);
       return;
     }
     setLoading(true);
@@ -55,44 +54,33 @@ export default function EngineWorkbench({
   return (
     <div className="mx-auto max-w-2xl">
       <div className="text-center">
-        <p className="text-xs tracking-[0.3em] text-white/40">{engine.sub.toUpperCase()}</p>
         <h1
-          className="mt-2 text-3xl font-semibold"
+          className="font-display text-3xl font-semibold"
           style={{ color: `hsl(${engine.colorHsl})` }}
         >
-          {engine.label}
+          {engine.friendlyLabel}
         </h1>
-        <p className="mx-auto mt-3 max-w-md text-sm text-white/60">{description}</p>
+        <p className="mx-auto mt-3 max-w-md text-sm text-[hsl(var(--text-muted))]">{description}</p>
       </div>
 
       <div className="mt-8">
         <EngineStepper current={phase} accentHsl={engine.colorHsl} />
       </div>
 
-      {!canRun && (
-        <p className="mt-6 text-center text-sm text-amber-200/90">
-          Browse mode —{" "}
-          <Link href="/signup" className="underline">
-            sign up
-          </Link>{" "}
-          to run {engine.label}.
-        </p>
-      )}
-
-      <form onSubmit={handleSubmit} className="mt-8 space-y-4">
+      <form onSubmit={handleSubmit} className="glass-panel mt-8 space-y-4 rounded-2xl p-6">
         {fields.map((f) => (
-          <label key={f.key} className="block">
-            <span className="text-xs tracking-wide text-white/50">{f.label}</span>
+          <label key={f.key} className="block text-left">
+            <span className="text-xs tracking-wide text-[hsl(var(--text-muted))]">{f.label}</span>
             {f.type === "textarea" ? (
               <textarea
-                className="mt-1 w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm text-white"
+                className="input-field mt-1"
                 rows={4}
                 value={values[f.key] ?? ""}
                 onChange={(e) => setValues((v) => ({ ...v, [f.key]: e.target.value }))}
               />
             ) : (
               <input
-                className="mt-1 w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm text-white"
+                className="input-field mt-1"
                 value={values[f.key] ?? ""}
                 onChange={(e) => setValues((v) => ({ ...v, [f.key]: e.target.value }))}
               />
@@ -102,11 +90,10 @@ export default function EngineWorkbench({
         {error && <p className="text-sm text-red-400">{error}</p>}
         <button
           type="submit"
-          disabled={loading || !canRun}
-          className="w-full rounded-lg py-3 text-sm font-medium text-black disabled:opacity-40"
-          style={{ backgroundColor: `hsl(${engine.colorHsl})` }}
+          disabled={loading}
+          className="btn-primary w-full py-3 disabled:opacity-40"
         >
-          {loading ? "Running…" : `Run ${engine.label}`}
+          {loading ? "Running…" : `Run ${engine.friendlyLabel}`}
         </button>
       </form>
     </div>

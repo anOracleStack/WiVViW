@@ -4,7 +4,14 @@ import Link from "next/link";
 import { useDashboardAuth } from "@/components/DashboardAuth";
 
 export default function Topbar({ projectName }: { projectName?: string }) {
-  const { canRun, email } = useDashboardAuth();
+  const { canRun, email, requestSignup } = useDashboardAuth();
+
+  const gateExport = (e: React.MouseEvent) => {
+    if (!canRun) {
+      e.preventDefault();
+      requestSignup("export");
+    }
+  };
 
   return (
     <header className="flex items-center justify-between border-b border-[hsl(var(--glass-border))] px-8 py-4">
@@ -28,6 +35,7 @@ export default function Topbar({ projectName }: { projectName?: string }) {
         </Link>
         <Link
           href="/dashboard/exports"
+          onClick={gateExport}
           className="rounded-full border border-[hsl(var(--glass-border))] px-3 py-1 transition hover:border-[hsl(var(--primary-amber)/0.35)] hover:text-[hsl(var(--text-primary))]"
         >
           Export

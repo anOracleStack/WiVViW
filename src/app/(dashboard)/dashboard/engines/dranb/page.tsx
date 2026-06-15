@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { useDashboardAuth } from "@/components/DashboardAuth";
 import GlassPanel from "@/components/ui/GlassPanel";
 import SectionTitle from "@/components/ui/SectionTitle";
@@ -24,7 +23,7 @@ const engine = ENGINE_REGISTRY.dranb;
 
 export default function DranbPage() {
   const router = useRouter();
-  const { canRun } = useDashboardAuth();
+  const { canRun, requestSignup } = useDashboardAuth();
   const [brief, setBrief] = useState(defaultBrief);
   const [toneInput, setToneInput] = useState("");
   const [avoidInput, setAvoidInput] = useState("");
@@ -52,7 +51,7 @@ export default function DranbPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!canRun) {
-      setError("Sign up or sign in to run dRANb and get naming results.");
+      requestSignup("run", engine.friendlyLabel);
       return;
     }
     setError(null);
@@ -76,11 +75,11 @@ export default function DranbPage() {
 
   return (
     <div className="mx-auto max-w-2xl text-center">
-      <SectionTitle eyebrow={engine.sub} title={engine.label} />
+      <SectionTitle title={engine.friendlyLabel} />
       <BalancedText className="mt-4 text-sm text-[hsl(var(--text-muted))]">
-        Submit a brand brief — Clotho, Lachesis,
+        Tell us what you&apos;re building —
         <br />
-        and Eunoia produce scored finalists.
+        we&apos;ll shape the first pass together.
       </BalancedText>
 
       <div className="mt-8">
@@ -231,16 +230,8 @@ export default function DranbPage() {
 
           <div className="pt-2 text-center">
             <button type="submit" disabled={loading} className="btn-primary">
-              {loading ? "Starting…" : canRun ? "Run dRANb" : "Sign in to run"}
+              {loading ? "Starting…" : `Run ${engine.friendlyLabel}`}
             </button>
-            {!canRun && (
-              <p className="mt-3 text-xs text-[hsl(var(--text-muted))]">
-                <Link href="/signup" className="text-[hsl(var(--primary-amber))] hover:underline">
-                  Create an account
-                </Link>{" "}
-                to submit briefs and receive output.
-              </p>
-            )}
           </div>
         </form>
       </GlassPanel>

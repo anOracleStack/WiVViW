@@ -40,19 +40,14 @@ function EngineNode({
         }}
       />
       <span
-        className={`absolute left-1/2 mt-2 -translate-x-1/2 whitespace-nowrap font-mono text-[10px] tracking-widest ${
+        className={`absolute left-1/2 mt-2 -translate-x-1/2 whitespace-nowrap text-[10px] font-medium ${
           live
             ? "text-[hsl(var(--text-muted))] group-hover:text-[hsl(var(--text-primary))]"
             : "text-[hsl(var(--text-muted)/0.5)]"
         }`}
       >
-        {engine.label}
+        {engine.friendlyLabel}
       </span>
-      {!live && (
-        <span className="absolute left-1/2 mt-6 -translate-x-1/2 font-mono text-[8px] uppercase tracking-widest text-[hsl(var(--text-muted)/0.6)]">
-          Soon
-        </span>
-      )}
     </>
   );
 
@@ -68,7 +63,7 @@ function EngineNode({
   }
 
   return (
-    <div className={className} style={style} title={`${engine.label} — coming soon`}>
+    <div className={className} style={style} title={engine.friendlyLabel}>
       {dot}
     </div>
   );
@@ -90,10 +85,7 @@ export default function ConstellationMap({ completedPhases = 2 }: { completedPha
       ))}
 
       <div className="absolute bottom-4 left-0 right-0 px-6">
-        <p className="text-center font-mono text-[10px] tracking-[0.35em] text-[hsl(var(--text-muted))]">
-          DNA RITUAL
-        </p>
-        <div className="mt-2 flex flex-wrap justify-center gap-2">
+        <div className="flex flex-wrap justify-center gap-2">
           {RITUAL.map((step, i) => (
             <span
               key={step}

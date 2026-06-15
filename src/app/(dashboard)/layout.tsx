@@ -7,6 +7,7 @@ import {
 } from "@/components/DashboardAuth";
 import Sidebar from "@/components/os/Sidebar";
 import Topbar from "@/components/os/Topbar";
+import SiteFooter from "@/components/ui/SiteFooter";
 import VoidBackdrop from "@/components/ui/VoidBackdrop";
 import { isEmailAllowed } from "@/lib/auth/allowlist";
 import { getOptionalAuthUser } from "@/lib/auth/session";
@@ -29,7 +30,7 @@ export default async function DashboardLayout({ children }: { children: ReactNod
 
   return (
     <DashboardAuthProvider canRun={canRun} email={email}>
-      <div className="relative min-h-screen bg-[hsl(var(--void-bg))]">
+      <div data-shell="workspace" className="relative min-h-screen bg-[hsl(var(--shell-bg))]">
         <VoidBackdrop />
         <div className="relative z-10 flex min-h-screen">
           <Sidebar />
@@ -39,24 +40,27 @@ export default async function DashboardLayout({ children }: { children: ReactNod
               <GuestBrowseBanner />
               {children}
             </main>
-            <footer className="border-t border-[hsl(var(--glass-border))] px-8 py-3 text-center text-xs text-[hsl(var(--text-muted))]">
-              {canRun ? (
-                <form action="/auth/sign-out" method="post" className="inline">
-                  <button type="submit" className="hover:text-[hsl(var(--primary-amber))]">
-                    Sign out{email ? ` (${email})` : ""}
-                  </button>
-                </form>
-              ) : (
-                <span>
-                  <Link href="/login" className="hover:text-[hsl(var(--primary-amber))]">
-                    Sign in
-                  </Link>
-                  {" · "}
-                  <Link href="/signup" className="hover:text-[hsl(var(--primary-amber))]">
-                    Sign up
-                  </Link>
-                </span>
-              )}
+            <footer className="border-t border-[hsl(var(--glass-border))] px-8 py-4">
+              <SiteFooter />
+              <div className="mt-2 text-center text-xs text-[hsl(var(--text-muted))]">
+                {canRun ? (
+                  <form action="/auth/sign-out" method="post" className="inline">
+                    <button type="submit" className="hover:text-[hsl(var(--primary-amber))]">
+                      Sign out{email ? ` (${email})` : ""}
+                    </button>
+                  </form>
+                ) : (
+                  <span>
+                    <Link href="/login" className="hover:text-[hsl(var(--primary-amber))]">
+                      Sign in
+                    </Link>
+                    {" · "}
+                    <Link href="/signup" className="hover:text-[hsl(var(--primary-amber))]">
+                      Sign up
+                    </Link>
+                  </span>
+                )}
+              </div>
             </footer>
           </div>
         </div>

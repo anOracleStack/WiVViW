@@ -1,7 +1,7 @@
 # Canonical Sources — WiVViW
 
 Single page: what to read, what was deduped, what is still missing.
-Last updated: 2026-06-10 (post inventory migration).
+Last updated: 2026-06-14 (domain-branding reference + ethereal genesis spec).
 
 ---
 
@@ -16,6 +16,7 @@ Last updated: 2026-06-10 (post inventory migration).
 | How to build in Cursor | `00_CANON/WiVViW-MANUAL.md` |
 | Zero-loss consolidated spec | `docs/braintrust/brand/brand_master_01.md` |
 | Live app context | `docs/PROJECT-CONTEXT.md` |
+| Ethereal Genesis UI spec (browse-first, domain intelligence) | `docs/superpowers/specs/2026-06-10-ethereal-genesis-design.md` |
 
 ### Architecture & audits
 
@@ -34,6 +35,7 @@ Last updated: 2026-06-10 (post inventory migration).
 | NotebookLM extractions | `01_RAW_INPUTS/notebooklm_rounds/` |
 | Part 1–5 master architecture | `01_RAW_INPUTS/galaxy_notebooklm/parts/` |
 | Brand source tree | `01_RAW_INPUTS/wivviw_brandle/` |
+| Domain fusion, TLD bank, naming rubric | `01_RAW_INPUTS/domain-branding/Oracle-Vision_Extension-Menu_Domain-Branding-Reference.md` |
 | Business decks & OP series | `05_BUSINESS/platform/WiVViW — BUSINESS PLATFORM/` |
 
 ### Build & UI (reference only — not production `src/`)

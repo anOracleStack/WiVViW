@@ -56,7 +56,7 @@ export default function SessionResult({
   return (
     <div className="mx-auto max-w-2xl text-center">
       <h1 className="text-2xl font-semibold" style={{ color: `hsl(${engine.colorHsl})` }}>
-        {engine.label} Run
+        {engine.friendlyLabel}
       </h1>
       <p className="mt-2 text-xs text-white/40">{sessionId}</p>
 

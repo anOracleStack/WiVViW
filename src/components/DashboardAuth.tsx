@@ -1,17 +1,19 @@
 "use client";
 
-import { createContext, useContext, type ReactNode } from "react";
-import Link from "next/link";
+import { createContext, useCallback, useContext, useState, type ReactNode } from "react";
+import SignupGateModal, { type SignupGateReason } from "@/components/auth/SignupGateModal";
 
 type DashboardAuthContextValue = {
   /** Signed in with an allowed account — can run engines and APIs. */
   canRun: boolean;
   email: string | null;
+  requestSignup: (reason?: SignupGateReason, engineName?: string) => void;
 };
 
 const DashboardAuthContext = createContext<DashboardAuthContextValue>({
   canRun: false,
   email: null,
+  requestSignup: () => {},
 });
 
 export function useDashboardAuth() {
@@ -22,10 +24,29 @@ export function DashboardAuthProvider({
   canRun,
   email,
   children,
-}: DashboardAuthContextValue & { children: ReactNode }) {
+}: Omit<DashboardAuthContextValue, "requestSignup"> & { children: ReactNode }) {
+  const [gateOpen, setGateOpen] = useState(false);
+  const [gateReason, setGateReason] = useState<SignupGateReason>("run");
+  const [gateEngine, setGateEngine] = useState<string | undefined>();
+
+  const requestSignup = useCallback(
+    (reason: SignupGateReason = "run", engineName?: string) => {
+      setGateReason(reason);
+      setGateEngine(engineName);
+      setGateOpen(true);
+    },
+    []
+  );
+
   return (
-    <DashboardAuthContext.Provider value={{ canRun, email }}>
+    <DashboardAuthContext.Provider value={{ canRun, email, requestSignup }}>
       {children}
+      <SignupGateModal
+        open={gateOpen}
+        reason={gateReason}
+        engineName={gateEngine}
+        onClose={() => setGateOpen(false)}
+      />
     </DashboardAuthContext.Provider>
   );
 }
@@ -36,22 +57,10 @@ export function GuestBrowseBanner() {
 
   return (
     <div
-      className="glass-panel mb-6 border-[hsl(var(--primary-amber)/0.25)] px-4 py-3 text-center text-sm text-[hsl(var(--text-primary))]"
+      className="mb-6 rounded-xl border border-[hsl(var(--glass-border))] px-4 py-2.5 text-center text-xs text-[hsl(var(--text-muted))]"
       role="status"
     >
-      <p className="leading-relaxed text-[hsl(var(--text-muted))]">
-        You&apos;re browsing in preview mode.
-        <br />
-        Explore the shell — sign up to run dRANb and get results.
-      </p>
-      <div className="mt-3 flex flex-wrap items-center justify-center gap-3">
-        <Link href="/signup" className="btn-primary px-4 py-2">
-          Sign up
-        </Link>
-        <Link href="/login" className="btn-secondary px-4 py-2">
-          Sign in
-        </Link>
-      </div>
+      Exploring — sign in when you save or run.
     </div>
   );
 }
