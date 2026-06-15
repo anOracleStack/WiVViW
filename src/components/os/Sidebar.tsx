@@ -118,8 +118,8 @@ export default function Sidebar() {
                 <NavItem
                   key={engine.id}
                   href={engine.route}
-                  label={engine.friendlyLabel}
-                  code={engine.label}
+                  label={engine.label}
+                  code={engine.friendlyLabel}
                   active={isActive(engine.route)}
                   badge={badge}
                   accentHsl={engine.colorHsl}

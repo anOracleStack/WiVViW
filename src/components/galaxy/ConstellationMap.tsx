@@ -46,7 +46,7 @@ function EngineNode({
             : "text-[hsl(var(--text-muted)/0.5)]"
         }`}
       >
-        {engine.friendlyLabel}
+        {engine.label}
       </span>
     </>
   );
@@ -63,7 +63,7 @@ function EngineNode({
   }
 
   return (
-    <div className={className} style={style} title={engine.friendlyLabel}>
+    <div className={className} style={style} title={engine.label}>
       {dot}
     </div>
   );
