@@ -24,16 +24,16 @@ function routeHint(pathname: string): string | null {
   const id = match[1] as keyof typeof ENGINE_REGISTRY;
   const engine = ENGINE_REGISTRY[id];
   if (!engine?.friendlyLabel) return null;
-  return `You're on ${engine.friendlyLabel}. Draft freely — sign in when you want to run or save.`;
+  return `You're on ${engine.friendlyLabel} — ${engine.outcomeHint}. Draft freely; sign in when you want to run or save.`;
 }
 
 function replyFor(input: string, pathname: string): string {
   const key = input.trim().toLowerCase();
   if (STATIC_ANSWERS[key]) return STATIC_ANSWERS[key];
   if (key.includes("name") || key.includes("dranb"))
-    return "Name helps you find something worth owning. Open it from the sidebar to draft a brief.";
+    return `${ENGINE_REGISTRY.dranb.outcomeHint}. Open Name from the sidebar to draft a brief.`;
   if (key.includes("brandle") || key.includes("domain"))
-    return "Brandle checks territory — domains and handles once you have a shortlist.";
+    return `${ENGINE_REGISTRY.brandl.outcomeHint}. Open Brandle once you have a shortlist.`;
   if (key.includes("privacy") || key.includes("legal"))
     return "See Privacy and Legal in the footer for how we handle data.";
   const hint = routeHint(pathname);

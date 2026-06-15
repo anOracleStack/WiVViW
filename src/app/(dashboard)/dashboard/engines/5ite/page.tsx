@@ -6,7 +6,6 @@ export default function SitePage() {
   return (
     <EngineWorkbench
       engine={ENGINE_REGISTRY["5ite"]}
-      description={ENGINE_PAGE_CONFIG["5ite"].description}
       fields={ENGINE_PAGE_CONFIG["5ite"].fields}
       apiPath="/api/engines/5ite"
     />

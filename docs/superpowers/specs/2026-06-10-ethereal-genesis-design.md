@@ -2,7 +2,7 @@
 
 **Date:** 2026-06-10 (updated 2026-06-14)  
 **Status:** Owner decisions incorporated — Phase 1 implementation in progress
-**Scope:** Design + Phase 1 `src/` (ethereal genesis shell, browse-first, show-don't-label)
+**Scope:** Design + Phase 1 `src/` (ethereal genesis shell, browse-first, balanced obscurity voice)
 
 **Sources read:**
 
@@ -26,19 +26,30 @@
 
 ---
 
-## Lane Philosophy / Show Don't Label
+## Balanced Obscurity
 
-**Owner mandate (non-negotiable):** Show more, say less. Never label what is visually obvious.
+**Owner mandate:** User-friendly **and** obscure/cool — not one or the other. The visual carries vibe; short labels carry function. People must understand what something **is** and **does**, without paragraph explanations or generic SaaS tone.
+
+**The balance:**
+
+- Comprehensive clarity — never leave users guessing what an engine does  
+- Own aesthetic — ethereal, distinctive, not basic-ass corporate  
+- Not too much copy; not too little clarity  
+- Layer of cool on top of sense-making  
 
 | Do | Don't |
 |----|-------|
-| Let the galaxy map, engine grid, and genesis backdrop speak | Headline "Constellation", "Galaxy", or "Genesis" when the visual is already there |
-| Use friendly engine names (Name, Brandle, Field…) in primary nav | Lead with MOIRAI, dRANb pronunciation, glass-box receipts jargon |
-| One short balanced line + one CTA | Marketing essays, cinematic command shell copy, spoon-feeding tours |
+| Let galaxy map, genesis backdrop, and star nodes carry mood | Headline "CONSTELLATION" or "GALAXY" over a map that already shows it |
+| **Name** + one quiet outcome line on engine cards ("Find a name worth owning") | Internal codes (dRANb, 4IELD) or MOIRAI jargon as primary labels |
+| Friendly engine names in nav + mono codename as secondary badge | Pronunciation guides, glass-box lecture copy, cinematic command shell |
+| Landing: 2–3 balanced lines that promise seed → sale | Tech jargon, feature lists, marketing essays |
 | Gate on run/save/export with "Save your progress" | Punitive login walls at browse time |
-| Collaboration through action ("Run Name", "Open Brandle") | Lecture copy explaining what's on screen |
+| Tooltips / chatbot for depth when user asks | Spoon-feeding tours that explain what's already visible |
+| Collaboration voice ("Run Name", "Open Brandle") | Empty UI with no outcome hint — user can't tell what engines do |
 
-Internal codenames (dRANb, 4IELD, MOIRAI) stay in mono sublabels, API routes, and backend — not primary UI.
+**Pattern:** Visual = vibe. Label = function. Example: star map needs no "CONSTELLATION" headline, but an engine card should say **Name** plus a single outcome line.
+
+Internal codenames (dRANb, 4IELD, MOIRAI) stay in mono sublabels, API routes, receipts detail, and backend — not primary UI headlines.
 
 ---
 

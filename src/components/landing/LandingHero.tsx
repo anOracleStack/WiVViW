@@ -51,6 +51,9 @@ export default function LandingHero({ signedIn }: { signedIn: boolean }) {
                 <span className="text-xs font-medium text-[hsl(var(--text-primary))]">
                   {engine.friendlyLabel}
                 </span>
+                <span className="text-[10px] leading-snug text-[hsl(var(--text-muted)/0.85)]">
+                  {engine.outcomeHint}
+                </span>
               </Link>
             );
           })}
