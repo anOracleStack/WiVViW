@@ -1,6 +1,5 @@
 import Link from "next/link";
 import EngineConstellation from "@/components/landing/EngineConstellation";
-import BalancedText from "@/components/ui/BalancedText";
 import GenesisBackdrop from "@/components/ui/GenesisBackdrop";
 import SiteFooter from "@/components/ui/SiteFooter";
 import { WivviwLogo } from "@/components/ui/WivviwLogo";
@@ -23,16 +22,17 @@ export default function LandingHero({ signedIn }: { signedIn: boolean }) {
         </div>
 
         <h1 className="landing-reveal landing-reveal--headline font-display text-[2.75rem] font-bold uppercase leading-[1.05] tracking-[0.06em] text-[hsl(var(--text-primary))] sm:text-[3.5rem]">
-          Business Optimization
+          <span className="block">Business</span>
+          <span className="block">Optimization</span>
         </h1>
 
         <p className="landing-reveal landing-reveal--promise mt-5 font-display text-[2rem] font-semibold leading-[1.12] tracking-tight text-[hsl(var(--text-primary))] sm:text-[2.75rem]">
           Build Your Brand DNA
         </p>
 
-        <BalancedText className="landing-reveal landing-reveal--subline mt-6 max-w-md text-[1.2rem] text-[hsl(var(--text-muted))] sm:text-[1.35rem]">
+        <p className="landing-reveal landing-reveal--subline mt-6 text-[1.2rem] text-[hsl(var(--text-muted))] sm:text-[1.35rem]">
           from seed to sale
-        </BalancedText>
+        </p>
 
         <div className="landing-reveal landing-reveal--constellation mt-20 w-full">
           <EngineConstellation engineIds={PREVIEW_ENGINES} />

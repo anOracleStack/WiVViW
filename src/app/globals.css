@@ -6,13 +6,13 @@
 @source "../hooks/**/*.{ts,tsx}";
 
 :root {
-  /* Genesis phase 0 — pearl / light */
-  --genesis-bg: 40 33% 98%;
-  --genesis-surface: 260 30% 96%;
-  --genesis-pearl: 45 40% 94%;
-  --genesis-gold: 42 75% 58%;
-  --genesis-lavender: 270 40% 90%;
-  --genesis-indigo: 250 35% 88%;
+  /* Genesis phase 0 — cosmic night (landing / marketing) */
+  --genesis-bg: 250 42% 6%;
+  --genesis-surface: 260 35% 10%;
+  --genesis-pearl: 270 30% 14%;
+  --genesis-gold: 42 80% 62%;
+  --genesis-lavender: 270 45% 68%;
+  --genesis-indigo: 250 40% 22%;
 
   /* Earned depth — workspace / mature shell */
   --void-bg: 240 28% 8%;
@@ -35,11 +35,11 @@
 [data-shell="genesis"] {
   --shell-bg: var(--genesis-bg);
   --shell-surface: var(--genesis-surface);
-  --text-primary: 240 18% 14%;
-  --text-muted: 240 8% 42%;
-  --glass-bg: 0 0% 100% / 0.72;
-  --glass-border: 240 12% 18% / 0.08;
-  --glass-border-hover: 42 75% 58% / 0.35;
+  --text-primary: 45 28% 96%;
+  --text-muted: 260 12% 72%;
+  --glass-bg: 260 35% 12% / 0.72;
+  --glass-border: 0 0% 100% / 0.1;
+  --glass-border-hover: 42 80% 62% / 0.4;
 }
 
 [data-shell="workspace"] {
@@ -190,6 +190,28 @@ body {
   animation: mesh-breathe 16s ease-in-out infinite;
 }
 
+.cosmic-nebula--a {
+  animation: nebula-drift-a 42s ease-in-out infinite;
+}
+
+.cosmic-nebula--b {
+  animation: nebula-drift-b 56s ease-in-out infinite;
+}
+
+.cosmic-mesh {
+  animation: mesh-breathe 22s ease-in-out infinite;
+}
+
+.engine-constellation-grid {
+  grid-auto-rows: 1fr;
+}
+
+.engine-node-hint {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .engine-node-dot {
   animation: node-pulse 4.5s ease-in-out infinite;
 }
@@ -222,12 +244,36 @@ body {
 @keyframes mesh-breathe {
   0%,
   100% {
-    opacity: 0.45;
-    transform: scale(1);
+    opacity: 0.4;
+    transform: scale(1) translate(0, 0);
   }
   50% {
-    opacity: 0.65;
-    transform: scale(1.02);
+    opacity: 0.62;
+    transform: scale(1.03) translate(0.5%, -0.4%);
+  }
+}
+
+@keyframes nebula-drift-a {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.62;
+  }
+  50% {
+    transform: translate(1.2%, -0.8%) scale(1.04);
+    opacity: 0.78;
+  }
+}
+
+@keyframes nebula-drift-b {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.48;
+  }
+  50% {
+    transform: translate(-1%, 1%) scale(1.03);
+    opacity: 0.64;
   }
 }
 
@@ -258,6 +304,9 @@ body {
   .genesis-helix,
   .genesis-orbit-ring,
   .genesis-mesh,
+  .cosmic-nebula--a,
+  .cosmic-nebula--b,
+  .cosmic-mesh,
   .engine-node-dot,
   .engine-node-orbit,
   .landing-reveal {
@@ -324,7 +373,7 @@ body {
 
 .btn-secondary:hover {
   border-color: hsl(var(--glass-border-hover));
-  background: hsl(0 0% 100% / 0.04);
+  background: hsl(0 0% 100% / 0.06);
 }
 
 .input-field {

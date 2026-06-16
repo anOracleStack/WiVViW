@@ -2,46 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-function DnaHelix() {
-  return (
-    <svg
-      className="genesis-helix pointer-events-none absolute left-1/2 top-[18%] h-[420px] w-[120px] -translate-x-1/2 opacity-[0.14]"
-      viewBox="0 0 120 420"
-      aria-hidden
-    >
-      <defs>
-        <linearGradient id="helix-strand" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="hsl(var(--genesis-gold) / 0.6)" />
-          <stop offset="50%" stopColor="hsl(var(--genesis-lavender) / 0.5)" />
-          <stop offset="100%" stopColor="hsl(var(--genesis-gold) / 0.3)" />
-        </linearGradient>
-      </defs>
-      {Array.from({ length: 18 }).map((_, i) => {
-        const y = 12 + i * 22;
-        const phase = i * 0.55;
-        const leftX = 42 + Math.sin(phase) * 18;
-        const rightX = 78 - Math.sin(phase) * 18;
-        return (
-          <g key={i}>
-            <line
-              x1={leftX}
-              y1={y}
-              x2={rightX}
-              y2={y}
-              stroke="url(#helix-strand)"
-              strokeWidth="0.8"
-              opacity={0.35 + (i % 3) * 0.1}
-            />
-            <circle cx={leftX} cy={y} r="2.2" fill="hsl(var(--genesis-gold) / 0.45)" />
-            <circle cx={rightX} cy={y} r="2.2" fill="hsl(var(--genesis-lavender) / 0.5)" />
-          </g>
-        );
-      })}
-    </svg>
-  );
-}
-
-function ParticleField() {
+function StarField() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -65,15 +26,24 @@ function ParticleField() {
     resize();
     window.addEventListener("resize", resize);
 
-    const count = 48;
-    const particles = Array.from({ length: count }, (_, i) => ({
+    const count = 140;
+    const stars = Array.from({ length: count }, (_, i) => ({
       x: Math.random(),
       y: Math.random(),
-      r: 0.6 + Math.random() * 1.8,
-      speed: 0.00008 + Math.random() * 0.00015,
-      drift: (Math.random() - 0.5) * 0.0002,
-      hue: i % 3 === 0 ? "42 75% 58%" : i % 3 === 1 ? "270 40% 75%" : "250 35% 82%",
-      alpha: 0.12 + Math.random() * 0.28,
+      r: 0.35 + Math.random() * 1.6,
+      speed: 0.00004 + Math.random() * 0.0001,
+      drift: (Math.random() - 0.5) * 0.00012,
+      twinkleSpeed: 0.012 + Math.random() * 0.025,
+      twinklePhase: Math.random() * Math.PI * 2,
+      hue:
+        i % 4 === 0
+          ? "42 85% 72%"
+          : i % 4 === 1
+            ? "270 55% 82%"
+            : i % 4 === 2
+              ? "220 60% 78%"
+              : "45 30% 92%",
+      alpha: 0.18 + Math.random() * 0.55,
     }));
 
     const draw = () => {
@@ -81,19 +51,20 @@ function ParticleField() {
       const h = canvas.clientHeight;
       ctx.clearRect(0, 0, w, h);
 
-      for (const p of particles) {
-        p.y -= p.speed;
-        p.x += p.drift;
-        if (p.y < -0.02) {
-          p.y = 1.02;
-          p.x = Math.random();
+      for (const star of stars) {
+        star.y -= star.speed;
+        star.x += star.drift;
+        if (star.y < -0.02) {
+          star.y = 1.02;
+          star.x = Math.random();
         }
-        if (p.x < -0.02 || p.x > 1.02) p.drift *= -1;
+        if (star.x < -0.02 || star.x > 1.02) star.drift *= -1;
 
-        const twinkle = 0.65 + Math.sin(frame * 0.02 + p.x * 12) * 0.35;
+        const twinkle =
+          0.55 + Math.sin(frame * star.twinkleSpeed + star.twinklePhase) * 0.45;
         ctx.beginPath();
-        ctx.arc(p.x * w, p.y * h, p.r * twinkle, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${p.hue} / ${p.alpha * twinkle})`;
+        ctx.arc(star.x * w, star.y * h, star.r * twinkle, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${star.hue} / ${star.alpha * twinkle})`;
         ctx.fill();
       }
 
@@ -113,7 +84,7 @@ function ParticleField() {
   return (
     <canvas
       ref={canvasRef}
-      className="pointer-events-none absolute inset-0 h-full w-full"
+      className="cosmic-starfield pointer-events-none absolute inset-0 h-full w-full"
       aria-hidden
     />
   );
@@ -123,37 +94,59 @@ export default function GenesisBackdrop() {
   return (
     <>
       <div
-        className="pointer-events-none absolute inset-0"
+        className="cosmic-base pointer-events-none absolute inset-0"
         style={{
           background: `
-            radial-gradient(ellipse 100% 80% at 50% -10%, hsl(var(--genesis-gold) / 0.22), transparent 55%),
-            radial-gradient(ellipse 70% 55% at 85% 75%, hsl(var(--genesis-lavender) / 0.28), transparent 50%),
-            radial-gradient(ellipse 55% 45% at 10% 65%, hsl(var(--genesis-pearl) / 0.55), transparent 48%),
-            radial-gradient(ellipse 40% 35% at 50% 100%, hsl(var(--genesis-indigo) / 0.18), transparent 60%)
+            radial-gradient(ellipse 120% 90% at 50% -5%, hsl(250 45% 18% / 0.95), transparent 58%),
+            radial-gradient(ellipse 85% 70% at 88% 72%, hsl(280 55% 28% / 0.55), transparent 52%),
+            radial-gradient(ellipse 75% 60% at 8% 68%, hsl(220 50% 22% / 0.5), transparent 48%),
+            radial-gradient(ellipse 55% 45% at 52% 105%, hsl(42 70% 38% / 0.22), transparent 55%),
+            linear-gradient(180deg, hsl(250 42% 6%) 0%, hsl(260 38% 8%) 45%, hsl(240 35% 5%) 100%)
           `,
         }}
         aria-hidden
       />
 
       <div
-        className="genesis-mesh pointer-events-none absolute inset-0 opacity-60"
+        className="cosmic-nebula cosmic-nebula--a pointer-events-none absolute inset-0 opacity-70"
+        style={{
+          background: `
+            radial-gradient(ellipse 55% 45% at 28% 38%, hsl(var(--genesis-lavender) / 0.32), transparent 62%),
+            radial-gradient(ellipse 48% 40% at 72% 28%, hsl(var(--genesis-gold) / 0.18), transparent 58%)
+          `,
+        }}
+        aria-hidden
+      />
+
+      <div
+        className="cosmic-nebula cosmic-nebula--b pointer-events-none absolute inset-0 opacity-55"
+        style={{
+          background: `
+            radial-gradient(ellipse 60% 50% at 62% 78%, hsl(270 50% 35% / 0.38), transparent 60%),
+            radial-gradient(ellipse 40% 35% at 18% 82%, hsl(215 45% 30% / 0.28), transparent 55%)
+          `,
+        }}
+        aria-hidden
+      />
+
+      <div
+        className="genesis-mesh cosmic-mesh pointer-events-none absolute inset-0 opacity-50"
         style={{
           backgroundImage: `
-            conic-gradient(from 210deg at 50% 40%, hsl(var(--genesis-gold) / 0.06), transparent 35%, hsl(var(--genesis-lavender) / 0.08), transparent 70%, hsl(var(--genesis-gold) / 0.05))
+            conic-gradient(from 195deg at 48% 42%, hsl(var(--genesis-gold) / 0.1), transparent 32%, hsl(var(--genesis-lavender) / 0.14), transparent 68%, hsl(220 55% 55% / 0.08))
           `,
         }}
         aria-hidden
       />
 
-      <ParticleField />
-      <DnaHelix />
+      <StarField />
 
       <div
-        className="genesis-orbit-ring pointer-events-none absolute left-1/2 top-[32%] h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[hsl(var(--genesis-gold)/0.08)]"
+        className="genesis-orbit-ring pointer-events-none absolute left-1/2 top-[32%] h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[hsl(var(--genesis-gold)/0.12)]"
         aria-hidden
       />
       <div
-        className="genesis-orbit-ring genesis-orbit-ring--slow pointer-events-none absolute left-1/2 top-[38%] h-[680px] w-[680px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[hsl(var(--genesis-lavender)/0.06)]"
+        className="genesis-orbit-ring genesis-orbit-ring--slow pointer-events-none absolute left-1/2 top-[38%] h-[680px] w-[680px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[hsl(var(--genesis-lavender)/0.1)]"
         aria-hidden
       />
 
@@ -165,15 +158,15 @@ export default function GenesisBackdrop() {
             style={{
               left: `${left}%`,
               top: `${14 + (i % 4) * 18}%`,
-              width: `${5 + (i % 4) * 4}px`,
-              height: `${5 + (i % 4) * 4}px`,
+              width: `${4 + (i % 4) * 3}px`,
+              height: `${4 + (i % 4) * 3}px`,
               animationDelay: `${i * 1.1}s`,
             }}
           />
         ))}
       </div>
 
-      <div className="void-grain pointer-events-none absolute inset-0 opacity-40" aria-hidden />
+      <div className="void-grain pointer-events-none absolute inset-0 opacity-30" aria-hidden />
     </>
   );
 }
