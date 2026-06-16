@@ -17,32 +17,28 @@ export default function LandingHero({ signedIn }: { signedIn: boolean }) {
     >
       <GenesisBackdrop />
 
-      <div className="relative z-10 flex w-full max-w-4xl flex-col items-center text-center">
+      <div className="relative z-10 flex w-full max-w-5xl flex-col items-center text-center">
         <div className="landing-reveal landing-reveal--logo">
-          <WivviwLogo size="lg" showText className="mb-10" />
+          <WivviwLogo size="xl" showText layout="stacked" className="mb-12" />
         </div>
 
-        <p className="landing-reveal landing-reveal--whisper mb-4 font-mono text-[11px] uppercase tracking-[0.28em] text-[hsl(var(--genesis-gold)/0.75)]">
-          Written before you arrived.
-        </p>
-
-        <h1 className="landing-reveal landing-reveal--headline font-display text-[3.25rem] font-semibold leading-[1.08] tracking-tight text-[hsl(var(--text-primary))] sm:text-6xl">
-          It was already
-          <br />
-          written.
+        <h1 className="landing-reveal landing-reveal--headline font-display text-[2.75rem] font-bold uppercase leading-[1.05] tracking-[0.06em] text-[hsl(var(--text-primary))] sm:text-[3.5rem]">
+          Business Optimization
         </h1>
 
-        <BalancedText className="landing-reveal landing-reveal--subline mt-7 max-w-lg text-[1.05rem] text-[hsl(var(--text-muted))]">
-          From the seed of an idea
-          <br />
-          to the moment of first sale.
+        <p className="landing-reveal landing-reveal--promise mt-5 font-display text-[2rem] font-semibold leading-[1.12] tracking-tight text-[hsl(var(--text-primary))] sm:text-[2.75rem]">
+          Build Your Brand DNA
+        </p>
+
+        <BalancedText className="landing-reveal landing-reveal--subline mt-6 max-w-md text-[1.2rem] text-[hsl(var(--text-muted))] sm:text-[1.35rem]">
+          from seed to sale
         </BalancedText>
 
-        <div className="landing-reveal landing-reveal--constellation mt-16 w-full">
+        <div className="landing-reveal landing-reveal--constellation mt-20 w-full">
           <EngineConstellation engineIds={PREVIEW_ENGINES} />
         </div>
 
-        <div className="landing-reveal landing-reveal--cta mt-14 flex flex-wrap items-center justify-center gap-3">
+        <div className="landing-reveal landing-reveal--cta mt-16 flex flex-wrap items-center justify-center gap-4">
           {signedIn ? (
             <Link href="/dashboard" className="btn-primary">
               Open workspace

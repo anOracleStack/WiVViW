@@ -1,20 +1,34 @@
 import { cn } from "@/lib/utils";
 
 interface WivviwLogoProps {
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "xl";
   showText?: boolean;
+  /** inline = icon beside wordmark; stacked = icon above wordmark (landing lockup) */
+  layout?: "inline" | "stacked";
   className?: string;
 }
 
-export function WivviwLogo({ size = "md", showText = false, className }: WivviwLogoProps) {
+export function WivviwLogo({
+  size = "md",
+  showText = false,
+  layout = "inline",
+  className,
+}: WivviwLogoProps) {
   const dims = {
     sm: { box: 28, text: "text-sm" },
     md: { box: 36, text: "text-lg" },
     lg: { box: 52, text: "text-2xl" },
+    xl: { box: 88, text: "text-4xl" },
   }[size];
 
   return (
-    <span className={cn("inline-flex items-center gap-2.5", className)}>
+    <span
+      className={cn(
+        "inline-flex items-center",
+        layout === "stacked" ? "flex-col gap-4" : "flex-row gap-2.5",
+        className,
+      )}
+    >
       <svg
         width={dims.box}
         height={dims.box}

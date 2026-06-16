@@ -146,11 +146,11 @@ body {
 .landing-reveal--logo {
   animation-delay: 0.05s;
 }
-.landing-reveal--whisper {
+.landing-reveal--headline {
   animation-delay: 0.18s;
 }
-.landing-reveal--headline {
-  animation-delay: 0.28s;
+.landing-reveal--promise {
+  animation-delay: 0.3s;
 }
 .landing-reveal--subline {
   animation-delay: 0.42s;

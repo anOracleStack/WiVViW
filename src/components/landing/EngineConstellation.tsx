@@ -28,7 +28,7 @@ export default function EngineConstellation({ engineIds }: EngineConstellationPr
   }));
 
   return (
-    <div className="relative mx-auto w-full max-w-3xl px-2">
+    <div className="relative mx-auto w-full max-w-4xl px-2">
       <svg
         className="pointer-events-none absolute inset-0 h-full w-full"
         viewBox="0 0 100 100"
@@ -60,14 +60,14 @@ export default function EngineConstellation({ engineIds }: EngineConstellationPr
         ))}
       </svg>
 
-      <div className="relative grid grid-cols-4 gap-x-3 gap-y-10 sm:grid-cols-7 sm:gap-x-2 sm:gap-y-6">
+      <div className="relative grid grid-cols-4 gap-x-4 gap-y-12 sm:grid-cols-7 sm:gap-x-3 sm:gap-y-8">
         {engineIds.map((id, i) => {
           const engine = ENGINE_REGISTRY[id];
           return (
             <Link
               key={id}
               href={engine.route}
-              className={`engine-node group relative flex flex-col items-center gap-2 text-center transition-all duration-500 ${
+              className={`engine-node group relative flex flex-col items-center gap-2.5 text-center transition-all duration-500 ${
                 revealed ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
               }`}
               style={{ transitionDelay: `${280 + i * 90}ms` }}
@@ -80,7 +80,7 @@ export default function EngineConstellation({ engineIds }: EngineConstellationPr
                 aria-hidden
               />
               <span
-                className="engine-node-shell relative flex w-full flex-col items-center gap-2 rounded-2xl border px-2 py-4 backdrop-blur-xl transition-transform duration-300 group-hover:-translate-y-0.5"
+                className="engine-node-shell relative flex w-full flex-col items-center gap-2.5 rounded-2xl border px-3 py-5 backdrop-blur-xl transition-transform duration-300 group-hover:-translate-y-0.5"
                 style={{
                   borderColor: `hsl(${engine.colorHsl} / 0.22)`,
                   background: `linear-gradient(145deg, hsl(${engine.colorHsl} / 0.08), hsl(0 0% 100% / 0.55))`,
@@ -92,17 +92,17 @@ export default function EngineConstellation({ engineIds }: EngineConstellationPr
                 }}
               >
                 <span
-                  className="engine-node-dot h-3 w-3 rounded-full"
+                  className="engine-node-dot h-3.5 w-3.5 rounded-full"
                   style={{
                     backgroundColor: `hsl(${engine.colorHsl})`,
                     boxShadow: `0 0 16px hsl(${engine.colorHsl} / 0.65), 0 0 4px hsl(${engine.colorHsl} / 0.9)`,
                     animationDelay: `${i * 0.6}s`,
                   }}
                 />
-                <span className="text-xs font-semibold tracking-tight text-[hsl(var(--text-primary))]">
+                <span className="text-sm font-semibold tracking-tight text-[hsl(var(--text-primary))]">
                   {engine.label}
                 </span>
-                <span className="text-[10px] leading-snug text-[hsl(var(--text-muted)/0.9)]">
+                <span className="text-xs leading-snug text-[hsl(var(--text-muted)/0.9)]">
                   {engine.outcomeHint}
                 </span>
               </span>
