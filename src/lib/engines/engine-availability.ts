@@ -5,12 +5,12 @@ export type EngineAvailability = "live" | "beta" | "coming_soon";
 /** Product-facing availability — nav and galaxy respect this. */
 export const ENGINE_AVAILABILITY: Record<EngineId, EngineAvailability> = {
   dranb: "live",
-  brandl: "coming_soon",
-  "4ield": "coming_soon",
-  "4tress": "coming_soon",
-  "3xec": "coming_soon",
-  "5ite": "coming_soon",
-  "6roxy": "coming_soon",
+  brandl: "beta",
+  "4ield": "beta",
+  "4tress": "beta",
+  "3xec": "beta",
+  "5ite": "beta",
+  "6roxy": "beta",
   v4ult: "live",
 };
 

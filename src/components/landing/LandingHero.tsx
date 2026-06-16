@@ -1,69 +1,57 @@
 import Link from "next/link";
 import BalancedText from "@/components/ui/BalancedText";
+import GenesisBackdrop from "@/components/ui/GenesisBackdrop";
+import SiteFooter from "@/components/ui/SiteFooter";
 import { WivviwLogo } from "@/components/ui/WivviwLogo";
-import VoidBackdrop from "@/components/ui/VoidBackdrop";
 import { ENGINE_REGISTRY, JOURNEY_ORDER } from "@/lib/engines/engine-contract";
-import { ENGINE_AVAILABILITY } from "@/lib/engines/engine-availability";
 import { isSupabaseAuthConfigured } from "@/lib/supabase/configured";
 
-const PREVIEW_ENGINES = JOURNEY_ORDER.slice(0, 6);
+const PREVIEW_ENGINES = JOURNEY_ORDER.slice(0, 7);
 
 export default function LandingHero({ signedIn }: { signedIn: boolean }) {
   return (
-    <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-8 py-16">
-      <VoidBackdrop />
+    <main
+      data-shell="genesis"
+      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[hsl(var(--shell-bg))] px-8 py-16"
+    >
+      <GenesisBackdrop />
 
       <div className="relative z-10 flex w-full max-w-3xl flex-col items-center text-center">
-        <WivviwLogo size="lg" showText className="mb-8" />
+        <WivviwLogo size="lg" showText className="mb-10" />
 
-        <p className="font-mono text-[11px] font-medium tracking-[0.4em] text-[hsl(var(--accent-teal))]">
-          BRAND INTELLIGENCE OS
-        </p>
-
-        <h1 className="mt-4 font-display text-5xl font-extrabold tracking-tight text-[hsl(var(--text-primary))]">
-          THE CONSTELLATION
+        <h1 className="font-display text-5xl font-semibold tracking-tight text-[hsl(var(--text-primary))]">
+          Identity begins in light.
         </h1>
 
-        <BalancedText className="mt-5 text-base text-[hsl(var(--text-muted))]">
-          Multi-model orchestration with MOIRAI —
+        <BalancedText className="mt-6 text-base text-[hsl(var(--text-muted))]">
+          We build your business DNA together —
           <br />
-          dRANb naming, glass-box receipts,
-          <br />
-          and a cinematic command shell.
+          from first name to first sale.
         </BalancedText>
 
-        <div className="mt-12 grid w-full max-w-xl grid-cols-3 gap-3 sm:grid-cols-6">
+        <div className="mt-14 grid w-full max-w-2xl grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-7">
           {PREVIEW_ENGINES.map((id) => {
             const engine = ENGINE_REGISTRY[id];
-            const status = ENGINE_AVAILABILITY[id];
-            const live = status === "live" || status === "beta";
             return (
-              <div
+              <Link
                 key={id}
-                className="glass-panel flex flex-col items-center gap-2 rounded-xl px-2 py-4 text-center"
+                href={engine.route}
+                className="glass-panel group flex flex-col items-center gap-2 rounded-xl px-2 py-4 text-center transition hover:scale-[1.02]"
                 style={{
-                  boxShadow: live
-                    ? `0 0 24px hsl(${engine.colorHsl} / 0.15), 0 0 0 1px hsl(var(--glass-border))`
-                    : undefined,
+                  boxShadow: `0 0 20px hsl(${engine.colorHsl} / 0.12), 0 0 0 1px hsl(var(--glass-border))`,
                 }}
               >
                 <span
-                  className="h-2.5 w-2.5 rounded-full"
+                  className="h-2.5 w-2.5 rounded-full transition group-hover:scale-110"
                   style={{
                     backgroundColor: `hsl(${engine.colorHsl})`,
-                    boxShadow: live ? `0 0 12px hsl(${engine.colorHsl} / 0.6)` : undefined,
-                    opacity: live ? 1 : 0.35,
+                    boxShadow: `0 0 12px hsl(${engine.colorHsl} / 0.5)`,
                   }}
                 />
-                <span className="font-mono text-[10px] tracking-wider text-[hsl(var(--text-primary))]">
-                  {engine.label}
+                <span className="text-xs font-medium text-[hsl(var(--text-primary))]">
+                  {engine.friendlyLabel}
                 </span>
-                {!live && (
-                  <span className="text-[9px] uppercase tracking-widest text-[hsl(var(--text-muted))]">
-                    Soon
-                  </span>
-                )}
-              </div>
+              </Link>
             );
           })}
         </div>
@@ -71,33 +59,24 @@ export default function LandingHero({ signedIn }: { signedIn: boolean }) {
         <div className="mt-12 flex flex-wrap items-center justify-center gap-3">
           {signedIn ? (
             <Link href="/dashboard" className="btn-primary">
-              Enter dashboard
+              Open workspace
             </Link>
           ) : (
             <>
               <Link href="/dashboard" className="btn-primary">
-                Explore the shell
+                Start exploring
               </Link>
               {isSupabaseAuthConfigured() && (
-                <>
-                  <Link href="/login" className="btn-secondary">
-                    Sign in
-                  </Link>
-                  <Link href="/signup" className="btn-secondary">
-                    Sign up
-                  </Link>
-                </>
+                <Link href="/login" className="btn-secondary">
+                  Sign in
+                </Link>
               )}
             </>
           )}
         </div>
-
-        <BalancedText className="mt-8 text-xs text-[hsl(var(--text-muted))]">
-          Browse the constellation free —
-          <br />
-          create an account to run dRANb briefs.
-        </BalancedText>
       </div>
+
+      <SiteFooter className="relative z-10 mt-auto" />
     </main>
   );
 }

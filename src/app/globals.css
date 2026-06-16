@@ -6,15 +6,48 @@
 @source "../hooks/**/*.{ts,tsx}";
 
 :root {
-  --void-bg: 222 47% 4%;
-  --void-surface: 222 40% 8%;
+  /* Genesis phase 0 — pearl / light */
+  --genesis-bg: 40 33% 98%;
+  --genesis-surface: 260 30% 96%;
+  --genesis-pearl: 45 40% 94%;
+  --genesis-gold: 42 75% 58%;
+  --genesis-lavender: 270 40% 90%;
+  --genesis-indigo: 250 35% 88%;
+
+  /* Earned depth — workspace / mature shell */
+  --void-bg: 240 28% 8%;
+  --void-surface: 240 24% 12%;
   --primary-amber: 42 87% 55%;
   --primary-amber-dim: 42 87% 55% / 0.12;
   --accent-teal: 175 60% 45%;
   --accent-teal-dim: 175 60% 45% / 0.12;
+
+  /* Shell aliases (default: genesis marketing) */
+  --shell-bg: var(--genesis-bg);
+  --shell-surface: var(--genesis-surface);
+  --text-primary: 240 18% 14%;
+  --text-muted: 240 8% 42%;
+  --glass-bg: 0 0% 100% / 0.72;
+  --glass-border: 240 12% 18% / 0.08;
+  --glass-border-hover: 42 75% 58% / 0.35;
+}
+
+[data-shell="genesis"] {
+  --shell-bg: var(--genesis-bg);
+  --shell-surface: var(--genesis-surface);
+  --text-primary: 240 18% 14%;
+  --text-muted: 240 8% 42%;
+  --glass-bg: 0 0% 100% / 0.72;
+  --glass-border: 240 12% 18% / 0.08;
+  --glass-border-hover: 42 75% 58% / 0.35;
+}
+
+[data-shell="workspace"] {
+  --shell-bg: var(--void-bg);
+  --shell-surface: var(--void-surface);
   --text-primary: 40 20% 94%;
   --text-muted: 40 10% 55%;
-  --glass-bg: 222 40% 8% / 0.62;
+  --glass-bg: 240 24% 12% / 0.62;
   --glass-border: 0 0% 100% / 0.08;
   --glass-border-hover: 42 87% 55% / 0.3;
 }
@@ -26,11 +59,11 @@ body {
 
 body {
   color: hsl(var(--text-primary));
-  background: hsl(var(--void-bg));
+  background: hsl(var(--shell-bg));
 }
 
 .font-display {
-  font-family: var(--font-syne), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-fraunces), var(--font-syne), ui-serif, Georgia, serif;
 }
 
 .font-mono {
@@ -46,6 +79,12 @@ body {
   backdrop-filter: blur(18px);
   box-shadow:
     0 0 0 1px hsl(var(--glass-border)),
+    0 8px 32px hsl(240 20% 10% / 0.08);
+}
+
+[data-shell="workspace"] .glass-panel {
+  box-shadow:
+    0 0 0 1px hsl(var(--glass-border)),
     0 8px 32px hsl(0 0% 0% / 0.45);
 }
 
@@ -53,14 +92,14 @@ body {
   box-shadow:
     0 0 0 1px hsl(var(--glass-border-hover)),
     0 0 40px hsl(var(--primary-amber) / 0.08),
-    0 8px 32px hsl(0 0% 0% / 0.45);
+    0 8px 32px hsl(240 20% 10% / 0.08);
 }
 
 .glass-glow-teal {
   box-shadow:
     0 0 0 1px hsl(var(--accent-teal) / 0.25),
     0 0 40px hsl(var(--accent-teal) / 0.06),
-    0 8px 32px hsl(0 0% 0% / 0.45);
+    0 8px 32px hsl(240 20% 10% / 0.08);
 }
 
 .void-grid {
@@ -82,17 +121,62 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
 }
 
+.genesis-orb {
+  background: radial-gradient(circle, hsl(var(--genesis-gold) / 0.55), transparent 70%);
+  animation: genesis-float 12s ease-in-out infinite;
+}
+
+@keyframes genesis-float {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translateY(-12px) scale(1.15);
+    opacity: 0.75;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .genesis-orb {
+    animation: none;
+  }
+  .guide-fab-pulse {
+    animation: none !important;
+  }
+}
+
+.guide-fab-pulse {
+  animation: fab-glow 3s ease-in-out infinite;
+}
+
+@keyframes fab-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 hsl(var(--genesis-gold) / 0.25);
+  }
+  50% {
+    box-shadow: 0 0 24px 4px hsl(var(--genesis-gold) / 0.2);
+  }
+}
+
 .btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 0.625rem;
-  background: hsl(var(--primary-amber));
+  background: hsl(var(--genesis-gold));
   padding: 0.625rem 1.25rem;
   font-size: 0.875rem;
   font-weight: 600;
-  color: hsl(var(--void-bg));
+  color: hsl(240 18% 10%);
   transition: filter 0.15s ease, transform 0.15s ease;
+}
+
+[data-shell="workspace"] .btn-primary {
+  background: hsl(var(--primary-amber));
+  color: hsl(var(--void-bg));
 }
 
 .btn-primary:hover {
@@ -126,7 +210,7 @@ body {
   width: 100%;
   border-radius: 0.625rem;
   border: 1px solid hsl(var(--glass-border));
-  background: hsl(var(--void-surface) / 0.8);
+  background: hsl(var(--shell-surface) / 0.8);
   padding: 0.625rem 0.75rem;
   font-size: 0.875rem;
   color: hsl(var(--text-primary));
@@ -138,6 +222,11 @@ body {
 
 .input-field:focus {
   outline: none;
+  border-color: hsl(var(--genesis-gold) / 0.45);
+  box-shadow: 0 0 0 2px hsl(var(--genesis-gold) / 0.12);
+}
+
+[data-shell="workspace"] .input-field:focus {
   border-color: hsl(var(--primary-amber) / 0.45);
   box-shadow: 0 0 0 2px hsl(var(--primary-amber) / 0.12);
 }

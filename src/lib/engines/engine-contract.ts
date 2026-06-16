@@ -72,7 +72,10 @@ export interface MoiraiStageHook {
 
 export interface EngineMeta {
   id: EngineId;
+  /** Internal codename — mono badge only */
   label: string;
+  /** Primary UI label */
+  friendlyLabel: string;
   sub: string;
   metaphor: string;
   colorHsl: string;
@@ -85,9 +88,10 @@ export const ENGINE_REGISTRY: Record<EngineId, EngineMeta> = {
   dranb: {
     id: "dranb",
     label: "dRANb",
+    friendlyLabel: "Name",
     sub: "Naming · Decision",
     metaphor: "The Workbench",
-    colorHsl: "42 87% 55%",
+    colorHsl: "200 80% 52%",
     route: "/dashboard/engines/dranb",
     tierMinimum: "twin",
     standaloneSku: true,
@@ -95,9 +99,10 @@ export const ENGINE_REGISTRY: Record<EngineId, EngineMeta> = {
   brandl: {
     id: "brandl",
     label: "brandL",
+    friendlyLabel: "Brandle",
     sub: "Territory · Domains",
     metaphor: "The Ladder",
-    colorHsl: "270 60% 55%",
+    colorHsl: "160 50% 40%",
     route: "/dashboard/engines/brandl",
     tierMinimum: "twin",
     standaloneSku: true,
@@ -105,9 +110,10 @@ export const ENGINE_REGISTRY: Record<EngineId, EngineMeta> = {
   "4ield": {
     id: "4ield",
     label: "4IELD",
+    friendlyLabel: "Field",
     sub: "Intelligence · Field Map",
     metaphor: "The Map",
-    colorHsl: "175 60% 45%",
+    colorHsl: "42 87% 55%",
     route: "/dashboard/engines/4ield",
     tierMinimum: "empire",
     standaloneSku: true,
@@ -115,9 +121,10 @@ export const ENGINE_REGISTRY: Record<EngineId, EngineMeta> = {
   "4tress": {
     id: "4tress",
     label: "4TRESS",
+    friendlyLabel: "Fortress",
     sub: "Protection · Readiness",
     metaphor: "The Citadel",
-    colorHsl: "350 80% 55%",
+    colorHsl: "350 80% 45%",
     route: "/dashboard/engines/4tress",
     tierMinimum: "empire",
     standaloneSku: true,
@@ -125,9 +132,10 @@ export const ENGINE_REGISTRY: Record<EngineId, EngineMeta> = {
   "3xec": {
     id: "3xec",
     label: "3XEC",
+    friendlyLabel: "Exec",
     sub: "Operations · Automation",
     metaphor: "The Dojo",
-    colorHsl: "220 70% 50%",
+    colorHsl: "215 25% 55%",
     route: "/dashboard/engines/3xec",
     tierMinimum: "squad",
     standaloneSku: true,
@@ -135,9 +143,10 @@ export const ENGINE_REGISTRY: Record<EngineId, EngineMeta> = {
   "5ite": {
     id: "5ite",
     label: "5ITE",
+    friendlyLabel: "Site",
     sub: "Product · Deploy",
     metaphor: "The Construct",
-    colorHsl: "270 80% 60%",
+    colorHsl: "270 60% 55%",
     route: "/dashboard/engines/5ite",
     tierMinimum: "empire",
     standaloneSku: true,
@@ -145,9 +154,10 @@ export const ENGINE_REGISTRY: Record<EngineId, EngineMeta> = {
   "6roxy": {
     id: "6roxy",
     label: "6ROXY",
+    friendlyLabel: "Proxy",
     sub: "Digital Twin · Avatar",
     metaphor: "The Mask",
-    colorHsl: "30 90% 55%",
+    colorHsl: "270 30% 72%",
     route: "/dashboard/engines/6roxy",
     tierMinimum: "twin",
     standaloneSku: true,
@@ -155,6 +165,7 @@ export const ENGINE_REGISTRY: Record<EngineId, EngineMeta> = {
   v4ult: {
     id: "v4ult",
     label: "V4ULT",
+    friendlyLabel: "Vault",
     sub: "Archive · Timeline",
     metaphor: "The Time Spine",
     colorHsl: "220 70% 55%",
