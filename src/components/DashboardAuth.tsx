@@ -36,25 +36,19 @@ export function GuestBrowseBanner() {
 
   return (
     <div
-      className="mb-6 rounded-lg border border-indigo-500/30 bg-indigo-500/10 px-4 py-3 text-center text-sm text-indigo-100"
+      className="glass-panel mb-6 border-[hsl(var(--primary-amber)/0.25)] px-4 py-3 text-center text-sm text-[hsl(var(--text-primary))]"
       role="status"
     >
-      <p className="leading-relaxed">
+      <p className="leading-relaxed text-[hsl(var(--text-muted))]">
         You&apos;re browsing in preview mode.
         <br />
-        Explore the app — sign up to run engines and get results.
+        Explore the shell — sign up to run dRANb and get results.
       </p>
       <div className="mt-3 flex flex-wrap items-center justify-center gap-3">
-        <Link
-          href="/signup"
-          className="rounded-lg bg-white px-4 py-2 text-sm font-medium text-black transition hover:bg-zinc-200"
-        >
+        <Link href="/signup" className="btn-primary px-4 py-2">
           Sign up
         </Link>
-        <Link
-          href="/login"
-          className="rounded-lg border border-zinc-600 px-4 py-2 text-sm font-medium text-zinc-100 transition hover:border-zinc-500"
-        >
+        <Link href="/login" className="btn-secondary px-4 py-2">
           Sign in
         </Link>
       </div>

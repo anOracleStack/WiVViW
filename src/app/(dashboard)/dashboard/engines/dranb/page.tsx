@@ -4,6 +4,11 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useDashboardAuth } from "@/components/DashboardAuth";
+import GlassPanel from "@/components/ui/GlassPanel";
+import SectionTitle from "@/components/ui/SectionTitle";
+import BalancedText from "@/components/ui/BalancedText";
+import EngineStepper from "@/components/os/EngineStepper";
+import { ENGINE_REGISTRY } from "@/lib/engines/engine-contract";
 
 const defaultBrief = {
   business_description: "",
@@ -14,6 +19,8 @@ const defaultBrief = {
   competitive_context: "",
   notes: "",
 };
+
+const engine = ENGINE_REGISTRY.dranb;
 
 export default function DranbPage() {
   const router = useRouter();
@@ -68,153 +75,175 @@ export default function DranbPage() {
   };
 
   return (
-    <div className="max-w-2xl space-y-8">
-      <div>
-        <h1 className="text-2xl font-semibold tracking-tight">dRANb</h1>
-        <p className="mt-1 text-sm text-zinc-400">
-          Submit a brand brief. Clotho → Lachesis → Eunoia will run and produce scored finalists.
-        </p>
+    <div className="mx-auto max-w-2xl text-center">
+      <SectionTitle eyebrow={engine.sub} title={engine.label} />
+      <BalancedText className="mt-4 text-sm text-[hsl(var(--text-muted))]">
+        Submit a brand brief — Clotho, Lachesis,
+        <br />
+        and Eunoia produce scored finalists.
+      </BalancedText>
+
+      <div className="mt-8">
+        <EngineStepper current="intake" accentHsl={engine.colorHsl} />
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6" aria-busy={loading}>
-        {error && (
-          <div className="rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-200">
-            {error}
-          </div>
-        )}
+      <GlassPanel className="mt-8 text-left" glow="teal">
+        <form onSubmit={handleSubmit} className="space-y-5" aria-busy={loading}>
+          {error && (
+            <div className="rounded-lg border border-[hsl(var(--primary-amber)/0.35)] bg-[hsl(var(--primary-amber)/0.1)] px-4 py-3 text-sm text-[hsl(var(--text-primary))]">
+              {error}
+            </div>
+          )}
 
-        <div>
-          <label className="block text-sm font-medium text-zinc-300">Business description</label>
-          <textarea
-            required
-            value={brief.business_description}
-            onChange={(e) => setBrief((b) => ({ ...b, business_description: e.target.value }))}
-            className="mt-1 w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-white placeholder-zinc-500 focus:border-zinc-600 focus:outline-none"
-            rows={3}
-            placeholder="What does the business do? Who is it for?"
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-zinc-300">Target audience</label>
-          <input
-            type="text"
-            required
-            value={brief.target_audience}
-            onChange={(e) => setBrief((b) => ({ ...b, target_audience: e.target.value }))}
-            className="mt-1 w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-white placeholder-zinc-500 focus:border-zinc-600 focus:outline-none"
-            placeholder="e.g. B2B SaaS buyers, Gen Z consumers"
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-zinc-300">Industry</label>
-          <input
-            type="text"
-            required
-            value={brief.industry}
-            onChange={(e) => setBrief((b) => ({ ...b, industry: e.target.value }))}
-            className="mt-1 w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-white placeholder-zinc-500 focus:border-zinc-600 focus:outline-none"
-            placeholder="e.g. Fintech, Health, DTC"
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-zinc-300">Tone keywords</label>
-          <div className="mt-1 flex flex-wrap gap-2">
-            {brief.tone_keywords.map((k, i) => (
-              <span
-                key={i}
-                className="inline-flex items-center gap-1 rounded-full border border-zinc-700 bg-zinc-800 px-2.5 py-0.5 text-sm"
-              >
-                {k}
-                <button
-                  type="button"
-                  onClick={() => removeKeyword("tone_keywords", i)}
-                  className="text-zinc-400 hover:text-white"
-                >
-                  ×
-                </button>
-              </span>
-            ))}
-            <input
-              type="text"
-              value={toneInput}
-              onChange={(e) => setToneInput(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && (e.preventDefault(), addKeyword("tone_keywords", toneInput))}
-              className="w-32 rounded border border-zinc-700 bg-zinc-900 px-2 py-1 text-sm focus:border-zinc-600 focus:outline-none"
-              placeholder="Add…"
+          <div>
+            <label className="block text-sm font-medium text-[hsl(var(--text-primary))]">
+              Business description
+            </label>
+            <textarea
+              required
+              value={brief.business_description}
+              onChange={(e) => setBrief((b) => ({ ...b, business_description: e.target.value }))}
+              className="input-field mt-1"
+              rows={3}
+              placeholder="What does the business do? Who is it for?"
             />
           </div>
-        </div>
 
-        <div>
-          <label className="block text-sm font-medium text-zinc-300">Avoid keywords</label>
-          <div className="mt-1 flex flex-wrap gap-2">
-            {brief.avoid_keywords.map((k, i) => (
-              <span
-                key={i}
-                className="inline-flex items-center gap-1 rounded-full border border-zinc-700 bg-zinc-800 px-2.5 py-0.5 text-sm"
-              >
-                {k}
-                <button
-                  type="button"
-                  onClick={() => removeKeyword("avoid_keywords", i)}
-                  className="text-zinc-400 hover:text-white"
-                >
-                  ×
-                </button>
-              </span>
-            ))}
+          <div>
+            <label className="block text-sm font-medium text-[hsl(var(--text-primary))]">
+              Target audience
+            </label>
             <input
               type="text"
-              value={avoidInput}
-              onChange={(e) => setAvoidInput(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && (e.preventDefault(), addKeyword("avoid_keywords", avoidInput))}
-              className="w-32 rounded border border-zinc-700 bg-zinc-900 px-2 py-1 text-sm focus:border-zinc-600 focus:outline-none"
-              placeholder="Add…"
+              required
+              value={brief.target_audience}
+              onChange={(e) => setBrief((b) => ({ ...b, target_audience: e.target.value }))}
+              className="input-field mt-1"
+              placeholder="e.g. B2B SaaS buyers, Gen Z consumers"
             />
           </div>
-        </div>
 
-        <div>
-          <label className="block text-sm font-medium text-zinc-300">Competitive context (optional)</label>
-          <textarea
-            value={brief.competitive_context}
-            onChange={(e) => setBrief((b) => ({ ...b, competitive_context: e.target.value }))}
-            className="mt-1 w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-white placeholder-zinc-500 focus:border-zinc-600 focus:outline-none"
-            rows={2}
-            placeholder="Names or brands to differentiate from"
-          />
-        </div>
+          <div>
+            <label className="block text-sm font-medium text-[hsl(var(--text-primary))]">
+              Industry
+            </label>
+            <input
+              type="text"
+              required
+              value={brief.industry}
+              onChange={(e) => setBrief((b) => ({ ...b, industry: e.target.value }))}
+              className="input-field mt-1"
+              placeholder="e.g. Fintech, Health, DTC"
+            />
+          </div>
 
-        <div>
-          <label className="block text-sm font-medium text-zinc-300">Notes (optional)</label>
-          <textarea
-            value={brief.notes}
-            onChange={(e) => setBrief((b) => ({ ...b, notes: e.target.value }))}
-            className="mt-1 w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-white placeholder-zinc-500 focus:border-zinc-600 focus:outline-none"
-            rows={2}
-            placeholder="Any other constraints or directions"
-          />
-        </div>
+          <div>
+            <label className="block text-sm font-medium text-[hsl(var(--text-primary))]">
+              Tone keywords
+            </label>
+            <div className="mt-1 flex flex-wrap gap-2">
+              {brief.tone_keywords.map((k, i) => (
+                <span
+                  key={i}
+                  className="inline-flex items-center gap-1 rounded-full border border-[hsl(var(--accent-teal)/0.35)] bg-[hsl(var(--accent-teal)/0.08)] px-2.5 py-0.5 text-sm"
+                >
+                  {k}
+                  <button
+                    type="button"
+                    onClick={() => removeKeyword("tone_keywords", i)}
+                    className="text-[hsl(var(--text-muted))] hover:text-[hsl(var(--text-primary))]"
+                  >
+                    ×
+                  </button>
+                </span>
+              ))}
+              <input
+                type="text"
+                value={toneInput}
+                onChange={(e) => setToneInput(e.target.value)}
+                onKeyDown={(e) =>
+                  e.key === "Enter" && (e.preventDefault(), addKeyword("tone_keywords", toneInput))
+                }
+                className="input-field w-32 py-1"
+                placeholder="Add…"
+              />
+            </div>
+          </div>
 
-        <button
-          type="submit"
-          disabled={loading}
-          className="rounded-lg bg-white px-4 py-2.5 text-sm font-medium text-black transition hover:bg-zinc-200 disabled:opacity-50"
-        >
-          {loading ? "Starting…" : canRun ? "Run dRANb" : "Sign in to run"}
-        </button>
-        {!canRun && (
-          <p className="text-center text-xs text-zinc-500">
-            <Link href="/signup" className="text-indigo-400 hover:text-indigo-300">
-              Create an account
-            </Link>{" "}
-            to submit briefs and receive output.
-          </p>
-        )}
-      </form>
+          <div>
+            <label className="block text-sm font-medium text-[hsl(var(--text-primary))]">
+              Avoid keywords
+            </label>
+            <div className="mt-1 flex flex-wrap gap-2">
+              {brief.avoid_keywords.map((k, i) => (
+                <span
+                  key={i}
+                  className="inline-flex items-center gap-1 rounded-full border border-[hsl(var(--glass-border))] bg-white/[0.04] px-2.5 py-0.5 text-sm"
+                >
+                  {k}
+                  <button
+                    type="button"
+                    onClick={() => removeKeyword("avoid_keywords", i)}
+                    className="text-[hsl(var(--text-muted))] hover:text-[hsl(var(--text-primary))]"
+                  >
+                    ×
+                  </button>
+                </span>
+              ))}
+              <input
+                type="text"
+                value={avoidInput}
+                onChange={(e) => setAvoidInput(e.target.value)}
+                onKeyDown={(e) =>
+                  e.key === "Enter" && (e.preventDefault(), addKeyword("avoid_keywords", avoidInput))
+                }
+                className="input-field w-32 py-1"
+                placeholder="Add…"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-[hsl(var(--text-primary))]">
+              Competitive context (optional)
+            </label>
+            <textarea
+              value={brief.competitive_context}
+              onChange={(e) => setBrief((b) => ({ ...b, competitive_context: e.target.value }))}
+              className="input-field mt-1"
+              rows={2}
+              placeholder="Names or brands to differentiate from"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-[hsl(var(--text-primary))]">
+              Notes (optional)
+            </label>
+            <textarea
+              value={brief.notes}
+              onChange={(e) => setBrief((b) => ({ ...b, notes: e.target.value }))}
+              className="input-field mt-1"
+              rows={2}
+              placeholder="Any other constraints or directions"
+            />
+          </div>
+
+          <div className="pt-2 text-center">
+            <button type="submit" disabled={loading} className="btn-primary">
+              {loading ? "Starting…" : canRun ? "Run dRANb" : "Sign in to run"}
+            </button>
+            {!canRun && (
+              <p className="mt-3 text-xs text-[hsl(var(--text-muted))]">
+                <Link href="/signup" className="text-[hsl(var(--primary-amber))] hover:underline">
+                  Create an account
+                </Link>{" "}
+                to submit briefs and receive output.
+              </p>
+            )}
+          </div>
+        </form>
+      </GlassPanel>
     </div>
   );
 }

@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import GlassPanel from "@/components/ui/GlassPanel";
+import SectionTitle from "@/components/ui/SectionTitle";
 import { useDranbSessionLive } from "@/hooks/useDranbSessionLive";
 
 const STAGES = [
@@ -39,14 +41,18 @@ function weightedOverall(scores: Record<string, number> | undefined): number | n
 function ScoreBar({ value, label }: { value: number; label: string }) {
   const pct = Math.min(100, Math.max(0, value));
   const color =
-    pct >= 80 ? "bg-emerald-500" : pct >= 60 ? "bg-amber-500" : "bg-red-500/80";
+    pct >= 80
+      ? "bg-[hsl(var(--accent-teal))]"
+      : pct >= 60
+        ? "bg-[hsl(var(--primary-amber))]"
+        : "bg-red-500/80";
   return (
     <div className="space-y-1">
       <div className="flex justify-between text-xs">
-        <span className="text-zinc-400">{label}</span>
-        <span className="text-zinc-300">{Math.round(pct)}</span>
+        <span className="text-[hsl(var(--text-muted))]">{label}</span>
+        <span className="text-[hsl(var(--text-primary))]">{Math.round(pct)}</span>
       </div>
-      <div className="h-1.5 w-full overflow-hidden rounded-full bg-zinc-800">
+      <div className="h-1.5 w-full overflow-hidden rounded-full bg-[hsl(var(--void-surface))]">
         <div
           className={`h-full rounded-full ${color} transition-all duration-500`}
           style={{ width: `${pct}%` }}
@@ -107,11 +113,14 @@ export default function DranbSessionPage() {
 
   if (error && !data) {
     return (
-      <div className="space-y-4">
-        <Link href="/dashboard/engines/dranb" className="text-sm text-zinc-400 hover:text-white">
+      <div className="mx-auto max-w-3xl space-y-4 text-center">
+        <Link
+          href="/dashboard/engines/dranb"
+          className="text-sm text-[hsl(var(--text-muted))] hover:text-[hsl(var(--primary-amber))]"
+        >
           ← Back to dRANb
         </Link>
-        <p className="text-amber-400">{error}</p>
+        <p className="text-[hsl(var(--primary-amber))]">{error}</p>
       </div>
     );
   }
@@ -119,35 +128,36 @@ export default function DranbSessionPage() {
   return (
     <div className="mx-auto max-w-3xl space-y-8">
       <div className="flex items-center justify-between">
-        <Link href="/dashboard/engines/dranb" className="text-sm text-zinc-400 hover:text-white">
+        <Link
+          href="/dashboard/engines/dranb"
+          className="text-sm text-[hsl(var(--text-muted))] hover:text-[hsl(var(--primary-amber))]"
+        >
           ← Back to dRANb
         </Link>
-        <span className="text-xs text-zinc-500">{sessionId}</span>
+        <span className="font-mono text-xs text-[hsl(var(--text-muted))]">{sessionId}</span>
       </div>
 
-      <div>
-        <h1 className="text-2xl font-semibold tracking-tight">dRANb run</h1>
-        <p className="mt-1 flex flex-wrap items-center gap-2 text-sm text-zinc-400">
-          <span>{isComplete ? "Complete." : "MOIRAI pipeline in progress…"}</span>
-          {live && (
-            <span className="rounded border border-emerald-500/35 bg-emerald-500/10 px-2 py-0.5 text-xs font-medium tracking-wide text-emerald-400">
-              Live
-            </span>
-          )}
-        </p>
-      </div>
+      <SectionTitle eyebrow="MOIRAI pipeline" title="dRANb run" />
+      <p className="text-center text-sm text-[hsl(var(--text-muted))]">
+        {isComplete ? "Complete." : "Pipeline in progress…"}
+        {live && (
+          <span className="ml-2 inline-flex rounded border border-[hsl(var(--accent-teal)/0.35)] bg-[hsl(var(--accent-teal)/0.1)] px-2 py-0.5 font-mono text-xs tracking-wide text-[hsl(var(--accent-teal))]">
+            Live
+          </span>
+        )}
+      </p>
 
       {(runTotals.tokens > 0 || runTotals.cost > 0 || runTotals.avgLatencyMs != null) && (
-        <div className="flex flex-wrap gap-4 text-xs text-zinc-500">
+        <div className="flex flex-wrap justify-center gap-4 font-mono text-xs text-[hsl(var(--text-muted))]">
           {runTotals.tokens > 0 && (
             <span>
-              Tokens (sum): <span className="text-zinc-300">{runTotals.tokens.toLocaleString()}</span>
+              Tokens (sum): <span className="text-[hsl(var(--text-primary))]">{runTotals.tokens.toLocaleString()}</span>
             </span>
           )}
           {runTotals.cost > 0 && (
             <span>
               Est. cost:{" "}
-              <span className="text-zinc-300">
+              <span className="text-[hsl(var(--text-primary))]">
                 ${runTotals.cost < 0.01 ? runTotals.cost.toFixed(4) : runTotals.cost.toFixed(2)}
               </span>
             </span>
@@ -155,42 +165,43 @@ export default function DranbSessionPage() {
           {runTotals.avgLatencyMs != null && (
             <span>
               Avg stage latency:{" "}
-              <span className="text-zinc-300">{runTotals.avgLatencyMs} ms</span>
+              <span className="text-[hsl(var(--text-primary))]">{runTotals.avgLatencyMs} ms</span>
             </span>
           )}
         </div>
       )}
 
-      {/* Live progress */}
-      <div className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-6">
-        <h2 className="mb-4 text-sm font-medium text-zinc-300">Pipeline</h2>
+      <GlassPanel glow="teal">
+        <h2 className="mb-4 text-center font-mono text-xs tracking-[0.3em] text-[hsl(var(--text-muted))]">
+          PIPELINE
+        </h2>
         <ul className="space-y-3">
           {STAGES.map(({ step, name, label }) => (
             <li key={step} className="flex items-center gap-3">
               <span
                 className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-medium ${
                   completedSteps.has(step)
-                    ? "bg-emerald-500/20 text-emerald-400"
-                    : "bg-zinc-800 text-zinc-500"
+                    ? "bg-[hsl(var(--accent-teal)/0.2)] text-[hsl(var(--accent-teal))]"
+                    : "bg-[hsl(var(--void-surface))] text-[hsl(var(--text-muted))]"
                 }`}
               >
                 {completedSteps.has(step) ? "✓" : step}
               </span>
-              <span className="text-zinc-300">
-                {name} <span className="text-zinc-500">— {label}</span>
+              <span className="text-[hsl(var(--text-primary))]">
+                {name} <span className="text-[hsl(var(--text-muted))]">— {label}</span>
               </span>
             </li>
           ))}
         </ul>
         {data?.events && data.events.length > 0 && (
-          <div className="mt-4 max-h-40 overflow-y-auto rounded border border-zinc-800 p-3">
-            <p className="mb-2 text-xs font-medium text-zinc-500">Events</p>
+          <div className="mt-4 max-h-40 overflow-y-auto rounded border border-[hsl(var(--glass-border))] p-3">
+            <p className="mb-2 font-mono text-xs text-[hsl(var(--text-muted))]">Events</p>
             {data.events.map((ev, i) => (
-              <div key={i} className="text-xs text-zinc-400">
-                <span className="text-zinc-300">{ev.event_type}</span>{" "}
+              <div key={i} className="text-xs text-[hsl(var(--text-muted))]">
+                <span className="text-[hsl(var(--text-primary))]">{ev.event_type}</span>{" "}
                 {ev.payload?.step != null && `(step ${ev.payload.step})`}
                 {typeof (ev.payload as { error?: unknown }).error === "string" && (
-                  <div className="mt-1 whitespace-pre-wrap rounded border border-amber-500/30 bg-amber-500/10 px-2 py-1 text-amber-200">
+                  <div className="mt-1 whitespace-pre-wrap rounded border border-[hsl(var(--primary-amber)/0.3)] bg-[hsl(var(--primary-amber)/0.1)] px-2 py-1 text-[hsl(var(--text-primary))]">
                     {(ev.payload as { error: string }).error}
                   </div>
                 )}
@@ -198,27 +209,26 @@ export default function DranbSessionPage() {
             ))}
           </div>
         )}
-      </div>
+      </GlassPanel>
 
       {/* Results with score bars */}
       {finalContent?.finalists && finalContent.finalists.length > 0 && (
         <div className="space-y-6">
-          <h2 className="text-lg font-medium">Finalists</h2>
+          <h2 className="text-center font-display text-lg font-bold text-[hsl(var(--text-primary))]">
+            FINALISTS
+          </h2>
           <div className="space-y-8">
             {finalContent.finalists.map((f, i) => {
               const overall = weightedOverall(f.scores);
               return (
-              <div
-                key={i}
-                className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-6"
-              >
+              <GlassPanel key={i} glow="amber">
                 <div className="mb-4 flex flex-wrap items-baseline justify-between gap-2">
-                  <h3 className="text-xl font-semibold text-white">
+                  <h3 className="font-display text-xl font-bold text-[hsl(var(--text-primary))]">
                     {f.name ?? `#${i + 1}`}
                   </h3>
-                  <div className="flex flex-wrap gap-3 text-sm text-zinc-400">
+                  <div className="flex flex-wrap gap-3 text-sm text-[hsl(var(--text-muted))]">
                     {overall != null && (
-                      <span className="rounded-md border border-zinc-700 bg-zinc-950/80 px-2 py-0.5 text-zinc-200">
+                      <span className="rounded-md border border-[hsl(var(--glass-border))] bg-[hsl(var(--void-surface)/0.8)] px-2 py-0.5 text-[hsl(var(--text-primary))]">
                         Weighted score: {Math.round(overall)} / 100
                       </span>
                     )}
@@ -228,7 +238,7 @@ export default function DranbSessionPage() {
                   </div>
                 </div>
                 {f.rationale && (
-                  <p className="mb-4 text-sm text-zinc-400">{f.rationale}</p>
+                  <p className="mb-4 text-sm text-[hsl(var(--text-muted))]">{f.rationale}</p>
                 )}
                 {f.scores && (
                   <div className="grid gap-3 sm:grid-cols-2">
@@ -245,40 +255,44 @@ export default function DranbSessionPage() {
                   </div>
                 )}
                 {f.next_steps && f.next_steps.length > 0 && (
-                  <ul className="mt-4 list-inside list-disc text-xs text-zinc-500">
+                  <ul className="mt-4 list-inside list-disc text-xs text-[hsl(var(--text-muted))]">
                     {f.next_steps.map((s, j) => (
                       <li key={j}>{s}</li>
                     ))}
                   </ul>
                 )}
-              </div>
+              </GlassPanel>
             );
             })}
           </div>
 
           {finalContent.eliminated && finalContent.eliminated.length > 0 && (
-            <div className="rounded-lg border border-zinc-800 p-4">
-              <h3 className="mb-2 text-sm font-medium text-zinc-400">Why not</h3>
-              <ul className="space-y-1 text-sm text-zinc-500">
+            <GlassPanel>
+              <h3 className="mb-2 text-center font-mono text-xs tracking-[0.3em] text-[hsl(var(--text-muted))]">
+                WHY NOT
+              </h3>
+              <ul className="space-y-1 text-sm text-[hsl(var(--text-muted))]">
                 {finalContent.eliminated.map((e, i) => (
                   <li key={i}>
-                    <strong className="text-zinc-400">{e.name}</strong>: {e.reason}
+                    <strong className="text-[hsl(var(--text-primary))]">{e.name}</strong>: {e.reason}
                   </li>
                 ))}
               </ul>
-            </div>
+            </GlassPanel>
           )}
 
           {finalContent.dark_horse && (() => {
             const dh = finalContent.dark_horse!;
             const dhOverall = weightedOverall(dh.scores);
             return (
-              <div className="rounded-lg border border-amber-500/30 bg-amber-500/5 p-4">
-                <h3 className="mb-2 text-sm font-medium text-amber-200">Dark horse</h3>
-                <div className="flex flex-wrap items-baseline gap-3">
-                  <p className="font-medium text-white">{dh.name}</p>
+              <GlassPanel glow="amber">
+                <h3 className="mb-2 text-center font-mono text-xs tracking-[0.3em] text-[hsl(var(--primary-amber))]">
+                  DARK HORSE
+                </h3>
+                <div className="flex flex-wrap items-baseline justify-center gap-3">
+                  <p className="font-display font-bold text-[hsl(var(--text-primary))]">{dh.name}</p>
                   {dhOverall != null && (
-                    <span className="text-xs text-amber-200/90">
+                    <span className="text-xs text-[hsl(var(--primary-amber))]">
                       Weighted: {Math.round(dhOverall)} / 100
                     </span>
                   )}
@@ -294,23 +308,25 @@ export default function DranbSessionPage() {
                     ))}
                   </div>
                 )}
-              </div>
+              </GlassPanel>
             );
           })()}
 
           {finalContent.synthesis_notes && (
-            <div className="rounded-lg border border-zinc-800 p-4">
-              <h3 className="mb-2 text-sm font-medium text-zinc-400">Synthesis</h3>
-              <p className="text-sm text-zinc-400 whitespace-pre-wrap">
+            <GlassPanel>
+              <h3 className="mb-2 text-center font-mono text-xs tracking-[0.3em] text-[hsl(var(--text-muted))]">
+                SYNTHESIS
+              </h3>
+              <p className="whitespace-pre-wrap text-sm text-[hsl(var(--text-muted))]">
                 {finalContent.synthesis_notes}
               </p>
-            </div>
+            </GlassPanel>
           )}
         </div>
       )}
 
       {isComplete && !finalContent?.finalists?.length && (
-        <p className="text-zinc-500">
+        <p className="text-center text-[hsl(var(--text-muted))]">
           Pipeline finished. Final package is still being written or format differs.
         </p>
       )}

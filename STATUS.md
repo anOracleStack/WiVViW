@@ -1,6 +1,6 @@
 # WiVViW — status, tasks & work log
 
-**Updated:** 2026-05-24 | **Agents:** Do pending tasks top→bottom; log each in **Work log**; commit this file when done.
+**Updated:** 2026-06-13 | **Agents:** Do pending tasks top→bottom; log each in **Work log**; commit this file when done.
 
 ## Safe to restart?
 
@@ -45,7 +45,7 @@ cd "/Users/oraclevision/Developer/applications/WiVViW" && npm run dev
 | 2026-04-19 | Auth/API hardening | Callback, proxy, rate limits, health, truth GET ownership |
 | 2026-05-21 | Vercel prod | inngest≥3.54; **wivviw.com** live; GitHub auto-deploy connected |
 | 2026-05-24 | Pre-restart check | main pushed; prod health OK; task list refreshed for agents |
-| 2026-06-10 | Workspace archive repo | `WiVViW-workspace` on GitHub — canon/raw/build (~788MB); app `main` unchanged |
+| 2026-06-13 | UI shell elevation | Cyberpunk Corporate design system — ScaleWrapper (1440px), void/amber/teal tokens, glass panels, cinematic landing, galaxy sidebar, dRANb polish, auth shell; SupabaseStatus moved to Ops only |
 
 ## Reference
 

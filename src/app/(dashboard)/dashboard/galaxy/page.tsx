@@ -1,15 +1,16 @@
 import ConstellationMap from "@/components/galaxy/ConstellationMap";
+import SectionTitle from "@/components/ui/SectionTitle";
+import BalancedText from "@/components/ui/BalancedText";
 
 export default function GalaxyPage() {
   return (
     <div className="text-center">
-      <p className="text-xs tracking-[0.3em] text-white/40">THE CONSTELLATION</p>
-      <h1 className="mt-2 text-3xl font-semibold text-white">WiVViW Galaxy</h1>
-      <p className="mx-auto mt-3 max-w-lg text-sm text-white/60">
+      <SectionTitle eyebrow="The constellation" title="WiVViW Galaxy" />
+      <BalancedText className="mt-4 text-sm text-[hsl(var(--text-muted))]">
         Each engine is its own planet —
         <br />
         same universe, unique color and role.
-      </p>
+      </BalancedText>
       <div className="mt-10">
         <ConstellationMap completedPhases={3} />
       </div>
