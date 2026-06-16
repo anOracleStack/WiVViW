@@ -1,9 +1,10 @@
 import Link from "next/link";
+import EngineConstellation from "@/components/landing/EngineConstellation";
 import BalancedText from "@/components/ui/BalancedText";
 import GenesisBackdrop from "@/components/ui/GenesisBackdrop";
 import SiteFooter from "@/components/ui/SiteFooter";
 import { WivviwLogo } from "@/components/ui/WivviwLogo";
-import { ENGINE_REGISTRY, JOURNEY_ORDER } from "@/lib/engines/engine-contract";
+import { JOURNEY_ORDER } from "@/lib/engines/engine-contract";
 import { isSupabaseAuthConfigured } from "@/lib/supabase/configured";
 
 const PREVIEW_ENGINES = JOURNEY_ORDER.slice(0, 7);
@@ -16,50 +17,32 @@ export default function LandingHero({ signedIn }: { signedIn: boolean }) {
     >
       <GenesisBackdrop />
 
-      <div className="relative z-10 flex w-full max-w-3xl flex-col items-center text-center">
-        <WivviwLogo size="lg" showText className="mb-10" />
-
-        <h1 className="font-display text-5xl font-semibold tracking-tight text-[hsl(var(--text-primary))]">
-          Identity begins in light.
-        </h1>
-
-        <BalancedText className="mt-6 text-base text-[hsl(var(--text-muted))]">
-          We build your business DNA together —
-          <br />
-          from first name to first sale.
-        </BalancedText>
-
-        <div className="mt-14 grid w-full max-w-2xl grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-7">
-          {PREVIEW_ENGINES.map((id) => {
-            const engine = ENGINE_REGISTRY[id];
-            return (
-              <Link
-                key={id}
-                href={engine.route}
-                className="glass-panel group flex flex-col items-center gap-2 rounded-xl px-2 py-4 text-center transition hover:scale-[1.02]"
-                style={{
-                  boxShadow: `0 0 20px hsl(${engine.colorHsl} / 0.12), 0 0 0 1px hsl(var(--glass-border))`,
-                }}
-              >
-                <span
-                  className="h-2.5 w-2.5 rounded-full transition group-hover:scale-110"
-                  style={{
-                    backgroundColor: `hsl(${engine.colorHsl})`,
-                    boxShadow: `0 0 12px hsl(${engine.colorHsl} / 0.5)`,
-                  }}
-                />
-                <span className="text-xs font-medium text-[hsl(var(--text-primary))]">
-                  {engine.label}
-                </span>
-                <span className="text-[10px] leading-snug text-[hsl(var(--text-muted)/0.85)]">
-                  {engine.outcomeHint}
-                </span>
-              </Link>
-            );
-          })}
+      <div className="relative z-10 flex w-full max-w-4xl flex-col items-center text-center">
+        <div className="landing-reveal landing-reveal--logo">
+          <WivviwLogo size="lg" showText className="mb-10" />
         </div>
 
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-3">
+        <p className="landing-reveal landing-reveal--whisper mb-4 font-mono text-[11px] uppercase tracking-[0.28em] text-[hsl(var(--genesis-gold)/0.75)]">
+          Written before you arrived.
+        </p>
+
+        <h1 className="landing-reveal landing-reveal--headline font-display text-[3.25rem] font-semibold leading-[1.08] tracking-tight text-[hsl(var(--text-primary))] sm:text-6xl">
+          It was already
+          <br />
+          written.
+        </h1>
+
+        <BalancedText className="landing-reveal landing-reveal--subline mt-7 max-w-lg text-[1.05rem] text-[hsl(var(--text-muted))]">
+          From the seed of an idea
+          <br />
+          to the moment of first sale.
+        </BalancedText>
+
+        <div className="landing-reveal landing-reveal--constellation mt-16 w-full">
+          <EngineConstellation engineIds={PREVIEW_ENGINES} />
+        </div>
+
+        <div className="landing-reveal landing-reveal--cta mt-14 flex flex-wrap items-center justify-center gap-3">
           {signedIn ? (
             <Link href="/dashboard" className="btn-primary">
               Open workspace
@@ -67,7 +50,7 @@ export default function LandingHero({ signedIn }: { signedIn: boolean }) {
           ) : (
             <>
               <Link href="/dashboard" className="btn-primary">
-                Start exploring
+                Begin the sequence
               </Link>
               {isSupabaseAuthConfigured() && (
                 <Link href="/login" className="btn-secondary">

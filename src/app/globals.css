@@ -138,9 +138,130 @@ body {
   }
 }
 
+/* Landing — prophetic genesis reveal */
+.landing-reveal {
+  animation: landing-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.landing-reveal--logo {
+  animation-delay: 0.05s;
+}
+.landing-reveal--whisper {
+  animation-delay: 0.18s;
+}
+.landing-reveal--headline {
+  animation-delay: 0.28s;
+}
+.landing-reveal--subline {
+  animation-delay: 0.42s;
+}
+.landing-reveal--constellation {
+  animation-delay: 0.55s;
+}
+.landing-reveal--cta {
+  animation-delay: 0.85s;
+}
+
+@keyframes landing-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.genesis-helix {
+  animation: helix-drift 28s ease-in-out infinite;
+}
+
+.genesis-orbit-ring {
+  animation: orbit-spin 48s linear infinite;
+}
+
+.genesis-orbit-ring--slow {
+  animation-duration: 72s;
+  animation-direction: reverse;
+}
+
+.genesis-mesh {
+  animation: mesh-breathe 16s ease-in-out infinite;
+}
+
+.engine-node-dot {
+  animation: node-pulse 4.5s ease-in-out infinite;
+}
+
+.engine-node-orbit {
+  animation: node-float 5s ease-in-out infinite;
+}
+
+@keyframes helix-drift {
+  0%,
+  100% {
+    transform: translateX(-50%) rotate(-2deg) scale(1);
+    opacity: 0.12;
+  }
+  50% {
+    transform: translateX(-50%) rotate(2deg) scale(1.03);
+    opacity: 0.18;
+  }
+}
+
+@keyframes orbit-spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes mesh-breathe {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes node-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.12);
+    filter: brightness(1.15);
+  }
+}
+
+@keyframes node-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .genesis-orb {
-    animation: none;
+  .genesis-orb,
+  .genesis-helix,
+  .genesis-orbit-ring,
+  .genesis-mesh,
+  .engine-node-dot,
+  .engine-node-orbit,
+  .landing-reveal {
+    animation: none !important;
   }
   .guide-fab-pulse {
     animation: none !important;
