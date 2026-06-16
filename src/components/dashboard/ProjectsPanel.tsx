@@ -83,7 +83,7 @@ export default function ProjectsPanel() {
                   href="/dashboard/engines/dranb"
                   className="text-xs text-[hsl(var(--primary-amber))] hover:underline"
                 >
-                  Open Name
+                  Open dRANb
                 </Link>
                 <Link
                   href="/dashboard/galaxy"

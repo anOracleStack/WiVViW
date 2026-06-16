@@ -51,7 +51,7 @@ export default function DranbPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!canRun) {
-      requestSignup("run", engine.friendlyLabel);
+      requestSignup("run", engine.label);
       return;
     }
     setError(null);
@@ -75,7 +75,7 @@ export default function DranbPage() {
 
   return (
     <div className="mx-auto max-w-2xl text-center">
-      <SectionTitle title={engine.friendlyLabel} />
+      <SectionTitle title={engine.label} />
       <p className="mt-2 text-xs text-[hsl(var(--text-muted))]">{engine.outcomeHint}</p>
       <BalancedText className="mt-4 text-sm text-[hsl(var(--text-muted))]">
         Tell us what you&apos;re building —
@@ -231,7 +231,7 @@ export default function DranbPage() {
 
           <div className="pt-2 text-center">
             <button type="submit" disabled={loading} className="btn-primary">
-              {loading ? "Starting…" : `Run ${engine.friendlyLabel}`}
+              {loading ? "Starting…" : `Run ${engine.label}`}
             </button>
           </div>
         </form>

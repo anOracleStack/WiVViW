@@ -121,7 +121,7 @@ export default function DranbSessionPage() {
           href="/dashboard/engines/dranb"
           className="text-sm text-[hsl(var(--text-muted))] hover:text-[hsl(var(--primary-amber))]"
         >
-          ← Back to Name
+          ← Back to dRANb
         </Link>
         <p className="text-[hsl(var(--primary-amber))]">{error}</p>
       </div>
@@ -135,12 +135,12 @@ export default function DranbSessionPage() {
           href="/dashboard/engines/dranb"
           className="text-sm text-[hsl(var(--text-muted))] hover:text-[hsl(var(--primary-amber))]"
         >
-          ← Back to Name
+          ← Back to dRANb
         </Link>
         <span className="font-mono text-xs text-[hsl(var(--text-muted))]">{sessionId}</span>
       </div>
 
-      <SectionTitle title={engine.friendlyLabel} />
+      <SectionTitle title={engine.label} />
       <p className="text-center text-sm text-[hsl(var(--text-muted))]">
         {isComplete ? "Complete." : "Run in progress…"}
         {live && (

@@ -22,7 +22,7 @@
 - **Browse-first / gate-on-submit:** anonymous users browse the **entire** site — all engines, forms, galaxy preview — signup only when they **submit** or request a **deliverable**; tier gates apply to premium outputs and engine depth
 - Product story: seed → sale, concept → concrete, business DNA, twin/assistant while you sleep
 - New surfaces: AI chatbot popup (bottom-right); footer with Privacy, Legal, Contact, FAQ
-- Domain & branding intelligence: fused-TLD naming, handle consistency, TM headroom — wired into **Name → Brandle → Field → Fortress** pipeline per Oracle Vision reference
+- Domain & branding intelligence: fused-TLD naming, handle consistency, TM headroom — wired into **dRANb → brandL → 4IELD → 4TRESS** pipeline per Oracle Vision reference
 
 ---
 
@@ -40,16 +40,16 @@
 | Do | Don't |
 |----|-------|
 | Let galaxy map, genesis backdrop, and star nodes carry mood | Headline "CONSTELLATION" or "GALAXY" over a map that already shows it |
-| **Name** + one quiet outcome line on engine cards ("Find a name worth owning") | Internal codes (dRANb, 4IELD) or MOIRAI jargon as primary labels |
-| Friendly engine names in nav + mono codename as secondary badge | Pronunciation guides, glass-box lecture copy, cinematic command shell |
+| **dRANb**, **4IELD**, etc. + one quiet outcome line on engine cards | Friendly renames (Name, Field, Fortress) as primary labels |
+| Branded engine names in nav; optional mono pronunciation as secondary badge | Pronunciation guides as hero headlines, glass-box lecture copy |
 | Landing: 2–3 balanced lines that promise seed → sale | Tech jargon, feature lists, marketing essays |
 | Gate on run/save/export with "Save your progress" | Punitive login walls at browse time |
 | Tooltips / chatbot for depth when user asks | Spoon-feeding tours that explain what's already visible |
-| Collaboration voice ("Run Name", "Open Brandle") | Empty UI with no outcome hint — user can't tell what engines do |
+| Collaboration voice ("Run dRANb", "Open brandL") | Empty UI with no outcome hint — user can't tell what engines do |
 
-**Pattern:** Visual = vibe. Label = function. Example: star map needs no "CONSTELLATION" headline, but an engine card should say **Name** plus a single outcome line.
+**Pattern:** Visual = vibe. Label = branded name + outcome hint. Example: star map needs no "CONSTELLATION" headline, but an engine card should say **4IELD** plus a single outcome line.
 
-Internal codenames (dRANb, 4IELD, MOIRAI) stay in mono sublabels, API routes, receipts detail, and backend — not primary UI headlines.
+Branded spellings (dRANb, 4IELD, MOIRAI) are primary UI headlines. Pronunciation sublabels (`friendlyLabel`) stay mono and subtle — API routes, receipts detail, and backend use `id` / `label` as canonical.
 
 ---
 
@@ -115,15 +115,15 @@ User is not filling forms — they are **sequencing identity**, encoding DNA, ig
 
 ### Engine-specific accents (canon palette — adapt, do not copy cyberpunk amber default)
 
-| Engine | Friendly | Accent (canon) | Feeling |
-|--------|----------|----------------|---------|
-| dRANb | Name | Icy blue + white | Precision |
-| brandL | Brandle | Emerald + deep navy | Mapping identity |
-| 4IELD | Field | Gold + amber | Strategic scan |
-| 4TRESS | Fortress | Crimson + charcoal | Defense |
-| 3XEC | Exec | Steel / blue-gray | Operations |
-| 5ITE | Site | Violet | Construction |
-| 6ROXY | Proxy | Silver + soft lavender | Twin / voice |
+| Engine | Branded label | Pronunciation (optional) | Accent (canon) | Feeling |
+|--------|---------------|--------------------------|----------------|---------|
+| dRANb | dRANb | Name | Icy blue + white | Precision |
+| brandL | brandL | Brandle | Emerald + deep navy | Mapping identity |
+| 4IELD | 4IELD | Field | Gold + amber | Strategic scan |
+| 4TRESS | 4TRESS | Fortress | Crimson + charcoal | Defense |
+| 3XEC | 3XEC | Exec | Steel / blue-gray | Operations |
+| 5ITE | 5ITE | Site | Violet | Construction |
+| 6ROXY | 6ROXY | Proxy | Silver + soft lavender | Twin / voice |
 
 Each engine space: shared typography + layout grid; unique nebula tint, particle behavior, and accent only.
 
@@ -140,7 +140,7 @@ Each engine space: shared typography + layout grid; unique nebula tint, particle
 |-----------|------------------------------|---------------------------|
 | Background | `--void-bg` near-black `#030308`, void grid, grain, amber/teal glows | Phase 0 white/pearl; void arrives only at maturity |
 | Typography | Syne display + JetBrains mono labels + DM Sans | Same families allowed early; mono de-emphasized on marketing; genome may swap display/body within allowlist |
-| Copy tone | "THE CONSTELLATION", MOIRAI jargon, "cinematic command shell" | Minimal genesis copy; collaboration voice; friendly engine names |
+| Copy tone | "THE CONSTELLATION", MOIRAI jargon, "cinematic command shell" | Minimal genesis copy; collaboration voice; branded engine names |
 | Metadata | "Cyberpunk corporate clarity" in `layout.tsx` | "Brand intelligence that grows with you" (example — finalize in Section C) |
 | Logo treatment | Amber on void | Logo readable on white **and** void — dual-theme asset or adaptive fill |
 | UI chrome | Glass panels on dark, amber primary CTA | Glass on light mist first; amber becomes **one** genome default, not global brand |
@@ -531,8 +531,8 @@ Use consistent verbs in UI and analytics:
 
 CTA examples:
 
-- Browse: "Explore Name", "Open Brandle", "Preview your galaxy"  
-- Submit gate: "Run Name — sign in to continue", "Save progress"  
+- Browse: "Explore dRANb", "Open brandL", "Preview your galaxy"  
+- Submit gate: "Run dRANb — sign in to continue", "Save progress"  
 - Tier gate: "Export shortlist — upgrade to Squad"
 
 ### Session-local draft (anonymous)

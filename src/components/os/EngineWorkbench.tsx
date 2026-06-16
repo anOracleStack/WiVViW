@@ -27,7 +27,7 @@ export default function EngineWorkbench({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!canRun) {
-      requestSignup("run", engine.friendlyLabel);
+      requestSignup("run", engine.label);
       return;
     }
     setLoading(true);
@@ -56,7 +56,7 @@ export default function EngineWorkbench({
           className="font-display text-3xl font-semibold"
           style={{ color: `hsl(${engine.colorHsl})` }}
         >
-          {engine.friendlyLabel}
+          {engine.label}
         </h1>
         <p className="mx-auto mt-3 max-w-md text-sm text-[hsl(var(--text-muted))]">
           {engine.outcomeHint}
@@ -93,7 +93,7 @@ export default function EngineWorkbench({
           disabled={loading}
           className="btn-primary w-full py-3 disabled:opacity-40"
         >
-          {loading ? "Running…" : `Run ${engine.friendlyLabel}`}
+          {loading ? "Running…" : `Run ${engine.label}`}
         </button>
       </form>
     </div>

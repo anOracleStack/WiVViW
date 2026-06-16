@@ -72,9 +72,9 @@ export interface MoiraiStageHook {
 
 export interface EngineMeta {
   id: EngineId;
-  /** Internal codename — mono badge only */
+  /** Primary UI display name — branded spelling (hero label) */
   label: string;
-  /** Primary UI label */
+  /** Optional pronunciation sublabel — mono, subtle secondary only */
   friendlyLabel: string;
   /** One quiet outcome line — cards, workbench header */
   outcomeHint: string;
