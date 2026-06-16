@@ -1,0 +1,48 @@
+{
+  "title": "BRANDLE OS \u2014 INPUT ORDER",
+  "version": "v2.4",
+  "date": "2026-02-04",
+  "workflows": {
+    "clean_rebuild": {
+      "steps": [
+        {
+          "step": 1,
+          "action": "Create new Lovable project"
+        },
+        {
+          "step": 2,
+          "action": "Paste ONE file",
+          "file": "BRANDLE_OS_Lovable_OnePaste_RebuildPrompt_v2.4.txt"
+        }
+      ]
+    },
+    "patch_existing": {
+      "steps": [
+        {
+          "step": 1,
+          "action": "Apply tiered access patch",
+          "file": "BRANDLE_OS_LovableUpdatePrompt_TieredAccess_Security_v2.3.txt"
+        },
+        {
+          "step": 2,
+          "action": "Apply dRANb master architecture patch",
+          "file": "BRANDLE_OS_LovableUpdatePrompt_dRANb_MasterArchitecture_v2.4.txt"
+        }
+      ]
+    }
+  },
+  "reference_docs": [
+    "BRANDLE_OS_dRANb_MasterArchitecture_IntegrationPack_v2.4.txt",
+    "BRANDLE_OS_dRANb_MasterArchitecture_IntegrationPack_v2.4.pdf",
+    "BRANDLE_OS_dRANb_MasterArchitecture_IntegrationPack_v2.4.json",
+    "BRANDLE_OS_TieredAccess_InvestorVault_DeviceLock_Addendum_v2.3.txt",
+    "BRANDLE_OS_TieredAccess_InvestorVault_DeviceLock_Addendum_v2.3.pdf",
+    "BRANDLE_OS_TieredAccess_InvestorVault_DeviceLock_Addendum_v2.3.json",
+    "BRANDLE_OS_Document_Index_v2.4.txt"
+  ],
+  "archives": [
+    "BRANDLE_OS_OutputsOnly_v2.4.zip",
+    "BRANDLE_OS_Thread_Documents_All_v2.4.zip"
+  ],
+  "summary": "Correct paste-order for Lovable builds plus the supporting docs & archives."
+}

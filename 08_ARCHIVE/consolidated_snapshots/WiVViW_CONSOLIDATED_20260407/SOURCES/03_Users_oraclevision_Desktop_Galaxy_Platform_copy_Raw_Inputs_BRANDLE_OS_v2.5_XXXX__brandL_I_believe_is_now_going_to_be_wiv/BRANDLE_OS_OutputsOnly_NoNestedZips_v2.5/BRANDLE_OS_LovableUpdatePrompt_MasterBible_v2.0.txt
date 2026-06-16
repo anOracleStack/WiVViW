@@ -1,0 +1,67 @@
+Update the existing BRANDLE OS Lovable project to align with “THE BRANDLE METAVERSE: MASTER BIBLE v1.1 (Final Galaxy Edition)”.
+
+Do NOT break the existing BRANDLE OS canon (dRANb → brandL → 4IELD → 4TRESS + V4ULT + Evidence Vault + Health Gauge + Receipts + Media Kit + Twin Mode). This update ADDS the remaining ecosystem apps (3XEC, 5ITE, 6ROXY) and installs the Governance Layer + Ops Cadence.
+
+A) Navigation & App Suite
+- Add three new top-level modules to the nav (after 4TRESS):
+  3XEC | 5ITE | 6ROXY
+- Add an “App Suite” overview page that shows the 7-app map with short roles and “Galaxy Features”.
+- Keep existing modules unchanged.
+
+B) Governance Layer (Enterprise Trust)
+Add a new settings section: “Governance & Safety”.
+Implement:
+1) Permission Envelopes (Human-in-the-Loop)
+- Any action that could be interpreted as legal/financial/external execution MUST require an approval step.
+- Build PermissionEnvelope model:
+  id, user_id, scope (legal/finance/outreach/agent_action), summary, payload_json, status (draft/pending/approved/denied), approved_at, created_at.
+- Build an “Action Request” UI card: shows summary, risk label, and requires explicit approve/deny.
+- Store immutable audit logs for approvals/denials.
+
+2) Kill Switch (“Right to Oblivion”)
+- Add “Delete my likeness/model data” control to settings with confirmations.
+- In MVP: implement as placeholder workflow + audit log; label what would be deleted (voice, face, embeddings) and what cannot be deleted (immutable audit logs).
+
+3) Data Stratification Labels
+- Add labels in UI: Ephemeral (raw), Persistent (model weights), Immutable (audit).
+- Evidence Vault items should let the user choose the data stratum and retention intent.
+
+C) Ops Cadence (“The Pulse”)
+- Add a Pulse Scheduler page (in 6ROXY or Settings) that creates scheduled report templates:
+  Morning Brief, Daily Recap, Week in Review, Look Ahead, Quarterly War Room.
+- MVP: generate “report prompts” and store them; do not send emails automatically.
+- Add PulseSchedule model:
+  id, user_id, type, schedule_json, prompt_template, enabled, created_at.
+
+D) 3XEC (Operations) — MVP Placeholder that still works
+Pages:
+- The Dojo: scenario simulator setup (role, stakes, objectives) + generated “practice script” output.
+- The Black Box: post-mortem intake (what happened, terms, outcomes) + extracted learnings + next-time anchors.
+Data:
+- ScenarioRun(model fields: id, project_id, inputs_json, outputs_json, created_at)
+- PostMortem(model fields: id, project_id, intake_json, learnings_json, created_at)
+Safety:
+- No legal advice; label as procedural negotiation coaching. No guarantees.
+
+E) 5ITE (Product) — MVP Template Injection
+Pages:
+- Website Builder Brief: choose business type → suggested site sections.
+- Functional Injection Library: ROI calculator, quiz, booking request form (placeholders).
+- Export: generate starter code snippets and a “handoff prompt” for Lovable (meta) or dev.
+Data:
+- SiteBlueprint(id, project_id, sections_json, widgets_json, created_at)
+
+F) 6ROXY (Avatar) — Consent-first Twin Mode Expansion
+- 6ROXY is a UI layer over Twin Mode:
+  Guide/Mirror/Avatar modes must remain opt-in; Avatar always labeled synthetic.
+- Add “A2A Protocol” page as a placeholder:
+  - It must ONLY output structured action plans and draft messages.
+  - Any external execution requires Permission Envelope approval (no direct execution).
+- Add “Culture Pack” page placeholder: generates meme concepts and captions; no image generation required in MVP.
+
+G) Visuals / Cinematic Layer (Optional UI)
+- Add “Cinematic Mode” toggle (purely cosmetic).
+- Add placeholders for visual panels:
+  The Mirror, The Land Grab, The Citadel.
+
+Global: keep calm procedural copy. Best-effort, confidence, and receipts remain mandatory everywhere.

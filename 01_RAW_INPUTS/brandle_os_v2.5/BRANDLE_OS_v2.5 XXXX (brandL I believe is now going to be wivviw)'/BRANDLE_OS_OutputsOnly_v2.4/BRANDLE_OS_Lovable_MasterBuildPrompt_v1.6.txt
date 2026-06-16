@@ -1,0 +1,141 @@
+Build a full-stack web application called “BRANDLE OS” — a brand optimization platform that generates, evaluates, and consolidates business brand identity decisions into exportable, versioned decision artifacts.
+
+CORE CANON ORDER (locked):
+1) dRANb (Naming Engine) is built first and is the primary workflow.
+2) brandL (Digital Identity Consolidation) activates only AFTER the user has a shortlist (3–7 names).
+3) 4IELD (Naming Field Intelligence) maps the naming environment to detect crowding and whitespace.
+4) 4TRESS (Protection Assistant) prepares NON-LEGAL trademark readiness artifacts (no legal advice).
+Cross-cutting: V4ULT (Archive) + Evidence Vault + Lock/Branch versioning across ALL engines.
+
+NON-NEGOTIABLE SAFETY:
+- Use “best-effort / estimate / confidence” language everywhere.
+- No scraping in MVP (no live handle/domain checks). Use heuristic likelihood signals + confidence labels.
+- Never generate cease-and-desist letters. No threats. No guarantees. No legal conclusions.
+- Never claim trademark registration unless user explicitly confirms and attaches proof in Evidence Vault.
+
+PRODUCT GOAL:
+Give founders/teams a decision pipeline: brief → generate names → score → shortlist → digital identity plan → field intelligence map → non-legal readiness pack → export bundles. Everything is saved as a versioned run with diffs, evidence references, and shareable review links.
+
+PRIMARY USER ROLES:
+- Founder (default)
+- Team Reviewer (comment/vote only)
+- Agency Admin (multi-client) [Phase 2]
+
+INFORMATION ARCHITECTURE (Top Navigation):
+- Projects
+- dRANb (Naming)
+- brandL (Identity)
+- 4IELD (Field)
+- 4TRESS (Readiness)
+- V4ULT (Archive)
+- Evidence Vault
+- Settings/Billing
+
+GLOBAL UX LANGUAGE RULES:
+- Calm, procedural, precise. No hype.
+- Every score shows “why” (3 bullets) + “watch out” (1 bullet).
+- Confidence badges everywhere (Low/Med/High or 0.0–1.0).
+- Interaction rhythm: Batch → Evaluate → Save → Compare → Export (after finalist).
+
+DATA MODELS (Postgres):
+User(id, email, name, role, created_at)
+Project(id, user_id, name, status, created_at)
+BrandBrief(id, project_id, business_description, category, audience, region_language, sliders_json, risk_tolerance, long_term_vision, created_at)
+EngineRun(id, project_id, engine, mode, inputs_json, created_at, locked_from_run_id nullable)
+EvidenceItem(id, project_id, type, title, description, source_kind='user_provided', url_or_file_ref, sha256, tags_json, created_at)
+NameSet(id, project_id, engine_run_id, mode, params_json, created_at)
+NameCandidate(id, project_id, name_set_id, name, pronunciation_hint, rationale, tags_json, created_at)
+NameScore(id, candidate_id, scores_json, overall, confidence, why_json, watchout, created_at)
+ShortlistItem(id, project_id, candidate_id, bucket, rank, notes, created_at)
+IdentityPlan(id, project_id, engine_run_id, primary_name, variants_json, domain_ladder_json, handle_ladder_json, consistency_score, compromise_cost, reclaimability_score, confidence, created_at)
+FieldMap(id, project_id, engine_run_id, competitors_json, clusters_json, heat_zones_json, whitespace_json, expansion_corridors_json, confidence, created_at)
+ReadinessPack(id, project_id, engine_run_id, readiness_score, confidence, class_suggestions_json, templates_json, evidence_checklist_json, submission_checklist_json, enforcement_viability_score, created_at)
+Comment(id, project_id, engine_run_id, user_id, body, created_at)
+Vote(id, project_id, engine_run_id, user_id, target_type, target_id, value, created_at)
+ExportArtifact(id, project_id, engine_run_id, type, format, file_ref, sha256, created_at)
+UsageMeter(id, user_id, period_start, gens_used, exports_used)
+
+ENGINE MODES:
+Input Mode switch for each engine run:
+- Heuristic-only (default)
+- User-verified (requires EvidenceItem confirmations/attachments; increases confidence)
+
+MODULE: dRANb (Naming Engine)
+Screens:
+- Intake Wizard (BrandBrief)
+- Generate (choose mode family; batch size; constraints)
+- Batch Results (grid + quick flags)
+- Candidate Detail (scores, why/watch out, save)
+- Labs (Phase 2 optional): Pronounce, Spell, Recall
+- Compare Board (saved candidates only)
+- Shortlist Manager (3 buckets: Strong+Safe, Strong+Bold, Creative Risk)
+- Decision Log (finalist selection)
+Functional requirements:
+- Generation families: Semantic, Phonetic, Abstract/Coined, Modified Real Words, Symbolic/Metaphoric, Ownable Near-Miss
+- Deterministic pre-filters: profanity/slurs, reserved terms by category, unreadable strings, length outliers, duplicates
+- Scoring categories (0–100): memorability, pronunciation clarity, spelling friction, distinctiveness, brand alignment, scalability, collision risk proxy
+- Show “best-effort” and confidence labels.
+Note: In MVP, use placeholder scoring logic (deterministic heuristics) and allow manual adjustment flags; keep structure ready for LLM integration later.
+
+MODULE: brandL (Digital Identity Consolidation)
+Gate: requires shortlist of 3–7 names.
+Outputs (no scraping):
+- Domain likelihood tiers with confidence + recommended domain ladder (.com→.co→.io→chosen TLDs)
+- Handle likelihood tiers with confidence (clean/acceptable/compromised) for IG/X/TikTok/YouTube
+- Identity consistency score (0–100) + compromise cost
+- Fallback ladder generator (20–60 handle candidates across lanes: clean, minimal-mod, contextual, geo, founder)
+- Acquisition framework: Platform review / Voluntary outreach / Do not pursue
+- Reclaimability score (0–100) = policy_fit × evidence_quality × expected_friction; apply brand-safety penalty if risky
+- Exports: Identity Plan + Handle Family + Outreach Pack + Guidance Pack
+Safe Outreach templates (non-threatening, no trademark claims unless proof provided).
+
+MODULE: 4IELD (Naming Field Intelligence)
+Inputs:
+- Competitor list (paste/upload)
+- Category keywords
+Modes:
+- Quick Map (heuristic)
+- Verified Map (user-provided exports)
+- Ongoing Drift (watchlists + periodic re-analysis)
+Outputs:
+- Field map representation (clusters, gravity wells, borders, whitespace pockets)
+- Heat zones: red/amber/green
+- Expansion-safe paths: simulate 3–5 future categories and provide risk corridors
+- Export summary with confidence and assumptions
+No legal conclusions.
+
+MODULE: 4TRESS (Protection Assistant — NON-LEGAL)
+Hard blocks:
+- Always display “Not legal advice” banner
+- No cease-and-desist letters; no threats; no guarantees
+Outputs:
+- Readiness score (0–100) + confidence with improvement list
+- Class suggestions (best-effort) + confirm-with-counsel reminders
+- Form-safe copy/paste packs (owner block, mark description, goods/services drafts narrow/balanced/broad, usage narrative)
+- Evidence checklist + submission checklist (jurisdiction-agnostic)
+- Platform-based enforcement viability score (tool availability + evidence quality; not outcomes)
+- Export center
+
+MODULE: Evidence Vault (Cross-cutting)
+- Upload/paste evidence items (screenshots links, registrar results, platform notes)
+- Every “User-verified” run must cite at least 1 EvidenceItem.
+
+MODULE: V4ULT (Archive + Versioning)
+- Every engine run saved as EngineRun with lock/branch and diffs:
+  - Lock a run to freeze decisions
+  - Branch a run to try alternate weights/briefs
+  - Diff view shows changed inputs + changed outputs + changed scores
+- Store all exports and allow download.
+
+SUBSCRIPTION GATING (basic):
+- Free: limited projects, limited dRANb runs, limited archive window, no exports
+- Pro: exports + brandL + full archive/versioning
+- Premium: 4IELD + 4TRESS + monitoring (watchlists/alerts)
+Implement Stripe-ready billing portal placeholder.
+
+DESIGN:
+- Dark, calm, procedural UI; minimal accents; typography readable; no emojis; no hype.
+- Components: score cards, confidence badges, compare matrix, export buttons, evidence citations.
+
+DELIVERABLE:
+A working web app with authentication, database, core pages, and placeholder engines that can later connect to LLMs/APIs. Provide a seeded demo project to show end-to-end flow.

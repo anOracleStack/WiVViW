@@ -1,0 +1,58 @@
+{
+  "title": "BRANDLE OS \u2014 PART IV IMPLEMENTATION PACK",
+  "version": "v1.1",
+  "date": "2026-02-03",
+  "sections": [
+    {
+      "id": "source",
+      "title": "Source Ingested",
+      "summary": "Part 4 of 5.md (business model, tiers, architecture scaffold, integrations, metaverse layer)."
+    },
+    {
+      "id": "billing",
+      "title": "Billing & Plans",
+      "summary": "Configurable tiers with plan gating, receipts-based paywalls, Stripe portal stub."
+    },
+    {
+      "id": "usage",
+      "title": "Usage Metering",
+      "summary": "UsageMeter enforced by plan: projects/generations/exports per period."
+    },
+    {
+      "id": "exports",
+      "title": "Exports & Watermarking",
+      "summary": "Scout watermarks + locked exports; paid tiers unlock PDF/DOCX/JSON."
+    },
+    {
+      "id": "monitoring",
+      "title": "Retention Loops",
+      "summary": "Monitoring feed + seasonal prompts + knowledge drops; no scraping."
+    },
+    {
+      "id": "integrations",
+      "title": "Integration Points",
+      "summary": "Wired data flows between dRANb, brandL, 4IELD, 4TRESS with receipts."
+    },
+    {
+      "id": "galaxy",
+      "title": "Galaxy Mode",
+      "summary": "Opt-in UX skin only; no cloning/prosody; explicit safe stubs."
+    },
+    {
+      "id": "build",
+      "title": "Lovable Build",
+      "summary": "Part 4 integration build initiated (projectId 0237f0a6-3ff1-4657-96d3-2fc121a211f2)."
+    }
+  ],
+  "summary": "Implements Part 4 scope for BRANDLE OS: billing tiers + usage metering + export gating, retention loop scaffolding, integration hooks, and an opt-in Galaxy Mode UX skin with strict safety constraints.",
+  "tags": [
+    "BRANDLE OS",
+    "billing",
+    "usage metering",
+    "plan gating",
+    "exports",
+    "monitoring",
+    "integration points",
+    "Galaxy Mode"
+  ]
+}

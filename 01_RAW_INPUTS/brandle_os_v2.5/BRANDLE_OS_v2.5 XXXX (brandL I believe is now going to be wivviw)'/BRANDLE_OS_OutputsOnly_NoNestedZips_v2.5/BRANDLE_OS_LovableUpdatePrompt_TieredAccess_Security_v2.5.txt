@@ -1,0 +1,41 @@
+Update the existing BRANDLE OS Lovable project to add Tiered Access (Investor Portal + Inner Circle Vault) with code-minted invites and device lock.
+
+Do NOT delete existing modules. Keep engines, V4ULT, Evidence Vault, Health Gauge, Receipts Drawer, Twin Mode, Governance.
+
+1) Roles & Routing
+Roles: public, user, investor, inner_circle, admin. Guard routes + enforce DB RLS.
+
+2) Admin Panel
+Add /admin/invites:
+- Create invite: name, email, phone, role (investor/inner_circle), expires_at, notes.
+- Generate single-use code; store only code_hash.
+- Actions: revoke, reset device lock (clear device_hash + rotate code), extend expiry.
+
+Models:
+Invite(id, name, email, phone, role, code_hash, expires_at, used_at, device_hash, max_devices=1, notes, created_by, created_at)
+AccessEvent(id, actor_id or invite_id, role, resource, action, timestamp, device_hash, ip_hash)
+
+3) Redeem Flow
+Add /redeem page: user enters code.
+If valid + unused + not expired:
+- bind device_hash on first redemption (best-effort fingerprint hash)
+- attach role to user
+- mark used_at
+If device mismatch: deny + “Contact Admin to reset.”
+
+4) Investor Portal (/investor/*)
+Create pages: Overview, Projections, Roadmap, Deck Viewer (no download), Diligence.
+Require NDA acceptance before any investor view; store NDA_Acceptance(version, accepted_at).
+
+5) Inner Circle Vault (/vault/*)
+View-only pages: Engine Specs, Prompt Vault, Schemas/Manifests.
+No exports; no share links by default; disable selection/copy best-effort.
+
+6) Deterrence (Truthful)
+Watermark overlay on investor/vault: email + timestamp + leak token.
+Blur-on-unfocus on investor/vault.
+Log all views/exports to AccessEvent.
+UI copy must state: web cannot fully prevent screenshots; watermarks provide traceability.
+
+7) Share Links
+Investor-only view tokens with TTL + revoke. Prompts hidden by default; receipts visible.

@@ -1,0 +1,33 @@
+{
+  "title": "BRANDLE OS \u2014 INPUT ORDER",
+  "version": "v2.5",
+  "date": "2026-02-04",
+  "workflows": {
+    "clean_rebuild": [
+      {
+        "step": 1,
+        "action": "Create a new Lovable project under intended owner account"
+      },
+      {
+        "step": 2,
+        "action": "Paste ONE file",
+        "file": "BRANDLE_OS_Lovable_OnePaste_RebuildPrompt_v2.5.txt"
+      }
+    ],
+    "patch_existing": [
+      {
+        "step": 1,
+        "action": "Apply tiered access patch",
+        "file": "BRANDLE_OS_LovableUpdatePrompt_TieredAccess_Security_v2.5.txt"
+      },
+      {
+        "step": 2,
+        "action": "Apply dRANb patch",
+        "file": "BRANDLE_OS_LovableUpdatePrompt_dRANb_MasterArchitecture_v2.5.txt"
+      }
+    ]
+  },
+  "archives": [
+    "BRANDLE_OS_OutputsOnly_v2.5.zip"
+  ]
+}

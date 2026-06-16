@@ -1,0 +1,57 @@
+Update BRANDLE OS so dRANb exactly matches Master Architecture v1.1 + Section 4 spec.
+
+Do NOT delete existing modules. Keep: Health Gauge, Receipts Drawer, Evidence Vault, Governance, V4ULT, brandL, 4IELD, 4TRESS, Twin Mode, tiered access if present.
+
+A) Intake (BrandBrief)
+Ensure model + UI capture:
+- business_description (1–3 paragraphs)
+- industry_category (select + custom)
+- target_audience (who/where/why + psychographics)
+- value_proposition (1 sentence)
+- future_expansion (5–10 year vision)
+- competitor_set (5–50 optional)
+- constraints: forbidden_terms[], syllable_range, style_notes
+- risk_tolerance: conservative/balanced/adventurous
+- personality sliders (7 axes, 0–100)
+
+B) Generation Modes
+Support NameSet.type: semantic, phonetic, abstract_coined, modified_real, symbolic, ownable_nearmiss.
+Each EngineRun may generate multiple NameSets tagged by mode + parameters.
+
+C) Anti-Generic (default ON)
+- system + user blocklists
+- reject “two keyword SEO” patterns (BestX, MyX, XHub)
+- penalize suffixes app/pro/hub/ai/ly unless explicitly allowed
+- penalize category stuffing
+
+D) Scoring (7 dimensions 0–100)
+Persist NameScore per candidate:
+memorability, pronunciation_clarity, spelling_ease (inverse), distinctiveness,
+brand_alignment, scalability, collision_risk_proxy (inverse; non‑legal).
+OverallScore: weighted mean + caps + penalties.
+
+Penalties (store as score_adjustments[]):
+- ambiguous spelling: -10 to -35
+- competitor resemblance: -15 to -50
+- generic keyword presence: -10 to -40
+- awkward sub-brand expansion: -10 to -25
+
+E) Confidence
+Store confidence 0–1 and label High/Medium/Low.
+
+F) Validation Labs (MVP)
+Add Pronounce/Spell/Recall Labs and store results tied to EngineRun.
+
+G) Candidate Output Schema
+name normalized, pronunciation (IPA best-effort), rationale, generationMode,
+scores(7), overallScore, confidence, viability{domain, handles[], linguistic},
+strengths[], risks[].
+
+H) Digital Viability (heuristic)
+DomainLikelihood + confidence; HandleLikelihood per platform + confidence; LinguisticConflicts best-effort.
+
+I) Exports
+Name Decision Report export PDF/TXT/JSON with chosen name, pronunciation, rationale bullets,
+score summary, risks+mitigations, viability signals+confidence, next steps, copy blocks.
+
+Tone: calm, procedural, non-hype. Always label heuristics as estimates.

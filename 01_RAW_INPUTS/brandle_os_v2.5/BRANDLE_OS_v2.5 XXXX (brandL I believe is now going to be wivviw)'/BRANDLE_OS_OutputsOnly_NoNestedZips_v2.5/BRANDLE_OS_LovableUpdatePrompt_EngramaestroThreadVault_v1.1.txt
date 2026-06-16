@@ -1,0 +1,42 @@
+Implement ENGRAMAESTRO Thread Vault inside BRANDLE OS (extend existing Parts I–V without breaking anything).
+
+Goal:
+Add a V4ULT → Thread Vault module that can IMPORT a thread transcript / Engramaestro vault text, PARSE into artifacts, HASH each artifact content (sha256), DISPLAY verbatim artifacts, and EXPORT in Engramaestro-like format (TXT/PDF) + JSON.
+
+Functional Requirements:
+1) New navigation item: V4ULT → Thread Vault
+2) Thread Vault pages:
+   - /vault/thread-vault (list)
+   - /vault/thread-vault/import (import/upload)
+   - /vault/thread-vault/:vaultId (detail)
+   - /vault/thread-vault/:vaultId/export (export)
+3) Import methods:
+   - Paste raw text
+   - Upload TXT or PDF (MVP: accept text paste; upload can be stubbed if parsing PDF is complex)
+4) Parsing logic:
+   - Detect “Msg ###” lines to build a Message Index table:
+     fields: msg_number, speaker, role, type, subject_first_5_words
+   - Detect “Artifact ID” blocks to create artifacts:
+     fields: artifact_id, artifact_type, speaker, content_types, subject, status, source, date, sha256_declared, content_body_raw
+   - Compute sha256 for content_body_raw and store as sha256_computed
+5) Data models (DB):
+   - ThreadVault (id, title, source_name, version_tag, created_at)
+   - ThreadVaultMessageIndexRow (vault_id, msg_number, speaker, role, type, subject)
+   - ThreadVaultArtifact (vault_id, artifact_id, artifact_type, speaker, content_types, subject, status, source, date, sha256_declared, sha256_computed, content_body_raw)
+   - VaultEvent (already exists): add event_type=ThreadVaultImport, ThreadVaultExport
+6) UI:
+   - Minimal, trust-first, no gimmicks
+   - Filters: speaker/type/status
+   - “View raw” monospace block for verbatim content
+7) Export:
+   - Generate an Engramaestro-like TXT export (Message Index + Vault Verbatim)
+   - Provide a JSON export file
+8) Prompt Vault seeding:
+   - Extract any artifact where artifact_type includes “Prompt”
+   - Provide a button: “Add to Prompt Vault” (admin-only) that creates PromptVaultArtifact entries with immutable versioning
+
+Governance:
+- All imports create an ImmutableAuditLog entry (Tier C) with anonymized identifiers if needed.
+- Share links should redact prompt bodies by default unless admin.
+
+Keep all existing modules intact: dRANb, brandL, 4IELD, 4TRESS, V4ULT, Billing, Governance, Ops Cadence, Prompt Vault.

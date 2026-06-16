@@ -1,0 +1,63 @@
+{
+  "title": "WiVViW — Brand Intelligence OS — Visual & Competitive Compass",
+  "version": "v1.1",
+  "date": "2026-02-12",
+  "sections": [
+    {
+      "id": "part1_visual_language",
+      "title": "PART I — The Visual Language of Branding",
+      "summary": "Defines branding as a repeatable signal system & outlines the Branding Signal Stack + Calm Tech/Glass Box doctrine."
+    },
+    {
+      "id": "part2_competitive_lane",
+      "title": "PART II — Competitive Lane & Archetypes",
+      "summary": "Maps competitor archetypes across brand platforms, naming generators, domain/handle utilities, agencies, & ops platforms."
+    },
+    {
+      "id": "part3_works_fails",
+      "title": "PART III — What Works & What Fails",
+      "summary": "Lists high-performing patterns to adopt & anti-patterns to avoid; centers trust-first, ritual flows, restraint, receipts."
+    },
+    {
+      "id": "part4_whitespace",
+      "title": "PART IV — What People Aren’t Doing",
+      "summary": "Identifies category whitespace: verified mode, receipts/versioning, real-world labs, compromise-cost, drift, governance UX."
+    },
+    {
+      "id": "part5_moat",
+      "title": "PART V — Differentiation & Moat",
+      "summary": "Defines the 5-pillar moat: Glass Box scoring, Evidence Vault, V4ULT timeline, ritual workflows, modular constellation."
+    },
+    {
+      "id": "part6_connective_tissue",
+      "title": "PART VI — Connective Tissue: One OS",
+      "summary": "Specifies universal skeleton (Brand Genome, receipts, exports) & adaptive skin (cinematic backdrops, palette, tone dial)."
+    },
+    {
+      "id": "part7_engine_identities",
+      "title": "PART VII — Engine Identities",
+      "summary": "Provides shared materials + distinct signatures for dRANb, brandL, 4IELD, 4TRESS, Evidence Vault, V4ULT, Health Gauge, Receipts, Twin Mode, expansions."
+    },
+    {
+      "id": "part8_next_galaxy",
+      "title": "PART VIII — Next Galaxy Moves",
+      "summary": "Blueprints personalization core + cinematic presentation engine; lists module-specific wow features & the target emotional outcome."
+    }
+  ],
+  "summary": "A design, competitive, & differentiation compass for WiiVviW/BRANDLE OS: how to represent branding visually, map competitor archetypes, avoid common failures, claim whitespace, define a moat, and unify a modular engine network with consistent connective tissue plus distinct module identities.",
+  "tags": [
+    "WiiVviW",
+    "BRANDLE OS",
+    "dRANb",
+    "brandL",
+    "4IELD",
+    "4TRESS",
+    "Evidence Vault",
+    "V4ULT",
+    "Design System",
+    "Competitive Analysis",
+    "Differentiation",
+    "Cinematic UX",
+    "Brand Ops"
+  ]
+}

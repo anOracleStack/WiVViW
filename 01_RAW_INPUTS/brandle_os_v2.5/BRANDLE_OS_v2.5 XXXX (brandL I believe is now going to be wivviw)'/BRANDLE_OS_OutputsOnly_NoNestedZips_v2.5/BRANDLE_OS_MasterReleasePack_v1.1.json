@@ -1,0 +1,35 @@
+{
+  "title": "BRANDLE OS \u2014 MASTER RELEASE PACK (PARTS I\u2013V)",
+  "version": "v1.1",
+  "date": "2026-02-03",
+  "sections": [
+    {
+      "id": "overview",
+      "title": "Unified Overview",
+      "summary": "Consolidated snapshot of Parts I\u2013V into one release pack."
+    },
+    {
+      "id": "canonical_build",
+      "title": "Canonical Build",
+      "summary": "Latest Lovable project for Parts I\u2013V: 89d53020-feae-4084-b26c-f0031952266e."
+    },
+    {
+      "id": "system_rules",
+      "title": "System Rules",
+      "summary": "Trust-first, no scraping, non-legal, receipts everywhere, privacy-first."
+    }
+  ],
+  "summary": "Master release snapshot combining Parts I\u2013V for BRANDLE OS, including governance, ops cadence, and prompt vault.",
+  "tags": [
+    "BRANDLE OS",
+    "master release",
+    "parts 1-5",
+    "dRANb",
+    "brandL",
+    "4IELD",
+    "4TRESS",
+    "V4ULT",
+    "billing",
+    "governance"
+  ]
+}

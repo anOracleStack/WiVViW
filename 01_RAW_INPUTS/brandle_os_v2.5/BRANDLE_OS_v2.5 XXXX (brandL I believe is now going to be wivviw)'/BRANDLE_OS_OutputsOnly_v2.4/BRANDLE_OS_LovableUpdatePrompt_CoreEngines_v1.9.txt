@@ -1,0 +1,54 @@
+Update the existing BRANDLE OS Lovable project to fully implement the four core engine system designs (dRANb v1.1, brandL v1.1, 4IELD v1.0, 4TRESS v1.0) as user-visible pages and data models. Do NOT remove existing work. Keep previous cross-cutting modules (Model Health Gauge, Receipts Drawer, Media Kit, Twin Mode, V4ULT) intact.
+
+A) dRANb — Naming Engine (primary)
+- Add/confirm full page flow: Intake → Generate → Evaluate → Compare → Shortlist → Decision Log → Export → Handoff to brandL.
+- Add Validation Labs pages:
+  1) Pronounce Lab: TTS playback + clarity votes + clarity score.
+  2) Spell Lab: dictation typing test → mismatch rate → spelling friction score.
+  3) Recall Lab: timed exposure → recall attempts → recall score.
+- Add Competitor Set intake (paste/upload list, optional) and show similarity notes in evaluation (best-effort, heuristic).
+- Add Shareable shortlist review page: view-only link token + simple votes + optional comments (Team tier gate).
+- Ensure shortlist buckets: Strong+Safe, Strong+Bold, Creative Risk.
+- Exports: Name Decision Report + Copy/Paste Pack (TXT/PDF/JSON), stored as ExportArtifacts.
+
+B) brandL — Digital Identity Consolidation (gated)
+- Enforce gate: brandL cannot run until shortlist count is 3–7.
+- Pages: Import from dRANb → Digital Targets → Identity Scan Results → Candidate Detail → Compromise Map → Handle Families Generator → Reclaimability → Outreach Templates → Outreach Log → Platform Guidance → Export.
+- Implement Handle Families Generator:
+  Tier-1 family (closest), Tier-2 family (acceptable), and a “Do Not Use” list.
+- Implement Reclaimability friction label (Low/Med/High) + confidence; policy-first language.
+- Outreach templates are voluntary and non-threatening; block any trademark claims unless Evidence Vault has verified proof.
+
+C) 4IELD — Competitive Naming Field Engine
+- Inputs: competitor list (CSV upload), category tags, optional user-provided exports (no scraping).
+- Output pages: Clustering summary + Saturation metrics + Conceptual Field Map (2D projection placeholder) + Risk zones (red/amber/green) + Whitespace pockets + Expansion-safe recommendations.
+- Add FieldSnapshot model to store map_json, metrics, assumptions, confidence.
+- Add Drift monitoring placeholder: user-triggered “New Snapshot” and drift index delta vs last snapshot.
+
+D) 4TRESS — Non-Legal Protection Assistant
+- Always show “NOT LEGAL ADVICE” banner.
+- Hard blocks: never generate cease-and-desist letters; no threats; no legal conclusions.
+- Pages: Readiness Intake → Readiness Assessment → Class Suggestion Intelligence (best-effort) → Filing Path Explainer → Copy/Paste Field Generator → Evidence Checklist → Submission Checklist → Monitoring Reminders Export → Platform-based Viability Score → Export Center.
+- Include the provided templates as copy/paste blocks; allow user edits; store results in ReadinessPack.
+
+E) Data models (add if missing)
+- Workspace(id, name, owner_user_id), WorkspaceMember(user_id, workspace_id, role) to support Team tier.
+- CompetitorSet(project_id, items_json, source_ref).
+- ValidationResults(candidate_id, pronounce_json, spell_json, recall_json).
+- ShareReview(shortlist_id, token, expires_at) + Vote + Comment.
+- FieldSnapshot(project_id, engine_run_id, inputs_json, metrics_json, map_json, confidence).
+- ProtectionWorkspace(project_id, selected_candidate_id, intake_json).
+(Keep existing models already in app; only add missing.)
+
+F) Subscription gating (placeholder)
+- Free: limited projects/runs; exports disabled.
+- Pro: exports + brandL.
+- Premium: 4IELD + 4TRESS + monitoring.
+- Team: workspaces + reviewer voting + governance.
+Use UsageMeter for limits.
+
+G) UX rules
+- Calm, procedural. No hype. No emojis.
+- Every score shows 3 “why” bullets and 1 “watch out” bullet.
+- Confidence badges everywhere.
+- Keep “best-effort / no promises” language on any availability/risk output.

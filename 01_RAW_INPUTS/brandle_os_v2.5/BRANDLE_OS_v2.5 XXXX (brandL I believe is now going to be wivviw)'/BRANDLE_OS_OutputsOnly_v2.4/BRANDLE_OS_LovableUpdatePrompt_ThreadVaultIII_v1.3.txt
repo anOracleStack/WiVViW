@@ -1,0 +1,62 @@
+Update the existing BRANDLE OS project to implement Thread Vault III system designs. Do NOT delete or rename existing modules.
+
+A) dRANb (Naming Engine) — MVP+Moat
+1) Add screens/pages per the Screen Map: Auth, Projects, Intake Wizard, Generation Home, Batch Results, Candidate Detail, Evaluation Overview, Labs, Compare Board, Shortlist Manager, Decision Log, Share Link Settings, Export Center.
+2) Intake Wizard fields:
+- business description (1–3 paragraphs), category/industry, audience, region/language, value prop, future expansion
+- competitor set (optional list upload/paste; 5–5,000)
+- constraints: forbidden words, syllable range, style notes
+- sliders (0–100): Classic↔Modern, Minimal↔Expressive, Serious↔Playful, Technical↔Human, Luxury↔Accessible, Bold↔Calm, Abstract↔Literal
+- risk tolerance: Conservative / Balanced / Adventurous
+3) Generation families toggles:
+- semantic, phonetic, abstract/coined, modified words, symbolic, ownable near‑miss
+4) Labs (optional, opt‑in) and scoring hooks:
+- Pronounce Lab (TTS + clarity votes)
+- Spell Lab (dictation typing test → friction score)
+- Recall Lab (timed recall → memorability signal)
+5) Scoring model (0–100 per dimension + weighted overall; show 3 “because” bullets + 1 “watch out”):
+- Memorability, Pronunciation Clarity, Spelling Friction, Distinctiveness, Brand Alignment, Scalability, Collision Risk
+- Include penalties: ambiguity spelling, competitor resemblance, generic keyword presence, awkward sub‑brand expansion.
+6) Share Review:
+- Create view‑only share link for shortlist
+- Reviewer votes + comments stored; surface stakeholder disagreement warning.
+
+B) brandL (Digital Identity Consolidation) — after shortlist
+1) Import shortlist (3–7 candidates) + variants.
+2) Configure digital targets: preferred TLDs, platform priority weights (IG/TikTok/X/YouTube), handle constraints.
+3) Identity scan outputs (best‑effort signals only; no scraping assumptions unless licensed):
+- domain likelihood by TLD + confidence
+- handle likelihood by platform + confidence
+- identity consistency scoring per candidate
+- fallback handle families (ranked; tier‑1/ tier‑2)
+- reclaimability assessment (Low/Med/High friction) + policy-first steps
+- outreach templates (professional, non‑threatening)
+- platform complaint guidance (non‑legal, no enforcement language)
+4) Export: Digital Identity Report + “Next Actions” checklist.
+
+C) 4IELD (Naming Field Intelligence)
+1) Inputs: competitor set (paste/upload), category tags, expansion targets, monitoring watchlist, optional user-provided trademark-adjacent exports.
+2) Engines: vectorization (phonetic + semantic), clustering (density + hierarchical), saturation index, crowding/confusion risk, expansion risk zoning, identity drift monitoring.
+3) Surfaces:
+- interactive field map (2D projection with clusters + tooltips)
+- risk zones (red/amber/green) + confidence
+- whitespace opportunities + constraints/safe corridors
+- export pack (assumptions + scores + next steps)
+4) Scores (0–100 + confidence 0–1):
+- semantic crowding, naming saturation, trademark density signal (user-provided only), expansion risk zone, identity drift index.
+
+D) 4TRESS (Non‑Legal Protection Assistant)
+1) Always show “Not legal advice” banner.
+2) Hard blocks:
+- no cease-and-desist letters
+- no threats, no guarantees, no legal conclusions
+3) Provide: readiness score, class signals, form‑ready text, checklists, reminders.
+
+E) Growth Hooks (Dashboard module)
+- “Name of the Week” teardown (showcase: what worked & why; education)
+- “Business of the Day” spotlight (mini-case studies)
+- seasonal identity prompt packs
+- partner discounts
+- referral credits
+
+Keep visual tone: calm, procedural, trust-first. No emojis. No hype.

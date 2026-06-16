@@ -1,0 +1,178 @@
+Build (or regenerate) a full-stack web app called “BRANDLE OS / THE BRANDLE METAVERSE”.
+
+GOAL
+A calm, procedural brand-optimization platform that turns inputs into versioned decision artifacts with receipts, stability snapshots, and export bundles. This build must include the core BRANDLE OS engines (dRANb, brandL, 4IELD, 4TRESS) and the METAVERSE expansion modules (3XEC, 5ITE, 6ROXY) as functional MVP pages.
+
+NON‑NEGOTIABLE SAFETY & GOVERNANCE
+- Use best‑effort / estimate / confidence language everywhere.
+- No scraping in MVP. All domain/handle/competitor “availability” is heuristic unless user provides evidence in Evidence Vault and explicitly marks it verified.
+- 4TRESS is NON‑LEGAL: always show “Not legal advice”; no cease‑and‑desist letters; no threats; no guarantees; no legal conclusions.
+- Any external/outreach/agent-to-agent actions MUST be permission‑enveloped + auditable; do not execute anything.
+- Twin/Avatar is consent-based, synthetic‑labeled, revocable; implement a Kill Switch workflow (with audit log).
+- Prompts are hidden by default when sharing; receipts + stability are visible.
+
+SECURITY / TIERED ACCESS (MVP)
+Roles: public, user, investor, inner_circle, admin.
+- Add /redeem invite code flow (single-use codes) to elevate roles.
+- Add /admin/invites (admin-only) to mint/revoke/reset codes.
+- Device-lock invites: bind a best-effort device hash on first redemption (max_devices=1).
+- Investor Portal at /investor/* gated by NDA acceptance (store NDA_Acceptance).
+- Inner Circle Vault at /vault/* is view-only: no exports; disable selection/copy best-effort.
+- Add watermark overlay on Investor/Vault pages: “CONFIDENTIAL — {email} — {timestamp} — {leak_token}”.
+- Add blur-on-unfocus for Investor/Vault pages.
+- Add AccessEvent logs for every Investor/Vault view and every export.
+- NEVER claim screenshot blocking; include UI copy: “Web UIs cannot fully prevent screenshots; watermarks provide traceability.”
+
+Minimum DB additions:
+Invite(id, name, email, phone, role, code_hash, expires_at, used_at, device_hash, max_devices=1, notes, created_by, created_at)
+NDA_Acceptance(id, user_id or invite_id, version, accepted_at)
+ShareLink(id, resource, token, expires_at, created_by, revoked_at)
+AccessEvent(id, actor_id or invite_id, role, resource, action, timestamp, device_hash, ip_hash)
+
+dRANb (Naming) — MUST MATCH MASTER ARCHITECTURE v1.1 + SECTION 4
+Workflow: Intake → Generate → Evaluate → Compare → Shortlist → Decide → Export.
+
+Intake (BrandBrief UI + model):
+- business_description (1–3 paragraphs)
+- industry/category (select + custom)
+- target_audience (who/where/why + psychographics)
+- value_proposition (1 sentence)
+- future_expansion (5–10 year vision)
+- competitor_set (5–50 optional)
+- constraints: forbidden_terms[], syllable_range, style_notes
+- risk_tolerance: conservative/balanced/adventurous
+- 7 personality sliders (0–100):
+  Classic/Modern, Minimal/Expressive, Serious/Playful, Technical/Human,
+  Luxury/Accessible, Bold/Calm, Abstract/Literal
+
+Generation:
+- Multiple NameSets per EngineRun tagged by mode + parameters.
+- Modes: semantic, phonetic, abstract_coined, modified_real, symbolic, ownable_nearmiss.
+Anti-generic defaults ON:
+- system + user blocklists
+- reject “two keyword SEO” patterns (BestX/MyX/XHub)
+- penalize suffixes app/pro/hub/ai/ly unless explicitly allowed
+- penalize category stuffing
+
+Scoring (0–100):
+memorability, pronunciation_clarity, spelling_ease (inverse of friction),
+distinctiveness, brand_alignment (vector distance), scalability,
+collision_risk_proxy (inverse; non‑legal).
+OverallScore = weighted mean + caps + penalties. Store penalties per candidate:
+- ambiguous spelling: -10 to -35
+- competitor resemblance: -15 to -50
+- generic keywords: -10 to -40
+- awkward sub-brand expansion: -10 to -25
+Confidence: 0–1 labeled High/Med/Low.
+
+Validation Labs (MVP):
+- Pronounce Lab: TTS + “heard correctly?” votes
+- Spell Lab: dictation mismatch proxy
+- Recall Lab: timed exposure → recall attempts
+
+Candidate output schema:
+name normalized, pronunciation (IPA best-effort), rationale (2–3 sentences),
+generationMode, scores(7), overallScore, confidence(0–1),
+viability{domain, handles[], linguistic}, strengths[], risks[].
+
+Exports:
+Name Decision Report (PDF/TXT/JSON): chosen name, pronunciation, rationale bullets,
+score summary, risks+mitigations, viability signals + confidence, next steps, copy blocks.
+
+CANON ORDER (LOCKED)
+1) dRANb (Naming) — primary workflow
+2) brandL (Identity) — gated after shortlist size 3–7
+3) 4IELD (Field Intel) — crowding/whitespace mapping (no scraping)
+4) 4TRESS (Protection) — non‑legal readiness pack
+
+TOP NAV
+Projects | dRANb | brandL | 3XEC | 4IELD | 4TRESS | 5ITE | 6ROXY | V4ULT | Evidence Vault | Governance | Settings/Billing
+
+DESIGN
+Dark, calm, procedural UI. Minimal accents. No hype. No emojis.
+Every score shows: 3 “why” bullets + 1 “watch out” bullet.
+Confidence badge everywhere (Low/Med/High or 0–1).
+
+DATABASE (Postgres) MODELS (minimum)
+User, Workspace, WorkspaceMember, Project, BrandBrief,
+EngineRun, NameSet, NameCandidate, NameScore, ShortlistItem,
+IdentityPlan, FieldSnapshot, ReadinessPack,
+EvidenceItem, ExportArtifact,
+StabilitySnapshot, ReceiptPack, MediaAsset, TwinSettings,
+ShareReview, Vote, Comment,
+PermissionEnvelope, AuditLog,
+PulseSchedule,
+ScenarioRun, PostMortem,
+SiteBlueprint, WidgetTemplate,
+UsageMeter.
+
+CROSS‑CUTTING MODULES (MUST WORK IN MVP)
+1) MODEL HEALTH GAUGE (8‑track “Signal Flow Board”)
+Tracks: Coherence, Constraint Fit, Evidence Coverage, Consensus, Novelty vs Clarity, Risk Surface, Policy/Safety, Actionability.
+Top meter: Stable/Caution/Unstable + Stability Index 0–100.
+Store StabilitySnapshot per EngineRun. Show warnings with ONE best correction.
+
+2) RECEIPTS DRAWER (per EngineRun)
+Run Ledger, Prompt Pack (sanitized), Assumptions Ledger, Delta Report, Evidence Pins, Outcome Summary.
+Sharing: receipts visible, prompts hidden by default.
+
+3) MEDIA KIT (placeholders)
+Per key screen: 6–12s clip slots (16:9 & 9:16) with captions.
+Milestone recap slot (30–60s). Store MediaAsset records.
+
+4) TWIN MODE (Consent)
+Guide (default), Mirror (opt‑in), Avatar (opt‑in, synthetic labeled, user media only), Humor toggle (recaps only; never on 4TRESS).
+Store TwinSettings.
+
+5) GOVERNANCE PANEL
+Permission Envelopes: any outreach/agent action must generate an approval card; store immutable AuditLog.
+Kill Switch: “Right to Oblivion” placeholder workflow + audit log.
+Data Stratification labels: Ephemeral (raw), Persistent (weights), Immutable (audit). Evidence Vault chooses stratum.
+
+6) OPS CADENCE (“THE PULSE”)
+Pulse Scheduler stores report prompts (no auto-email): Morning Brief, Daily Recap, Week in Review, Look Ahead, Quarterly War Room.
+
+7) V4ULT (Archive + Versioning)
+Universal timeline across all EngineRuns; Lock/Branch; Diffs; Artifact bundles; Share controls.
+
+ENGINE: dRANb (Naming) — Calm Tech + Glass Box
+Flow: Intake → Processing (“Wait” log) → Dashboard (5–10 cards) → Deep Dive Drawer → Workbench Compare → Shortlist → Decide → Export → brandL handoff.
+Intake: Mad-libs brief + sliders (Speed/Weight/Structure) + digital constraints + Soundalikes preference.
+Processing: cascading log; mirrored in receipts.
+Dashboard: cards show Name + phonetic/IPA + score + 3 signal dots (Domain/Social/Risk).
+Deep Dive tabs: Rationale, Linguistics, Digital (ladders + confidence), Risk (proxy, non‑legal).
+Workbench: pin 3; compare; previews; “Test with Humans” export.
+Validation Labs: Pronounce (TTS+votes), Spell (dictation mismatch), Recall (timed recall).
+Filters: profanity/slurs (hard), duplicates, unreadable strings, length outliers.
+Scoring: memorability, pronunciation clarity, spelling friction, distinctiveness, alignment, scalability, collision proxy + confidence.
+
+ENGINE: brandL (Identity) — GATED
+Gate: only run when shortlist size is 3–7.
+Outputs: domain ladder, handle ladder, compromise cost, tier handle families + “Do Not Use”, reclaimability friction + confidence, voluntary outreach templates (no TM claims unless verified).
+Export: Identity Plan bundle.
+
+ENGINE: 4IELD (Field Intel)
+Inputs: competitor list (CSV), category tags, optional user exports.
+Outputs: clustering + saturation + conceptual 2D field map + risk zones + whitespace + expansion-safe recs.
+Snapshots: FieldSnapshot(map_json, metrics_json, assumptions, confidence). Drift index delta on new snapshots.
+Export: Field Pack.
+
+ENGINE: 4TRESS (Protection) — NON‑LEGAL
+Banner: Not legal advice. Hard blocks: no C&D, no threats, no guarantees.
+Outputs: readiness score + confidence, best‑effort class signals (confirm-with-counsel reminders), copy/paste fields, evidence checklist, submission checklist, platform-tool viability score, monitoring reminders export.
+Export: Readiness Pack.
+
+EXPANSION MODULES (FUNCTIONAL MVP)
+3XEC: Dojo (scenario training) + Black Box (post‑mortems). Procedural coaching only.
+5ITE: Website builder brief + widget library placeholders + starter code export + handoff prompt.
+6ROXY: Twin Mode layer + A2A protocol drafts only (permission‑enveloped) + Culture Pack captions.
+
+SUBSCRIPTION GATING (placeholder)
+Free: limited projects/runs; exports off.
+Pro: exports + brandL.
+Premium: 4IELD + 4TRESS + monitoring.
+Team: workspaces + reviewer voting + governance.
+Add Settings/Billing with billing portal placeholder + UsageMeter.
+
+DELIVERABLE
+A working, authenticated web app with migrations, seeded demo project, the core engines, V4ULT versioning, Evidence Vault, Governance, Pulse scheduler, and export bundles (TXT/PDF/JSON) stored per run.

@@ -1,0 +1,35 @@
+═══════════════════════════════════════════════════════════════════════════════
+══════════════════  BRANDLE OS — MASTER RELEASE (PARTS I–V)  ═════════════════
+═══════════════════════════════════════════════════════════════════════════════
+
+                              “Decision infrastructure for identity.”
+                              “Receipts everywhere. Drift nowhere.”
+
+PART I  — dRANb ........ naming decision thread (generate → score → compare → decide)
+PART II — brandL ....... domains + handles + identity consistency + acquisition plans
+PART II — 4IELD ........ field intelligence + saturation + drift + conceptual map
+PART III— 4TRESS ....... non-legal readiness + templates + checklist + reminders
+PART III— V4ULT ........ universal archive (prompt packs, assumptions, deltas, lock/branch)
+PART IV — Billing ...... tiers + plan gating + usage meters + export gating/watermark
+     PART IV — Monitoring ... rerun deltas + knowledge drops (no scraping)
+PART V  — Governance ... Right to Oblivion + stratified data tiers + 6ROXY spend guardrail
+PART V  — Ops Cadence .. seeded schedule + templates + optional calendar export
+  PART V  — Prompt Vault . read-only canonical prompts (versioned, immutable)
+
+                           CANONICAL BUILD (LATEST)
+───────────────────────────────────────────────────────────────────────────────
+             projectId ...... 89d53020-feae-4084-b26c-f0031952266e
+url ............ https://lovable.dev/projects/89d53020-feae-4084-b26c-f0031952266e
+
+                             SYSTEM RULES (LOCKED)
+───────────────────────────────────────────────────────────────────────────────
+            □ Trust-first: best-effort, confidence labeled, no hype
+         □ No scraping claims; only user-provided inputs + heuristics
+     □ Non-legal guidance only; never generate C&D letters; never threaten
+ □ Receipts everywhere: scores, confidence, assumptions, deltas, evidence pins
+   □ Privacy-first: opt-in stubs for biometric concepts; kill switch honored
+
+                                   · · · · ·
+
+             Benediction: Build the fortress that prevents regret.
+═══════════════════════════════════════════════════════════════════════════════
