@@ -163,7 +163,7 @@ export const ENGINE_REGISTRY: Record<EngineId, EngineMeta> = {
     id: "6roxy",
     label: "6ROXY",
     friendlyLabel: "Proxy",
-    outcomeHint: "Your business partner clone — voice, calendar, running 24/7",
+    outcomeHint: "Your business partner clone running 24/7",
     sub: "Digital Twin · Avatar",
     metaphor: "The Mask",
     colorHsl: "270 30% 72%",
