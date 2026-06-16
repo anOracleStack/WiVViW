@@ -8,7 +8,6 @@ export default function BrandlPage() {
   return (
     <EngineWorkbench
       engine={engine}
-      description={config.description}
       fields={config.fields}
       apiPath="/api/engines/brandl"
     />

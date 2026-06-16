@@ -6,7 +6,6 @@ export default function IeldPage() {
   return (
     <EngineWorkbench
       engine={ENGINE_REGISTRY["4ield"]}
-      description={ENGINE_PAGE_CONFIG["4ield"].description}
       fields={ENGINE_PAGE_CONFIG["4ield"].fields}
       apiPath="/api/engines/4ield"
     />

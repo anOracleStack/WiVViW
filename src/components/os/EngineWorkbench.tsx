@@ -10,13 +10,11 @@ import type { EnginePhase } from "@/lib/engines/engine-contract";
 export default function EngineWorkbench({
   engine,
   phase = "intake",
-  description,
   fields,
   apiPath,
 }: {
   engine: EngineMeta;
   phase?: EnginePhase;
-  description: string;
   fields: { key: string; label: string; type?: "text" | "textarea" }[];
   apiPath: string;
 }) {
@@ -60,7 +58,9 @@ export default function EngineWorkbench({
         >
           {engine.friendlyLabel}
         </h1>
-        <p className="mx-auto mt-3 max-w-md text-sm text-[hsl(var(--text-muted))]">{description}</p>
+        <p className="mx-auto mt-3 max-w-md text-sm text-[hsl(var(--text-muted))]">
+          {engine.outcomeHint}
+        </p>
       </div>
 
       <div className="mt-8">

@@ -76,6 +76,8 @@ export interface EngineMeta {
   label: string;
   /** Primary UI label */
   friendlyLabel: string;
+  /** One quiet outcome line — cards, workbench header */
+  outcomeHint: string;
   sub: string;
   metaphor: string;
   colorHsl: string;
@@ -89,6 +91,7 @@ export const ENGINE_REGISTRY: Record<EngineId, EngineMeta> = {
     id: "dranb",
     label: "dRANb",
     friendlyLabel: "Name",
+    outcomeHint: "Find a name worth owning",
     sub: "Naming · Decision",
     metaphor: "The Workbench",
     colorHsl: "200 80% 52%",
@@ -100,6 +103,7 @@ export const ENGINE_REGISTRY: Record<EngineId, EngineMeta> = {
     id: "brandl",
     label: "brandL",
     friendlyLabel: "Brandle",
+    outcomeHint: "Secure your name across the web",
     sub: "Territory · Domains",
     metaphor: "The Ladder",
     colorHsl: "160 50% 40%",
@@ -111,6 +115,7 @@ export const ENGINE_REGISTRY: Record<EngineId, EngineMeta> = {
     id: "4ield",
     label: "4IELD",
     friendlyLabel: "Field",
+    outcomeHint: "See who else occupies your space",
     sub: "Intelligence · Field Map",
     metaphor: "The Map",
     colorHsl: "42 87% 55%",
@@ -122,6 +127,7 @@ export const ENGINE_REGISTRY: Record<EngineId, EngineMeta> = {
     id: "4tress",
     label: "4TRESS",
     friendlyLabel: "Fortress",
+    outcomeHint: "Prepare protection — step by step",
     sub: "Protection · Readiness",
     metaphor: "The Citadel",
     colorHsl: "350 80% 45%",
@@ -133,6 +139,7 @@ export const ENGINE_REGISTRY: Record<EngineId, EngineMeta> = {
     id: "3xec",
     label: "3XEC",
     friendlyLabel: "Exec",
+    outcomeHint: "Turn decisions into daily ops",
     sub: "Operations · Automation",
     metaphor: "The Dojo",
     colorHsl: "215 25% 55%",
@@ -144,6 +151,7 @@ export const ENGINE_REGISTRY: Record<EngineId, EngineMeta> = {
     id: "5ite",
     label: "5ITE",
     friendlyLabel: "Site",
+    outcomeHint: "Launch a home for your brand",
     sub: "Product · Deploy",
     metaphor: "The Construct",
     colorHsl: "270 60% 55%",
@@ -155,6 +163,7 @@ export const ENGINE_REGISTRY: Record<EngineId, EngineMeta> = {
     id: "6roxy",
     label: "6ROXY",
     friendlyLabel: "Proxy",
+    outcomeHint: "Your voice and presence, extended",
     sub: "Digital Twin · Avatar",
     metaphor: "The Mask",
     colorHsl: "270 30% 72%",
@@ -166,6 +175,7 @@ export const ENGINE_REGISTRY: Record<EngineId, EngineMeta> = {
     id: "v4ult",
     label: "V4ULT",
     friendlyLabel: "Vault",
+    outcomeHint: "Your brand story over time",
     sub: "Archive · Timeline",
     metaphor: "The Time Spine",
     colorHsl: "220 70% 55%",

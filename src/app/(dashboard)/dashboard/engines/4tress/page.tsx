@@ -6,7 +6,6 @@ export default function TressPage() {
   return (
     <EngineWorkbench
       engine={ENGINE_REGISTRY["4tress"]}
-      description={ENGINE_PAGE_CONFIG["4tress"].description}
       fields={ENGINE_PAGE_CONFIG["4tress"].fields}
       apiPath="/api/engines/4tress"
     />

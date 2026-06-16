@@ -76,6 +76,7 @@ export default function DranbPage() {
   return (
     <div className="mx-auto max-w-2xl text-center">
       <SectionTitle title={engine.friendlyLabel} />
+      <p className="mt-2 text-xs text-[hsl(var(--text-muted))]">{engine.outcomeHint}</p>
       <BalancedText className="mt-4 text-sm text-[hsl(var(--text-muted))]">
         Tell us what you&apos;re building —
         <br />

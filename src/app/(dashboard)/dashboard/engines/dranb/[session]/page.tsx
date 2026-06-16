@@ -4,7 +4,10 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import GlassPanel from "@/components/ui/GlassPanel";
 import SectionTitle from "@/components/ui/SectionTitle";
+import { ENGINE_REGISTRY } from "@/lib/engines/engine-contract";
 import { useDranbSessionLive } from "@/hooks/useDranbSessionLive";
+
+const engine = ENGINE_REGISTRY.dranb;
 
 const STAGES = [
   { step: 1, name: "Clotho", label: "Generate" },
@@ -118,7 +121,7 @@ export default function DranbSessionPage() {
           href="/dashboard/engines/dranb"
           className="text-sm text-[hsl(var(--text-muted))] hover:text-[hsl(var(--primary-amber))]"
         >
-          ← Back to dRANb
+          ← Back to Name
         </Link>
         <p className="text-[hsl(var(--primary-amber))]">{error}</p>
       </div>
@@ -132,14 +135,14 @@ export default function DranbSessionPage() {
           href="/dashboard/engines/dranb"
           className="text-sm text-[hsl(var(--text-muted))] hover:text-[hsl(var(--primary-amber))]"
         >
-          ← Back to dRANb
+          ← Back to Name
         </Link>
         <span className="font-mono text-xs text-[hsl(var(--text-muted))]">{sessionId}</span>
       </div>
 
-      <SectionTitle eyebrow="MOIRAI pipeline" title="dRANb run" />
+      <SectionTitle title={engine.friendlyLabel} />
       <p className="text-center text-sm text-[hsl(var(--text-muted))]">
-        {isComplete ? "Complete." : "Pipeline in progress…"}
+        {isComplete ? "Complete." : "Run in progress…"}
         {live && (
           <span className="ml-2 inline-flex rounded border border-[hsl(var(--accent-teal)/0.35)] bg-[hsl(var(--accent-teal)/0.1)] px-2 py-0.5 font-mono text-xs tracking-wide text-[hsl(var(--accent-teal))]">
             Live
